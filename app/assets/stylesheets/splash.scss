@@ -1,0 +1,58 @@
+.splash {
+  display: flex;
+  padding-top: 100px;
+}
+
+.splash-left {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 500px;
+  padding: 0 80px;
+  text-align: center;
+  width: 50%;
+}
+
+.splash-left h1 {
+  color: var(--black);
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.splash-left h6 {
+  color: var(--black);
+  font-size: 1.2rem;
+  width: 300px;
+}
+
+.splash-left-btn {
+  align-items: center;
+  background: linear-gradient(to bottom, var(--third) 5%, var(--offthird) 100%);
+  background-color: var(--third);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-top: 10px;
+  width: 250px;
+}
+
+.splash-left-btn:hover {
+  background: linear-gradient(to bottom, var(--offthird) 5%, var(--third) 100%);
+  background-color: var(--offthird);
+}
+
+.splash-left-btn p {
+  color: var(--white);
+  font-size: 1.2rem;
+}
+
+.splash-right {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 50%;
+}
