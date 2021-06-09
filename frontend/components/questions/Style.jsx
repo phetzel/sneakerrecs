@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import ShoeContext from '../../context/shoeContext';
 
 const Style = ({ setQuestion }) => {
-    const { setStyle } = useContext(ShoeContext);
+    const { setStyle, style } = useContext(ShoeContext);
 
     const handleChange = e => {
         setStyle(e.target.value);
@@ -15,13 +15,25 @@ const Style = ({ setQuestion }) => {
 
             <div className="question-radio" onChange={handleChange}>
                 <label>
-                    <input type="radio" value="high-top" name="style" /> High-top
+                    <input 
+                        type="radio" 
+                        value="high-top" 
+                        name="style" 
+                        checked={style === 'high-top'} /> High-top
                 </label>
                 <label>
-                    <input type="radio" value="low-top" name="style" /> Low-top
+                    <input 
+                        type="radio" 
+                        value="low-top" 
+                        name="style" 
+                        checked={style === 'low-top'} /> Low-top
                 </label>
                 <label>
-                    <input type="radio" value="other" name="style" /> Other
+                    <input 
+                        type="radio" 
+                        value="other" 
+                        name="style" 
+                        checked={style === 'other'} /> Other
                 </label>
             </div>
 

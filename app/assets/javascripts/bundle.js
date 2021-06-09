@@ -244,29 +244,39 @@ var ColorAmount = function ColorAmount(_ref) {
   var setQuestion = _ref.setQuestion;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
-      setColorAmount = _useContext.setColorAmount;
+      colorAmount = _useContext.colorAmount,
+      setColorAmount = _useContext.setColorAmount,
+      style = _useContext.style;
 
   var handleChange = function handleChange(e) {
     setColorAmount(+e.target.value);
   };
 
+  var styleLink = style ? "Style: ".concat(style) : 'Style';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Color Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(1);
+    }
+  }, styleLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Color Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "1",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorAmount === 1
   }), " Solid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "2",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorAmount === 2
   }), " Two Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "3",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorAmount === 3
   }), " More than Two")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {
@@ -299,29 +309,45 @@ var ColorPrimary = function ColorPrimary(_ref) {
   var setQuestion = _ref.setQuestion;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
-      setColorPrimary = _useContext.setColorPrimary;
+      setColorPrimary = _useContext.setColorPrimary,
+      style = _useContext.style,
+      colorAmount = _useContext.colorAmount,
+      colorPrimary = _useContext.colorPrimary;
 
   var handleChange = function handleChange(e) {
     setColorPrimary(e.target.value);
   };
 
+  var styleLink = style ? "Style: ".concat(style) : 'Style';
+  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(1);
+    }
+  }, styleLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(2);
+    }
+  }, colorAmountLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "black",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorPrimary === 'black'
   }), " Black"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "white",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorPrimary === 'white'
   }), " White"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "green",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorPrimary === 'green'
   }), " Green")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {
@@ -354,9 +380,15 @@ var ColorSecondary = function ColorSecondary(_ref) {
   var setQuestion = _ref.setQuestion;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
-      setColorSecondary = _useContext.setColorSecondary;
+      setColorSecondary = _useContext.setColorSecondary,
+      style = _useContext.style,
+      colorAmount = _useContext.colorAmount,
+      colorPrimary = _useContext.colorPrimary,
+      colorSecondary = _useContext.colorSecondary;
 
-  var CTX = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default);
+  var styleLink = style ? "Style: ".concat(style) : 'Style';
+  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
+  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
 
   var handleChange = function handleChange(e) {
     setColorSecondary(e.target.value);
@@ -364,25 +396,40 @@ var ColorSecondary = function ColorSecondary(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(1);
+    }
+  }, styleLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(2);
+    }
+  }, colorAmountLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(3);
+    }
+  }, colorPrimaryLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "black",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorSecondary === 'black'
   }), " Black"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "white",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorSecondary === 'white'
   }), " White"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "green",
-    name: "colorAmt"
+    name: "colorAmt",
+    checked: colorSecondary === 'green'
   }), " Green")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {
-      return console.log(CTX);
+      return console.log('hit');
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
 };
@@ -463,7 +510,8 @@ var Style = function Style(_ref) {
   var setQuestion = _ref.setQuestion;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
-      setStyle = _useContext.setStyle;
+      setStyle = _useContext.setStyle,
+      style = _useContext.style;
 
   var handleChange = function handleChange(e) {
     setStyle(e.target.value);
@@ -477,15 +525,18 @@ var Style = function Style(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "high-top",
-    name: "style"
+    name: "style",
+    checked: style === 'high-top'
   }), " High-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "low-top",
-    name: "style"
+    name: "style",
+    checked: style === 'low-top'
   }), " Low-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
     value: "other",
-    name: "style"
+    name: "style",
+    checked: style === 'other'
   }), " Other")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {

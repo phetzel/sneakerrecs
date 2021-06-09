@@ -1,11 +1,22 @@
 .question {
-  margin-top: 40px;
+  // margin-top: 40px;
+}
+
+.question li {
+  color: var(--third);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.question li:hover {
+  color: var(--black);
 }
 
 .question h3 {
   color: var(--black);
   font-size: 1.5rem;
   font-weight: 500;
+  margin-top: 40px;
 }
 
 .question-radio {
