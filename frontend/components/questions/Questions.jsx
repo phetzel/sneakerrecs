@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
 import ColorAmount from './ColorAmount';
 import ColorPrimary from './ColorPrimary';
 import ColorSecondary from './ColorSecondary';
 import Style from './Style';
 
+import ShoeContext from '../../context/shoeContext';
+
 const Questions = () => {
-    const [question, setQuestion] = useState(1);
+    const { question, setQuestion } = useContext(ShoeContext);
 
     const obj = {
         1: <Style setQuestion={setQuestion} />,

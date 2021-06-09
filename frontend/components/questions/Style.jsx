@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+import ShoeContext from '../../context/shoeContext';
 
 const Style = ({ setQuestion }) => {
-    const [style, setStyle] = useState();
+    const { setStyle } = useContext(ShoeContext);
 
     const handleChange = e => {
         setStyle(e.target.value);

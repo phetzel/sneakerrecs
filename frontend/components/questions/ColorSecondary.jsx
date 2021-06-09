@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+import ShoeContext from '../../context/shoeContext';
 
 const ColorSecondary = ({ setQuestion }) => {
-    const [colorSecondary, setColorSecondary] = useState();
+    const { setColorSecondary }  = useContext(ShoeContext);
+    const CTX = useContext(ShoeContext);
+
 
     const handleChange = e => {
         setColorSecondary(e.target.value);
@@ -24,7 +28,7 @@ const ColorSecondary = ({ setQuestion }) => {
                 </label>
             </div>
 
-            <div className="splash-left-btn" onClick={() => setQuestion(4)}>
+            <div className="splash-left-btn" onClick={() => console.log(CTX)}>
                 <p>Next</p>
             </div>
         </div>

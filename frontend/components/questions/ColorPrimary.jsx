@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+import ShoeContext from '../../context/shoeContext';
 
 const ColorPrimary = ({ setQuestion }) => {
-    const [colorPrimary, setColorPrimary] = useState();
+    const { setColorPrimary } = useContext(ShoeContext);
 
     const handleChange = e => {
         setColorPrimary(e.target.value);
