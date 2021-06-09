@@ -1,3 +1,12 @@
+@keyframes rotation {
+  from {
+    transform: rotate(359deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 .splash {
   display: flex;
   padding-top: 100px;
@@ -7,10 +16,9 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 500px;
+  // justify-content: space-around;
+  // height: 500px;
   padding: 0 80px;
-  text-align: center;
   width: 50%;
 }
 
@@ -18,11 +26,16 @@
   color: var(--black);
   font-size: 3rem;
   font-weight: 700;
+  margin-top: 80px;
+  text-align: center;
 }
 
 .splash-left h6 {
-  color: var(--black);
+  color: var(--grey);
   font-size: 1.2rem;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  text-align: center;
   width: 300px;
 }
 
@@ -55,4 +68,6 @@
   justify-content: center;
   height: 500px;
   width: 50%;
+
+  //   animation: rotation 4s infinite linear;
 }

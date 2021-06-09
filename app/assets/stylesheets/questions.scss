@@ -1,0 +1,20 @@
+.question {
+  margin-top: 40px;
+}
+
+.question h3 {
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.question-radio {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.question-radio input {
+  margin-top: 5px;
+}
