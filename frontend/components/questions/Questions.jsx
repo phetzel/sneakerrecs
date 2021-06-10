@@ -19,7 +19,7 @@ const Questions = () => {
 
     return (
         <div className="splash-left">
-            <h1>Questions</h1>
+            <h1 id="question-title">Question {question}</h1>
             {obj[question]}
         </div>
     );

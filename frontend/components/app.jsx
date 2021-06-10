@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Navbar from './navbar/Navbar';
 import ShoeContext from '../context/shoeContext';
 import Splash from './splash/Splash';
 import UserContext from '../context/userContext';
+import { fetchUser } from '../api/user_api';
 
 const App = () => {
     const [user, setUser] = useState();
@@ -14,6 +15,14 @@ const App = () => {
     const [colorAmount, setColorAmount] = useState();
     const [colorPrimary, setColorPrimary] = useState();
     const [colorSecondary, setColorSecondary] = useState();
+
+    useEffect(() => {
+        const id = localStorage.getItem('user');
+
+        if (id) {
+            fetchUser(id).then(res => setUser(res));
+        }
+    }, [])
     
     return (
         <UserContext.Provider

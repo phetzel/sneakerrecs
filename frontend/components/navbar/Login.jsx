@@ -40,7 +40,7 @@ const Login = ({ setModComp, history }) => {
 
             login(formData).then(res => {
                 save ? (
-                    localStorage.setItem('user', email)
+                    localStorage.setItem('user', res.id)
                 ) : (
                     localStorage.removeItem('user')
                 );
