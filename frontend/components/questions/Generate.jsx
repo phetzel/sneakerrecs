@@ -1,0 +1,55 @@
+import React, { useContext } from 'react';
+
+import ShoeContext from '../../context/shoeContext';
+import { fetchShoes } from '../../api/shoe_api';
+
+const Generate = ({ setQuestion }) => {
+    const { 
+        style, 
+        colorAmount, 
+        colorPrimary,
+        colorSecondary,
+        setShoes
+    }  = useContext(ShoeContext);
+
+    const styleLink = style ? `Style: ${style}` : 'Style';
+    const colorAmountLink = colorAmount ? (
+        `Number of colors: ${colorAmount}`
+    ) : (
+        'Number of colors'
+    );
+    const colorPrimaryLink = colorPrimary ? (
+        `Primary color: ${colorPrimary}`
+    ) : (
+        'Primary color'
+    );
+    const colorSecondaryLink = colorSecondary ? (
+        `Primary color: ${colorSecondary}`
+    ) : (
+        'Primary color'
+    );
+
+    const handleGen = () => {
+        fetchShoes().then(res => {
+            console.log(res);
+            setShoes(res);
+        })
+    }
+
+    return (
+        <div className="question">
+            <ul>
+                <li onClick={() => setQuestion(1)}>{styleLink}</li>
+                <li onClick={() => setQuestion(2)}>{colorAmountLink}</li>
+                <li onClick={() => setQuestion(3)}>{colorPrimaryLink}</li>
+                <li onClick={() => setQuestion(4)}>{colorSecondaryLink}</li>
+            </ul>
+
+            <div className="splash-left-btn" onClick={handleGen}>
+                <p>Generate</p>
+            </div>
+        </div>
+    )
+}
+
+export default Generate;

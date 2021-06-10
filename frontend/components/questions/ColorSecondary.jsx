@@ -57,11 +57,11 @@ const ColorSecondary = ({ setQuestion }) => {
                         type="radio" 
                         value="green" 
                         name="colorAmt" 
-                        checked={colorSecondary === 'green'} /> Green
+                        checked={colorSecondary === 'red'} /> Red
                 </label>
             </div>
 
-            <div className="splash-left-btn" onClick={() => console.log('hit')}>
+            <div className="splash-left-btn" onClick={() => setQuestion(5)}>
                 <p>Next</p>
             </div>
         </div>

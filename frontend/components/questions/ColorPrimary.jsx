@@ -50,7 +50,7 @@ const ColorPrimary = ({ setQuestion }) => {
                         type="radio" 
                         value="green" 
                         name="colorAmt" 
-                        checked={colorPrimary === 'green'} /> Green
+                        checked={colorPrimary === 'red'} /> Red
                 </label>
             </div>
 

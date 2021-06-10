@@ -15,10 +15,10 @@ const App = () => {
     const [colorAmount, setColorAmount] = useState();
     const [colorPrimary, setColorPrimary] = useState();
     const [colorSecondary, setColorSecondary] = useState();
+    const [shoes, setShoes] = useState();
 
     useEffect(() => {
         const id = localStorage.getItem('user');
-
         if (id) {
             fetchUser(id).then(res => setUser(res));
         }
@@ -43,7 +43,9 @@ const App = () => {
                     colorPrimary,
                     setColorPrimary,
                     colorSecondary,
-                    setColorSecondary
+                    setColorSecondary,
+                    shoes,
+                    setShoes
                     }}>
 
                 <div className="app">

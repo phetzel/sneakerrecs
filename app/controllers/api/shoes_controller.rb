@@ -1,6 +1,6 @@
 class Api::ShoesController < ApplicationController
     def index
-        @shoe = Shoe.all
+        @shoes = Shoe.all
         render :index
     end 
 
@@ -40,7 +40,8 @@ class Api::ShoesController < ApplicationController
             :id,
             :brand,
             :name,
-            :type
+            :type,
+            :pcolor
         )
     end
 end

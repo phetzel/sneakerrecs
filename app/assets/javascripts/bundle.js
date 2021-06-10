@@ -156,6 +156,27 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/api/shoe_api.jsx":
+/*!***********************************!*\
+  !*** ./frontend/api/shoe_api.jsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchShoes": () => (/* binding */ fetchShoes)
+/* harmony export */ });
+var fetchShoes = function fetchShoes(filters) {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/shoes',
+    filters: filters
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/api/user_api.jsx":
 /*!***********************************!*\
   !*** ./frontend/api/user_api.jsx ***!
@@ -250,6 +271,11 @@ var App = function App() {
       colorSecondary = _useState14[0],
       setColorSecondary = _useState14[1];
 
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState16 = _slicedToArray(_useState15, 2),
+      shoes = _useState16[0],
+      setShoes = _useState16[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var id = localStorage.getItem('user');
 
@@ -277,7 +303,9 @@ var App = function App() {
       colorPrimary: colorPrimary,
       setColorPrimary: setColorPrimary,
       colorSecondary: colorSecondary,
-      setColorSecondary: setColorSecondary
+      setColorSecondary: setColorSecondary,
+      shoes: shoes,
+      setShoes: setShoes
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app"
@@ -840,8 +868,8 @@ var ColorPrimary = function ColorPrimary(_ref) {
     type: "radio",
     value: "green",
     name: "colorAmt",
-    checked: colorPrimary === 'green'
-  }), " Green")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    checked: colorPrimary === 'red'
+  }), " Red")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {
       return setQuestion(4);
@@ -918,16 +946,84 @@ var ColorSecondary = function ColorSecondary(_ref) {
     type: "radio",
     value: "green",
     name: "colorAmt",
-    checked: colorSecondary === 'green'
-  }), " Green")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    checked: colorSecondary === 'red'
+  }), " Red")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {
-      return console.log('hit');
+      return setQuestion(5);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ColorSecondary);
+
+/***/ }),
+
+/***/ "./frontend/components/questions/Generate.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/questions/Generate.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
+
+
+
+
+var Generate = function Generate(_ref) {
+  var setQuestion = _ref.setQuestion;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+      style = _useContext.style,
+      colorAmount = _useContext.colorAmount,
+      colorPrimary = _useContext.colorPrimary,
+      colorSecondary = _useContext.colorSecondary,
+      setShoes = _useContext.setShoes;
+
+  var styleLink = style ? "Style: ".concat(style) : 'Style';
+  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
+  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
+  var colorSecondaryLink = colorSecondary ? "Primary color: ".concat(colorSecondary) : 'Primary color';
+
+  var handleGen = function handleGen() {
+    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)().then(function (res) {
+      console.log(res);
+      setShoes(res);
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "question"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(1);
+    }
+  }, styleLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(2);
+    }
+  }, colorAmountLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(3);
+    }
+  }, colorPrimaryLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(4);
+    }
+  }, colorSecondaryLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "splash-left-btn",
+    onClick: handleGen
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Generate")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Generate);
 
 /***/ }),
 
@@ -946,8 +1042,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ColorAmount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorAmount */ "./frontend/components/questions/ColorAmount.jsx");
 /* harmony import */ var _ColorPrimary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorPrimary */ "./frontend/components/questions/ColorPrimary.jsx");
 /* harmony import */ var _ColorSecondary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ColorSecondary */ "./frontend/components/questions/ColorSecondary.jsx");
-/* harmony import */ var _Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Style */ "./frontend/components/questions/Style.jsx");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _Generate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Generate */ "./frontend/components/questions/Generate.jsx");
+/* harmony import */ var _Style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Style */ "./frontend/components/questions/Style.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+
 
 
 
@@ -956,12 +1054,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Questions = function Questions() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_5__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_6__.default),
       question = _useContext.question,
       setQuestion = _useContext.setQuestion;
 
   var obj = {
-    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_4__.default, {
+    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, {
       setQuestion: setQuestion
     }),
     2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorAmount__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -972,13 +1070,17 @@ var Questions = function Questions() {
     }),
     4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_3__.default, {
       setQuestion: setQuestion
+    }),
+    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_4__.default, {
+      setQuestion: setQuestion
     })
   };
+  var title = question === 5 ? 'Get Recomendations' : "Question ".concat(question);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
     id: "question-title"
-  }, "Question ", question), obj[question]);
+  }, title), obj[question]);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Questions);

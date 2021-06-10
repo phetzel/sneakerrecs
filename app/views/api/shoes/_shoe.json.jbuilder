@@ -1,0 +1,1 @@
+json.extract! shoe, :id, :brand, :name, :pcolor, :url, :style
