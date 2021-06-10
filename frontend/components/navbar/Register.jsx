@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Login from './Login';
+import { signup } from '../../api/session_api_util';
+import UserContext from '../../context/userContext';
 
 const Register = ({ setModComp, history }) => {
     const [email, setEmail] = useState('');
@@ -9,6 +11,8 @@ const Register = ({ setModComp, history }) => {
     const [pass2, setPass2] = useState('');
     const [save, setSave] = useState(false);
     const [err, setErr] = useState('');
+
+    const { setUser } = useContext(UserContext);
 
     const handleLogin = () => {
         setModComp(
@@ -39,15 +43,21 @@ const Register = ({ setModComp, history }) => {
         } else if (pass1 != pass2) {
             setErr('Passwords Must Match');
         } else {
-            save ? (
-                localStorage.setItem('user', email)
-            ) : (
-                localStorage.removeItem('user')
-            );
+            const formData = new FormData();
+            formData.append('user[email]', email);
+            formData.append('user[password]', pass1);
+            formData.append('user[admin]', false);
 
-            const obj = { email: email };
-            // setUser(obj.email);
-            setModComp();
+            signup(formData).then(res => {
+                save ? (
+                    localStorage.setItem('user', res.id)
+                ) : (
+                    localStorage.removeItem('user')
+                );
+
+                setUser(res);
+                setModComp();
+            }).fail(err => setErr(err.responseJSON[0]));
         }
     }
 

@@ -4,8 +4,10 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 import ShoeContext from '../context/shoeContext';
 import Splash from './splash/Splash';
+import UserContext from '../context/userContext';
 
 const App = () => {
+    const [user, setUser] = useState();
     const [started, setStarted] = useState(false);
     const [question, setQuestion] = useState(1);
     const [style, setStyle] = useState();
@@ -14,31 +16,37 @@ const App = () => {
     const [colorSecondary, setColorSecondary] = useState();
     
     return (
-        <ShoeContext.Provider
-            value={{ 
-                started,
-                setStarted,
-                question, 
-                setQuestion,
-                style,
-                setStyle,
-                colorAmount,
-                setColorAmount,
-                colorPrimary,
-                setColorPrimary,
-                colorSecondary,
-                setColorSecondary
-                }}>
+        <UserContext.Provider
+            value={{
+                user,
+                setUser
+            }}>
+            <ShoeContext.Provider
+                value={{ 
+                    started,
+                    setStarted,
+                    question, 
+                    setQuestion,
+                    style,
+                    setStyle,
+                    colorAmount,
+                    setColorAmount,
+                    colorPrimary,
+                    setColorPrimary,
+                    colorSecondary,
+                    setColorSecondary
+                    }}>
 
-            <div className="app">
-                <Navbar />
-                
-                <Switch>
-                    <Route exact path="/" component={Splash} />
-                </Switch>
-            </div>
+                <div className="app">
+                    <Navbar />
+                    
+                    <Switch>
+                        <Route exact path="/" component={Splash} />
+                    </Switch>
+                </div>
 
-        </ShoeContext.Provider>
+            </ShoeContext.Provider>
+        </UserContext.Provider>
     )
 }
 

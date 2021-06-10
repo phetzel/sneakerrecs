@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Register from './Register';
+import { login } from '../../api/session_api_util.jsx';
+import UserContext from '../../context/userContext';
 
 const Login = ({ setModComp, history }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [save, setSave] = useState(false);
     const [err, setErr] = useState('');
+
+    const { setUser } = useContext(UserContext);
 
     const handleReg = () => {
         setModComp(
@@ -30,16 +34,20 @@ const Login = ({ setModComp, history }) => {
         } else if (!pass.length) {
             setErr('Please Insert Password');
         } else {
-            save ? (
-                localStorage.setItem('user', email)
-            ) : (
-                localStorage.removeItem('user')
-            );
+            const formData = new FormData();
+            formData.append('user[email]', email);
+            formData.append('user[password]', pass);
 
-            const obj = { email: email };
-            // setUser(obj.email);
-            setModComp();
-            // history.push('/profile');
+            login(formData).then(res => {
+                save ? (
+                    localStorage.setItem('user', email)
+                ) : (
+                    localStorage.removeItem('user')
+                );
+
+                setUser(res);
+                setModComp();
+            }).fail(err => setErr(err.responseJSON[0]));
         }
     }
 

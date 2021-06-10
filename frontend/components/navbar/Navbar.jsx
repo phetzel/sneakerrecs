@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import shoeContext from '../../context/shoeContext';
+import ShoeContext from '../../context/shoeContext';
+import UserContext from '../../context/userContext';
 
 import Modal from '../modal/modal';
 import Login from './Login';
+import { logout } from '../../api/session_api_util';
 import Register from './Register';
 
 const Navbar = ({ history }) => {
-    const { setQuestion, setStarted } = useContext(shoeContext);
+    const { setQuestion, setStarted } = useContext(ShoeContext);
+    const { user, setUser } = useContext(UserContext);
     const [modComp, setModComp] = useState();
 
     const handleHome = () => {
@@ -28,15 +31,28 @@ const Navbar = ({ history }) => {
             )
         }
     }
+
+    const handleLogout = () => {
+        logout().then(res => setUser());
+    }
+
+    const list = user ? (
+        <ul>
+            <li>{user.email}</li>
+            <li onClick={handleLogout}>Sign Out</li>
+        </ul>
+    ) : (
+        <ul>
+            <li onClick={() => handleRight('login')}>Sign In</li>
+            <li onClick={() => handleRight('register')}>Sign Up</li>
+        </ul>
+    )
     
     return (
         <div>
             <div className="navbar">
                 <h1 onClick={handleHome}>Sneaker Recs</h1>
-                <ul>
-                    <li onClick={() => handleRight('login')}>Sign In</li>
-                    <li onClick={() => handleRight('register')}>Sign Up</li>
-                </ul>
+                { list }
             </div>
 
             <Modal component={modComp} func={setModComp} />
