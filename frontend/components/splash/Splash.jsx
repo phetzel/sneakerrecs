@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import SplashLeft from './SplashLeft';
 import SplashRight from './SplashRight';
 import Questions from '../questions/Questions';
 
+import shoeContext from '../../context/shoeContext';
+
 const Splash = () => {
-    const [started, setStarted] = useState(false);
+    const { started, setStarted } = useContext(shoeContext);
 
     return (
         <div className="splash">

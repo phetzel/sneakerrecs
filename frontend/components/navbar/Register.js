@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Register from './Register';
+import Login from './Login';
 
-const Login = ({ setModComp, history }) => {
+const Register = ({ setModComp, history }) => {
     const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+    const [pass1, setPass1] = useState('');
+    const [pass2, setPass2] = useState('');
     const [save, setSave] = useState(false);
     const [err, setErr] = useState('');
 
-    const handleReg = () => {
+    const handleLogin = () => {
         setModComp(
-            <Register setModComp={setModComp} />
+            <Login setModComp={setModComp} />
         );
     }
 
     const handleChange = (e, type) => {
         const val = e.currentTarget.value;
-        type === 'email' ? setEmail(val) : setPass(val);
+        if (type === 'email') {
+            setEmail(val);
+        } else if (type === 'pass1') {
+            setPass1(val);
+        } else {
+            setPass2(val);
+        }
     }
 
     const handleCheck = () => {
@@ -27,8 +34,10 @@ const Login = ({ setModComp, history }) => {
     const handleSubmit = () => {
         if (!email.length) {
             setErr('Please Insert Email');
-        } else if (!pass.length) {
-            setErr('Please Insert Password');
+        } else if (!pass1.length || !pass2.length) {
+            setErr('Please Insert Passwords');
+        } else if (pass1 != pass2) {
+            setErr('Passwords Must Match');
         } else {
             save ? (
                 localStorage.setItem('user', email)
@@ -39,20 +48,19 @@ const Login = ({ setModComp, history }) => {
             const obj = { email: email };
             // setUser(obj.email);
             setModComp();
-            // history.push('/profile');
         }
     }
 
     return (
         <div className="form">
             <div className="form-title">
-                <h2>Login</h2>
+                <h2>Register</h2>
                 <p>or</p>
-                <h6 onClick={handleReg}>Register</h6>
+                <h6 onClick={handleLogin}>Login</h6>
             </div>
 
             <form>
-                <label> Email
+                <label>Email
                     <input 
                         onChange={(e) => handleChange(e, "email")} 
                         placeholder="Email"
@@ -61,9 +69,16 @@ const Login = ({ setModComp, history }) => {
 
                 <label> Password
                     <input 
-                        onChange={(e) => handleChange(e, "password")}
-                        placeholder="Password"
-                        type="password"/>
+                    onChange={(e) => handleChange(e, "pass1")} 
+                    placeholder="Password"
+                    type="password"/>
+                </label>
+
+                <label>Repeat Password
+                    <input 
+                    onChange={(e) => handleChange(e, "pass2")} 
+                    placeholder="Password"
+                    type="password"/>
                 </label>
 
                 <label>Remember me?
@@ -78,12 +93,11 @@ const Login = ({ setModComp, history }) => {
                 <p className="form-err">{err}</p>
             }
 
-            <div className="form-btn" onClick={handleSubmit}> 
-                <p>Login</p>
+            <div className="form-btn" onClick={handleSubmit}>
+                <p>Register</p>
             </div>
-
         </div>
     )
 }
 
-export default withRouter(Login);
+export default withRouter(Register);

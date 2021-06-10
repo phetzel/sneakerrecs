@@ -1,0 +1,36 @@
+.navbar {
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar h1 {
+  color: var(--third);
+  cursor: pointer;
+
+  font-family: "Patrick Hand", cursive;
+}
+
+.navbar ul {
+  align-items: center;
+  border-left: 1px solid var(--grey);
+  display: flex;
+  height: 30px;
+}
+
+.navbar li {
+  color: var(--black);
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.navbar li:hover {
+  color: var(--third);
+}
