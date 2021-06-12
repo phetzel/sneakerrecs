@@ -1,0 +1,22 @@
+.profile {
+  padding-top: 60px;
+  width: 100%;
+}
+
+.admin-form-container {
+  margin-top: 80px;
+  padding: 0 80px;
+  width: 50%;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}

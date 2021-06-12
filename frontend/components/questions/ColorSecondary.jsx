@@ -55,7 +55,7 @@ const ColorSecondary = ({ setQuestion }) => {
                 <label>
                     <input 
                         type="radio" 
-                        value="green" 
+                        value="red" 
                         name="colorAmt" 
                         checked={colorSecondary === 'red'} /> Red
                 </label>

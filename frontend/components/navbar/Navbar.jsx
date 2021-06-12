@@ -17,7 +17,7 @@ const Navbar = ({ history }) => {
     const handleHome = () => {
         setStarted(false);
         setQuestion(1);
-        history.pushState('/')
+        history.push('/')
     }
 
     const handleRight = comp => {
@@ -38,7 +38,7 @@ const Navbar = ({ history }) => {
 
     const list = user ? (
         <ul>
-            <li>{user.email}</li>
+            <li onClick={() => history.push('/profile')}>{user.email}</li>
             <li onClick={handleLogout}>Sign Out</li>
         </ul>
     ) : (

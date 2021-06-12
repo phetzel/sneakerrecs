@@ -40,8 +40,10 @@ class Api::ShoesController < ApplicationController
             :id,
             :brand,
             :name,
-            :type,
-            :pcolor
+            :style,
+            :pcolor,
+            :url,
+            :photo
         )
     end
 end

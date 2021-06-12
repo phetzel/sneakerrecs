@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Navbar from './navbar/Navbar';
+import Profile from './profile/Profile';
 import ShoeContext from '../context/shoeContext';
 import Splash from './splash/Splash';
 import UserContext from '../context/userContext';
@@ -20,7 +21,9 @@ const App = () => {
     useEffect(() => {
         const id = localStorage.getItem('user');
         if (id) {
-            fetchUser(id).then(res => setUser(res));
+            fetchUser(id)
+                .then(res => setUser(res))
+                .fail(() => localStorage.removeItem('user'));
         }
     }, [])
     
@@ -53,6 +56,15 @@ const App = () => {
                     
                     <Switch>
                         <Route exact path="/" component={Splash} />
+
+                        <Route exact path="/profile" render={() => (
+                            user ? (
+                                <Profile />
+                            ) : (
+                                <Redirect to="/" />
+                            )
+                        )} />
+
                     </Switch>
                 </div>
 
