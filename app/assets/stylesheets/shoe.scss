@@ -1,0 +1,98 @@
+.shoe {
+  background-color: var(--black);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 300px;
+}
+
+.shoe h1 {
+  align-self: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.shoe-image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+}
+
+.shoe-image img {
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.shoe-lower {
+  color: var(--white);
+  display: flex;
+  padding: 0 10px;
+}
+
+.shoe-lower p {
+  margin-left: 10px;
+}
+
+.shoe-control {
+  display: flex;
+  margin-top: 10px;
+}
+
+.shoe-link-btn {
+  align-items: center;
+  background: linear-gradient(to bottom, var(--third) 5%, var(--offthird) 100%);
+  background-color: var(--third);
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 100px;
+}
+
+.shoe-link-btn:hover {
+  background: linear-gradient(to bottom, var(--offthird) 5%, var(--third) 100%);
+  background-color: var(--offthird);
+}
+
+.shoe-link-btn p,
+.next-btn p,
+.last-btn p {
+  color: var(--white);
+  font-size: 1.2rem;
+}
+
+.btn-placeholder {
+  width: 100px;
+}
+
+.next-btn,
+.last-btn {
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    var(--fourth) 5%,
+    var(--offfourth) 100%
+  );
+  background-color: var(--fourth);
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+}
+
+.next-btn:hover,
+.last-btn:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--offfourth) 5%,
+    var(--fourth) 100%
+  );
+  background-color: var(--offfourth);
+}

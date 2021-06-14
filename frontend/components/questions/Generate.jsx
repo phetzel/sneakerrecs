@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import ShoeContext from '../../context/shoeContext';
 import { fetchShoes } from '../../api/shoe_api';
 
-const Generate = ({ setQuestion }) => {
+const Generate = ({ setQuestion, history }) => {
     const { 
         style, 
         colorAmount, 
@@ -31,8 +32,8 @@ const Generate = ({ setQuestion }) => {
 
     const handleGen = () => {
         fetchShoes().then(res => {
-            console.log(res);
             setShoes(res);
+            history.push('/results');
         })
     }
 
@@ -52,4 +53,4 @@ const Generate = ({ setQuestion }) => {
     )
 }
 
-export default Generate;
+export default withRouter(Generate);

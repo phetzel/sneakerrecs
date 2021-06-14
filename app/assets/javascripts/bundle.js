@@ -219,13 +219,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _navbar_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar/Navbar */ "./frontend/components/navbar/Navbar.jsx");
 /* harmony import */ var _profile_Profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile/Profile */ "./frontend/components/profile/Profile.jsx");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/shoeContext */ "./frontend/context/shoeContext.jsx");
-/* harmony import */ var _splash_Splash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./splash/Splash */ "./frontend/components/splash/Splash.jsx");
-/* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../context/userContext */ "./frontend/context/userContext.jsx");
-/* harmony import */ var _api_user_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../api/user_api */ "./frontend/api/user_api.jsx");
+/* harmony import */ var _results_Results__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./results/Results */ "./frontend/components/results/Results.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _splash_Splash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash/Splash */ "./frontend/components/splash/Splash.jsx");
+/* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../context/userContext */ "./frontend/context/userContext.jsx");
+/* harmony import */ var _api_user_api__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../api/user_api */ "./frontend/api/user_api.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -237,6 +238,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -292,19 +294,19 @@ var App = function App() {
     var id = localStorage.getItem('user');
 
     if (id) {
-      (0,_api_user_api__WEBPACK_IMPORTED_MODULE_6__.fetchUser)(id).then(function (res) {
+      (0,_api_user_api__WEBPACK_IMPORTED_MODULE_7__.fetchUser)(id).then(function (res) {
         return setUser(res);
       }).fail(function () {
         return localStorage.removeItem('user');
       });
     }
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_userContext__WEBPACK_IMPORTED_MODULE_5__.default.Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_userContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
     value: {
       user: user,
       setUser: setUser
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_shoeContext__WEBPACK_IMPORTED_MODULE_3__.default.Provider, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_shoeContext__WEBPACK_IMPORTED_MODULE_4__.default.Provider, {
     value: {
       started: started,
       setStarted: setStarted,
@@ -323,15 +325,19 @@ var App = function App() {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_navbar_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_navbar_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/",
-    component: _splash_Splash__WEBPACK_IMPORTED_MODULE_4__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+    component: _splash_Splash__WEBPACK_IMPORTED_MODULE_5__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+    exact: true,
+    path: "/results",
+    component: _results_Results__WEBPACK_IMPORTED_MODULE_3__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/profile",
     render: function render() {
-      return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_Profile__WEBPACK_IMPORTED_MODULE_2__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
+      return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_Profile__WEBPACK_IMPORTED_MODULE_2__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Redirect, {
         to: "/"
       });
     }
@@ -1183,14 +1189,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 /* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
 
 
 
 
+
 var Generate = function Generate(_ref) {
-  var setQuestion = _ref.setQuestion;
+  var setQuestion = _ref.setQuestion,
+      history = _ref.history;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
       style = _useContext.style,
@@ -1206,8 +1215,8 @@ var Generate = function Generate(_ref) {
 
   var handleGen = function handleGen() {
     (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)().then(function (res) {
-      console.log(res);
       setShoes(res);
+      history.push('/results');
     });
   };
 
@@ -1235,7 +1244,7 @@ var Generate = function Generate(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Generate")));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Generate);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(Generate));
 
 /***/ }),
 
@@ -1355,6 +1364,140 @@ var Style = function Style(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
+
+/***/ }),
+
+/***/ "./frontend/components/results/Results.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/results/Results.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _ShoeDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShoeDetails */ "./frontend/components/results/ShoeDetails.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var Results = function Results() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+      shoes = _useContext.shoes,
+      setShoes = _useContext.setShoes;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      shoeIdx = _useState2[0],
+      setShoeIdx = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(shoes[0]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      shoe = _useState4[0],
+      setShoe = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setShoe(shoes[shoeIdx]);
+  }, [shoeIdx]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "results"
+  }, shoes && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeDetails__WEBPACK_IMPORTED_MODULE_2__.default, {
+    shoe: shoe,
+    shoeLength: shoes.length,
+    shoeIdx: shoeIdx,
+    setShoeIdx: setShoeIdx
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Results);
+
+/***/ }),
+
+/***/ "./frontend/components/results/ShoeDetails.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/results/ShoeDetails.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var ShoeDetails = function ShoeDetails(_ref) {
+  var shoe = _ref.shoe,
+      shoeLength = _ref.shoeLength,
+      shoeIdx = _ref.shoeIdx,
+      setShoeIdx = _ref.setShoeIdx;
+
+  // const shoe = {
+  //     id: 1,
+  //     brand: 'nike',
+  //     name: 'air force 1',
+  //     pcolor: 'white',
+  //     url: "https://www.amazon.com/Nike-Mens-315122-111-FORCE-Size/dp/B001NGKPE6/ref=sr_1_19?dchild=1&keywords=nike+dunks&qid=1623461762&sr=8-19",
+  //     photoUrl: "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--403ade35f4dc84528730e3e477d7eebf4533679b/white-air-force-1.jpg",
+  //     style: 'low-top'
+  // }
+  var openInNewTab = function openInNewTab() {
+    var newWindow = window.open(shoe.url, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
+  };
+
+  var next = function next() {
+    setShoeIdx(shoeIdx++);
+  };
+
+  var last = function last() {
+    setShoeIdx(shoeIdx--);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, (shoe.name + '  -  ' + shoe.brand).toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: shoe.photoUrl
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-lower"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.pcolor.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-control"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "btn-placeholder"
+  }, shoeIdx != 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "last-btn",
+    onClick: last
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Last"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-link-btn",
+    onClick: openInNewTab
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "View")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "btn-placeholder"
+  }, shoeIdx < shoeLength - 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "next-btn",
+    onClick: next
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShoeDetails);
 
 /***/ }),
 
