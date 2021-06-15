@@ -172,7 +172,7 @@ var fetchShoes = function fetchShoes(filters) {
   return $.ajax({
     method: 'GET',
     url: 'api/shoes',
-    filters: filters
+    data: filters
   });
 };
 var createShoe = function createShoe(shoe) {
@@ -1214,7 +1214,12 @@ var Generate = function Generate(_ref) {
   var colorSecondaryLink = colorSecondary ? "Primary color: ".concat(colorSecondary) : 'Primary color';
 
   var handleGen = function handleGen() {
-    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)().then(function (res) {
+    var obj = {
+      'shoe': {}
+    };
+    obj['shoe']['style'] = style;
+    obj['shoe']['pcolor'] = colorPrimary;
+    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)(obj).then(function (res) {
       setShoes(res);
       history.push('/results');
     });
@@ -1347,15 +1352,15 @@ var Style = function Style(_ref) {
     checked: style === 'high-top'
   }), " High-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
+    value: "medium-top",
+    name: "style",
+    checked: style === 'medium-top'
+  }), " Medium-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "radio",
     value: "low-top",
     name: "style",
     checked: style === 'low-top'
-  }), " Low-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "radio",
-    value: "other",
-    name: "style",
-    checked: style === 'other'
-  }), " Other")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), " Low-top")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: function onClick() {
       return setQuestion(2);
@@ -1405,20 +1410,18 @@ var Results = function Results() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       shoeIdx = _useState2[0],
-      setShoeIdx = _useState2[1];
+      setShoeIdx = _useState2[1]; // const [shoe, setShoe] = useState(shoes[0]);
+  // useEffect(() => {
+  //     console.log('hit');
+  //     setShoe(shoes[shoeIdx]);
+  // }, [shoeIdx])
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(shoes[0]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      shoe = _useState4[0],
-      setShoe = _useState4[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setShoe(shoes[shoeIdx]);
-  }, [shoeIdx]);
+  console.log(shoes);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results"
-  }, shoes && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeDetails__WEBPACK_IMPORTED_MODULE_2__.default, {
-    shoe: shoe,
+  }, shoes && shoes.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeDetails__WEBPACK_IMPORTED_MODULE_2__.default, {
+    shoe: shoes[shoeIdx],
     shoeLength: shoes.length,
     shoeIdx: shoeIdx,
     setShoeIdx: setShoeIdx
@@ -1465,6 +1468,7 @@ var ShoeDetails = function ShoeDetails(_ref) {
 
   var next = function next() {
     setShoeIdx(shoeIdx++);
+    console.log('next');
   };
 
   var last = function last() {

@@ -18,6 +18,7 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
 
     const next = () => {
         setShoeIdx(shoeIdx++);
+        console.log('next');
     }
 
     const last = () => {

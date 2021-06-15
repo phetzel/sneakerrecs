@@ -24,16 +24,16 @@ const Style = ({ setQuestion }) => {
                 <label>
                     <input 
                         type="radio" 
-                        value="low-top" 
+                        value="medium-top" 
                         name="style" 
-                        checked={style === 'low-top'} /> Low-top
+                        checked={style === 'medium-top'} /> Medium-top
                 </label>
                 <label>
                     <input 
                         type="radio" 
-                        value="other" 
+                        value="low-top" 
                         name="style" 
-                        checked={style === 'other'} /> Other
+                        checked={style === 'low-top'} /> Low-top
                 </label>
             </div>
 

@@ -1,6 +1,15 @@
 class Api::ShoesController < ApplicationController
     def index
         @shoes = Shoe.all
+
+        if params[:shoe] && params[:shoe][:style] 
+            @shoes = @shoes.where(style: params[:shoe][:style])
+        end 
+
+        if params[:shoe] && params[:shoe][:style] 
+            @shoes = @shoes.where(pcolor: params[:shoe][:pcolor])
+        end 
+
         render :index
     end 
 
