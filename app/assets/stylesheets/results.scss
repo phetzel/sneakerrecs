@@ -1,8 +1,40 @@
-.results {
+.results-container {
   align-items: center;
   display: flex;
   justify-content: center;
   padding-top: 70px;
   height: 100vh;
   width: 100%;
+}
+
+.results {
+  border-radius: 5px;
+  box-shadow: 3px 2px 12px 1px rgba(0, 0, 0, 0.75);
+  position: relative;
+}
+
+.next-btn,
+.last-btn {
+  border-radius: 40px;
+  box-shadow: 1.5px 1px 6px 0.5px rgba(0, 0, 0, 0.75);
+  color: var(--black);
+  cursor: pointer;
+  font-size: 80px;
+  opacity: 0.75;
+  position: absolute;
+  top: 150px;
+}
+
+.next-btn:hover,
+.last-btn:hover {
+  box-shadow: 3px 2px 12px 1px rgba(0, 0, 0, 0.75);
+  opacity: 1;
+}
+
+.next-btn {
+  right: -125px;
+}
+
+.last-btn {
+  left: -125px;
 }

@@ -16,15 +16,6 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
         if (newWindow) newWindow.opener = null
     }
 
-    const next = () => {
-        setShoeIdx(shoeIdx++);
-        console.log('next');
-    }
-
-    const last = () => {
-        setShoeIdx(shoeIdx--);
-    } 
-
     return (
         <div className="shoe">
             <h1>{(shoe.name + '  -  ' + shoe.brand).toUpperCase()}</h1>
@@ -38,27 +29,8 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
                 <p>{shoe.pcolor.toUpperCase()}</p>
             </div>
 
-
-            {/* <div className="shoe-control">
-                <div className="btn-placeholder">
-                    { shoeIdx != 0 &&
-                        <div className="last-btn" onClick={last}>
-                            <p>Last</p>
-                        </div>
-                    }
-                </div>
-
-                <div className="shoe-link-btn" onClick={openInNewTab}>
-                    <p>View</p>
-                </div>
-
-                <div className="btn-placeholder">
-                    { shoeIdx < shoeLength - 1 &&
-                        <div className="next-btn" onClick={next}>
-                            <p>Next</p>
-                        </div>
-                    }
-                </div>
+            {/* <div className="shoe-link-btn" onClick={openInNewTab}>
+                <p>View</p>
             </div> */}
         </div>
     )

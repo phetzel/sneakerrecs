@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'; 
 
 import ShoeContext from '../../context/shoeContext';
 import ShoeDetails from './ShoeDetails';
@@ -6,25 +8,48 @@ import ShoeDetails from './ShoeDetails';
 const Results = () => {
     const { shoes, setShoes } = useContext(ShoeContext);
     const [shoeIdx, setShoeIdx] = useState(0);
-    // const [shoe, setShoe] = useState(shoes[0]);
 
-    // useEffect(() => {
-    //     console.log('hit');
-    //     setShoe(shoes[shoeIdx]);
-    // }, [shoeIdx])
-    
-    
-    
-    console.log(shoes);
+    const next = () => {
+        const newIdx = shoeIdx + 1;
+        setShoeIdx(newIdx);
+    }
+
+    const last = () => {
+        const newIdx = shoeIdx - 1;
+        setShoeIdx(newIdx);
+    } 
+
 
     return (
-        <div className="results">
+        <div className="results-container">
             { shoes && shoes.length &&
-                <ShoeDetails 
-                    shoe={shoes[shoeIdx]}
-                    shoeLength={shoes.length}
-                    shoeIdx={shoeIdx}
-                    setShoeIdx={setShoeIdx} />
+                <div className="results">
+                    <div className="results-controls">
+
+                        { shoeIdx != 0 &&
+                            <FontAwesomeIcon 
+                                className="last-btn" 
+                                icon={faArrowCircleLeft} 
+                                onClick={last} />
+                        }
+
+
+                        <ShoeDetails 
+                            shoe={shoes[shoeIdx]}
+                            shoeLength={shoes.length}
+                            shoeIdx={shoeIdx}
+                            setShoeIdx={setShoeIdx} />
+
+
+                        { shoeIdx < shoes.length - 1 &&
+                            <FontAwesomeIcon 
+                                className="next-btn" 
+                                icon={faArrowCircleRight} 
+                                onClick={next} />
+                        }
+
+                    </div>
+                </div>
             }
         </div>
     )
