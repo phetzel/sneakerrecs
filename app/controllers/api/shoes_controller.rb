@@ -6,7 +6,7 @@ class Api::ShoesController < ApplicationController
             @shoes = @shoes.where(style: params[:shoe][:style])
         end 
 
-        if params[:shoe] && params[:shoe][:style] 
+        if params[:shoe] && params[:shoe][:pcolor] 
             @shoes = @shoes.where(pcolor: params[:shoe][:pcolor])
         end 
 
