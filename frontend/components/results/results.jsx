@@ -23,6 +23,8 @@ const Results = () => {
 
     return (
         <div className="results-container">
+            <QuestionsList />
+            
             { shoes && shoes.length &&
                 <div className="results">
                     <div className="results-controls">

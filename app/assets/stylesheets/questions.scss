@@ -6,7 +6,11 @@
 }
 
 .question {
-  // margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  position: relative;
 }
 
 .question li {
