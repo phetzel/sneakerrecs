@@ -39,7 +39,7 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
             </div>
 
 
-            <div className="shoe-control">
+            {/* <div className="shoe-control">
                 <div className="btn-placeholder">
                     { shoeIdx != 0 &&
                         <div className="last-btn" onClick={last}>
@@ -59,7 +59,7 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
                         </div>
                     }
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 };

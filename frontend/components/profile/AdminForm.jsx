@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { createShoe } from '../../api/shoe_api';
+import { createShoe, updateShoe, deleteShoe } from '../../api/shoe_api';
 
-const AdminForm = () => {
+const AdminForm = ({ shoe, setShoe }) => {
     const [brand, setBrand] = useState('');
     const [name, setName] = useState('');
     const [style, setStyle] = useState('');
     const [pcolor, setPcolor] = useState('');
     const [url, setUrl] = useState('');
     const [photo, setPhoto] = useState();
-
-    console.log(style);
-    console.log(url);
-    console.log(pcolor);
-    console.log(name);
-    console.log(brand);
 
     const update = func => {
         return e => {
@@ -35,14 +29,34 @@ const AdminForm = () => {
         formData.append('shoe[url]', url);
         formData.append('shoe[photo]', photo);
 
-        createShoe(formData)
-            .then(res => console.log(res))
-            .fail(err => console.log(err))
+        if (shoe) {
+            formData.append('shoe[id]', shoe.id);
+            updateShoe(formData, shoe.id)
+                .then(res => console.log(res))
+                .fail(err => console.log(err))
+        } else {
+            createShoe(formData)
+                .then(res => setShoe(res))
+                .fail(err => console.log(err))
+        }
     }
+
+    const handleDelete = () => {
+        deleteShoe(shoe.id).then(() => setShoe())
+    }
+
+    useEffect(() => {
+        setBrand(shoe ? shoe.brand : '');
+        setName(shoe ? shoe.name : '');
+        setStyle(shoe ? shoe.style : '');
+        setPcolor(shoe ? shoe.pcolor : '');
+        setUrl(shoe ? shoe.url : '');
+        // setPhoto(shoe ? shoe.brand : '');
+    }, [shoe])
 
     return (
         <div className="admin-form-container">
-            <h1>Add Sneaker</h1>
+            <h1>{ shoe ? 'Edit Sneaker' : 'Add Sneaker'}</h1>
 
             <div className="admin-form">
                 <label>Brand
@@ -82,14 +96,21 @@ const AdminForm = () => {
                         type="file"/>
                 </label>
 
-
                 <button 
                     onClick={handleSubmit} 
                     title="Add Shoe" 
                     type='submit'>
-                    Add Shoe
+                   { shoe ? 'Edit Shoe' : 'Add Shoe' }
                 </button>
 
+                { shoe && 
+                    <button
+                        onClick={handleDelete} 
+                        title="Delete Shoe" 
+                        type='submit'>
+                        Delete Shoe
+                    </button>
+                }   
             </div>
         </div>
     )
