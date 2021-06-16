@@ -12,11 +12,11 @@ const Questions = () => {
     const { question, setQuestion } = useContext(ShoeContext);
 
     const obj = {
-        1: <Style setQuestion={setQuestion} />,
-        2: <ColorAmount setQuestion={setQuestion} />,
-        3: <ColorPrimary setQuestion={setQuestion} />,
-        4: <ColorSecondary setQuestion={setQuestion} />,
-        5: <Generate setQuestion={setQuestion} />
+        1: <Style />,
+        2: <ColorAmount />,
+        3: <ColorPrimary />,
+        4: <ColorSecondary />,
+        5: <Generate />
     }
 
     const title = question === 5 ? 'Get Recomendations' :`Question ${question}`;

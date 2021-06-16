@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'; 
 
+import QuestionsList from '../questions/QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 import ShoeDetails from './ShoeDetails';
 
@@ -50,6 +51,10 @@ const Results = () => {
 
                     </div>
                 </div>
+            }
+
+            { shoes && shoes.length && 
+                <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>
             }
         </div>
     )

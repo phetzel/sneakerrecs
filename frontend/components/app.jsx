@@ -13,6 +13,7 @@ const App = () => {
     const [user, setUser] = useState();
     const [started, setStarted] = useState(false);
     const [question, setQuestion] = useState(1);
+    const [maxQuestion, setMaxQuestion] = useState(1);
     const [style, setStyle] = useState();
     const [colorAmount, setColorAmount] = useState();
     const [colorPrimary, setColorPrimary] = useState();
@@ -40,6 +41,8 @@ const App = () => {
                     setStarted,
                     question, 
                     setQuestion,
+                    maxQuestion,
+                    setMaxQuestion,
                     style,
                     setStyle,
                     colorAmount,

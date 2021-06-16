@@ -10184,30 +10184,35 @@ var App = function App() {
       question = _useState6[0],
       setQuestion = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState8 = _slicedToArray(_useState7, 2),
-      style = _useState8[0],
-      setStyle = _useState8[1];
+      maxQuestion = _useState8[0],
+      setMaxQuestion = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState10 = _slicedToArray(_useState9, 2),
-      colorAmount = _useState10[0],
-      setColorAmount = _useState10[1];
+      style = _useState10[0],
+      setStyle = _useState10[1];
 
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState12 = _slicedToArray(_useState11, 2),
-      colorPrimary = _useState12[0],
-      setColorPrimary = _useState12[1];
+      colorAmount = _useState12[0],
+      setColorAmount = _useState12[1];
 
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState14 = _slicedToArray(_useState13, 2),
-      colorSecondary = _useState14[0],
-      setColorSecondary = _useState14[1];
+      colorPrimary = _useState14[0],
+      setColorPrimary = _useState14[1];
 
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState16 = _slicedToArray(_useState15, 2),
-      shoes = _useState16[0],
-      setShoes = _useState16[1];
+      colorSecondary = _useState16[0],
+      setColorSecondary = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState18 = _slicedToArray(_useState17, 2),
+      shoes = _useState18[0],
+      setShoes = _useState18[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var id = localStorage.getItem('user');
@@ -10231,6 +10236,8 @@ var App = function App() {
       setStarted: setStarted,
       question: question,
       setQuestion: setQuestion,
+      maxQuestion: maxQuestion,
+      setMaxQuestion: setMaxQuestion,
       style: style,
       setStyle: setStyle,
       colorAmount: colorAmount,
@@ -11042,30 +11049,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 
 
 
-var ColorAmount = function ColorAmount(_ref) {
-  var setQuestion = _ref.setQuestion;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+var ColorAmount = function ColorAmount() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
       colorAmount = _useContext.colorAmount,
       setColorAmount = _useContext.setColorAmount,
-      style = _useContext.style;
+      setQuestion = _useContext.setQuestion,
+      maxQuestion = _useContext.maxQuestion,
+      setMaxQuestion = _useContext.setMaxQuestion;
 
   var handleChange = function handleChange(e) {
     setColorAmount(+e.target.value);
   };
 
-  var styleLink = style ? "Style: ".concat(style) : 'Style';
+  var handleNext = function handleNext() {
+    setQuestion(3);
+    var newMax = maxQuestion + 1;
+    if (newMax <= 3) setMaxQuestion(newMax);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(1);
-    }
-  }, styleLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Color Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Color Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -11085,9 +11095,7 @@ var ColorAmount = function ColorAmount(_ref) {
     checked: colorAmount === 3
   }), " More than Two")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
-    onClick: function onClick() {
-      return setQuestion(3);
-    }
+    onClick: handleNext
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
 };
 
@@ -11107,36 +11115,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 
 
 
-var ColorPrimary = function ColorPrimary(_ref) {
-  var setQuestion = _ref.setQuestion;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+var ColorPrimary = function ColorPrimary() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
       setColorPrimary = _useContext.setColorPrimary,
-      style = _useContext.style,
-      colorAmount = _useContext.colorAmount,
-      colorPrimary = _useContext.colorPrimary;
+      colorPrimary = _useContext.colorPrimary,
+      setQuestion = _useContext.setQuestion,
+      maxQuestion = _useContext.maxQuestion,
+      setMaxQuestion = _useContext.setMaxQuestion;
 
   var handleChange = function handleChange(e) {
     setColorPrimary(e.target.value);
   };
 
-  var styleLink = style ? "Style: ".concat(style) : 'Style';
-  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
+  var handleNext = function handleNext() {
+    setQuestion(4);
+    var newMax = maxQuestion + 1;
+    if (newMax <= 4) setMaxQuestion(newMax);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(1);
-    }
-  }, styleLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(2);
-    }
-  }, colorAmountLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -11156,9 +11161,7 @@ var ColorPrimary = function ColorPrimary(_ref) {
     checked: colorPrimary === 'red'
   }), " Red")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
-    onClick: function onClick() {
-      return setQuestion(4);
-    }
+    onClick: handleNext
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
 };
 
@@ -11178,43 +11181,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 
 
 
-var ColorSecondary = function ColorSecondary(_ref) {
-  var setQuestion = _ref.setQuestion;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+var ColorSecondary = function ColorSecondary() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
       setColorSecondary = _useContext.setColorSecondary,
-      style = _useContext.style,
-      colorAmount = _useContext.colorAmount,
-      colorPrimary = _useContext.colorPrimary,
-      colorSecondary = _useContext.colorSecondary;
-
-  var styleLink = style ? "Style: ".concat(style) : 'Style';
-  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
-  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
+      colorSecondary = _useContext.colorSecondary,
+      setQuestion = _useContext.setQuestion,
+      maxQuestion = _useContext.maxQuestion,
+      setMaxQuestion = _useContext.setMaxQuestion;
 
   var handleChange = function handleChange(e) {
     setColorSecondary(e.target.value);
   };
 
+  var handleNext = function handleNext() {
+    setQuestion(5);
+    var newMax = maxQuestion + 1;
+    if (newMax <= 5) setMaxQuestion(newMax);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(1);
-    }
-  }, styleLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(2);
-    }
-  }, colorAmountLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(3);
-    }
-  }, colorPrimaryLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -11234,9 +11227,7 @@ var ColorSecondary = function ColorSecondary(_ref) {
     checked: colorSecondary === 'red'
   }), " Red")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
-    onClick: function onClick() {
-      return setQuestion(5);
-    }
+    onClick: handleNext
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
 };
 
@@ -11256,9 +11247,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
-/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+
 
 
 
@@ -11268,17 +11261,10 @@ var Generate = function Generate(_ref) {
   var setQuestion = _ref.setQuestion,
       history = _ref.history;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
       style = _useContext.style,
-      colorAmount = _useContext.colorAmount,
       colorPrimary = _useContext.colorPrimary,
-      colorSecondary = _useContext.colorSecondary,
       setShoes = _useContext.setShoes;
-
-  var styleLink = style ? "Style: ".concat(style) : 'Style';
-  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
-  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
-  var colorSecondaryLink = colorSecondary ? "Primary color: ".concat(colorSecondary) : 'Primary color';
 
   var handleGen = function handleGen() {
     var obj = {
@@ -11286,7 +11272,7 @@ var Generate = function Generate(_ref) {
     };
     obj['shoe']['style'] = style;
     obj['shoe']['pcolor'] = colorPrimary;
-    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)(obj).then(function (res) {
+    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)(obj).then(function (res) {
       setShoes(res);
       history.push('/results');
     });
@@ -11294,29 +11280,13 @@ var Generate = function Generate(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(1);
-    }
-  }, styleLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(2);
-    }
-  }, colorAmountLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(3);
-    }
-  }, colorPrimaryLink), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(4);
-    }
-  }, colorSecondaryLink)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
     onClick: handleGen
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Generate")));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(Generate));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(Generate));
 
 /***/ }),
 
@@ -11352,21 +11322,11 @@ var Questions = function Questions() {
       setQuestion = _useContext.setQuestion;
 
   var obj = {
-    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, {
-      setQuestion: setQuestion
-    }),
-    2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorAmount__WEBPACK_IMPORTED_MODULE_1__.default, {
-      setQuestion: setQuestion
-    }),
-    3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_2__.default, {
-      setQuestion: setQuestion
-    }),
-    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_3__.default, {
-      setQuestion: setQuestion
-    }),
-    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_4__.default, {
-      setQuestion: setQuestion
-    })
+    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, null),
+    2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorAmount__WEBPACK_IMPORTED_MODULE_1__.default, null),
+    3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_2__.default, null),
+    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_3__.default, null),
+    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_4__.default, null)
   };
   var title = question === 5 ? 'Get Recomendations' : "Question ".concat(question);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -11377,6 +11337,60 @@ var Questions = function Questions() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Questions);
+
+/***/ }),
+
+/***/ "./frontend/components/questions/QuestionsList.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/questions/QuestionsList.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+
+
+
+var QuestionsList = function QuestionsList() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+      style = _useContext.style,
+      colorAmount = _useContext.colorAmount,
+      colorPrimary = _useContext.colorPrimary,
+      colorSecondary = _useContext.colorSecondary,
+      setQuestion = _useContext.setQuestion,
+      maxQuestion = _useContext.maxQuestion;
+
+  var styleLink = style ? "Style: ".concat(style) : 'Style';
+  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
+  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
+  var colorSecondaryLink = colorSecondary ? "Primary color: ".concat(colorSecondary) : 'Primary color';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "questions-list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, maxQuestion > 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(1);
+    }
+  }, styleLink), maxQuestion > 2 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(2);
+    }
+  }, colorAmountLink), maxQuestion > 3 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(3);
+    }
+  }, colorPrimaryLink), maxQuestion > 4 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(4);
+    }
+  }, colorSecondaryLink)));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuestionsList);
 
 /***/ }),
 
@@ -11392,24 +11406,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 
 
 
-var Style = function Style(_ref) {
-  var setQuestion = _ref.setQuestion;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
+var Style = function Style() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
       setStyle = _useContext.setStyle,
-      style = _useContext.style;
+      style = _useContext.style,
+      setQuestion = _useContext.setQuestion,
+      maxQuestion = _useContext.maxQuestion,
+      setMaxQuestion = _useContext.setMaxQuestion;
 
   var handleChange = function handleChange(e) {
     setStyle(e.target.value);
   };
 
+  var handleNext = function handleNext() {
+    setQuestion(2);
+    var newMax = maxQuestion + 1;
+    if (newMax <= 2) setMaxQuestion(newMax);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Style"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Style"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question-radio",
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -11419,19 +11442,12 @@ var Style = function Style(_ref) {
     checked: style === 'high-top'
   }), " High-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "radio",
-    value: "medium-top",
-    name: "style",
-    checked: style === 'medium-top'
-  }), " Medium-top"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "radio",
     value: "low-top",
     name: "style",
     checked: style === 'low-top'
   }), " Low-top")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
-    onClick: function onClick() {
-      return setQuestion(2);
-    }
+    onClick: handleNext
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
 };
 
@@ -11452,9 +11468,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
-/* harmony import */ var _ShoeDetails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ShoeDetails */ "./frontend/components/results/ShoeDetails.jsx");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _questions_QuestionsList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../questions/QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _ShoeDetails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ShoeDetails */ "./frontend/components/results/ShoeDetails.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11473,8 +11490,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Results = function Results() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_3__.default),
       shoes = _useContext.shoes,
       setShoes = _useContext.setShoes;
 
@@ -11501,18 +11519,18 @@ var Results = function Results() {
     className: "results-controls"
   }, shoeIdx != 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
     className: "last-btn",
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faArrowCircleLeft,
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faArrowCircleLeft,
     onClick: last
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeDetails__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeDetails__WEBPACK_IMPORTED_MODULE_4__.default, {
     shoe: shoes[shoeIdx],
     shoeLength: shoes.length,
     shoeIdx: shoeIdx,
     setShoeIdx: setShoeIdx
   }), shoeIdx < shoes.length - 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
     className: "next-btn",
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faArrowCircleRight,
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faArrowCircleRight,
     onClick: next
-  }))));
+  }))), shoes && shoes.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(shoeIdx + 1, " / ").concat(shoes.length)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Results);

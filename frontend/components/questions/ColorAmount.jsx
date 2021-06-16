@@ -1,21 +1,30 @@
 import React, { useContext } from 'react';
 
+import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 
-const ColorAmount = ({ setQuestion }) => {
-    const { colorAmount, setColorAmount, style } = useContext(ShoeContext);
+const ColorAmount = () => {
+    const { 
+        colorAmount, 
+        setColorAmount, 
+        setQuestion,
+        maxQuestion,
+        setMaxQuestion
+    } = useContext(ShoeContext);
 
     const handleChange = e => {
         setColorAmount(+e.target.value);
     }
 
-    const styleLink = style ? `Style: ${style}` : 'Style';
+    const handleNext = () => {
+        setQuestion(3);
+        const newMax = maxQuestion + 1;
+        if (newMax <= 3) setMaxQuestion(newMax);
+    }
 
     return (
         <div className="question">
-            <ul>
-                <li onClick={() => setQuestion(1)}>{styleLink}</li>
-            </ul>
+            <QuestionsList />
 
             <h3>Color Amount</h3>
 
@@ -43,7 +52,7 @@ const ColorAmount = ({ setQuestion }) => {
                 </label>
             </div>
 
-            <div className="splash-left-btn" onClick={() => setQuestion(3)}>
+            <div className="splash-left-btn" onClick={handleNext}>
                 <p>Next</p>
             </div>
         </div>

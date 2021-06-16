@@ -1,16 +1,31 @@
 import React, { useContext } from 'react';
 
+import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 
-const Style = ({ setQuestion }) => {
-    const { setStyle, style } = useContext(ShoeContext);
+const Style = () => {
+    const { 
+        setStyle, 
+        style, 
+        setQuestion, 
+        maxQuestion,
+        setMaxQuestion  
+    } = useContext(ShoeContext);
 
     const handleChange = e => {
         setStyle(e.target.value);
     }
 
+    const handleNext = () => {
+        setQuestion(2);
+        const newMax = maxQuestion + 1;
+        if (newMax <= 2 )setMaxQuestion(newMax);
+    }
+
     return (
         <div className="question">
+            <QuestionsList />
+            
             <h3>Style</h3>
 
             <div className="question-radio" onChange={handleChange}>
@@ -21,13 +36,13 @@ const Style = ({ setQuestion }) => {
                         name="style" 
                         checked={style === 'high-top'} /> High-top
                 </label>
-                <label>
+                {/* <label>
                     <input 
                         type="radio" 
                         value="medium-top" 
                         name="style" 
                         checked={style === 'medium-top'} /> Medium-top
-                </label>
+                </label> */}
                 <label>
                     <input 
                         type="radio" 
@@ -38,7 +53,7 @@ const Style = ({ setQuestion }) => {
             </div>
 
 
-            <div className="splash-left-btn" onClick={() => setQuestion(2)}>
+            <div className="splash-left-btn" onClick={handleNext}>
                 <p>Next</p>
             </div>
         </div>
