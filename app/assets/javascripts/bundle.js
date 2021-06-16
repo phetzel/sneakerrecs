@@ -11352,11 +11352,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 
 
 
-var QuestionsList = function QuestionsList() {
+
+var QuestionsList = function QuestionsList(_ref) {
+  var results = _ref.results,
+      history = _ref.history;
+
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
       style = _useContext.style,
       colorAmount = _useContext.colorAmount,
@@ -11369,9 +11374,16 @@ var QuestionsList = function QuestionsList() {
   var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
   var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
   var colorSecondaryLink = colorSecondary ? "Primary color: ".concat(colorSecondary) : 'Primary color';
+
+  var handleResults = function handleResults() {
+    if (results) history.push('/');
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "questions-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, maxQuestion > 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    onClick: handleResults
+  }, maxQuestion > 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     onClick: function onClick() {
       return setQuestion(1);
     }
@@ -11390,7 +11402,7 @@ var QuestionsList = function QuestionsList() {
   }, colorSecondaryLink)));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuestionsList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(QuestionsList));
 
 /***/ }),
 
@@ -11513,7 +11525,11 @@ var Results = function Results() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_questions_QuestionsList__WEBPACK_IMPORTED_MODULE_2__.default, null), shoes && shoes.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "results-container-list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_questions_QuestionsList__WEBPACK_IMPORTED_MODULE_2__.default, {
+    results: true
+  })), shoes && shoes.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results-controls"

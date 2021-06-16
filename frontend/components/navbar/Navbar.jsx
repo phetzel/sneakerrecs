@@ -17,7 +17,7 @@ const Navbar = ({ history }) => {
     const handleHome = () => {
         setStarted(false);
         setQuestion(1);
-        history.push('/')
+        history.push('/');
     }
 
     const handleRight = comp => {

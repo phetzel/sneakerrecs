@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import ShoeContext from '../../context/shoeContext';
 
-const QuestionsList = () => {
+const QuestionsList = ({ results, history }) => {
     const { 
         style, 
         colorAmount, 
@@ -28,9 +30,13 @@ const QuestionsList = () => {
         'Primary color'
     );
 
+    const handleResults = () => {
+        if (results) history.push('/');
+    }
+
     return (
         <div className="questions-list">
-            <ul>
+            <ul onClick={handleResults}>
                 { maxQuestion > 1 &&
                     <li onClick={() => setQuestion(1)}>{styleLink}</li>
                 }
@@ -49,4 +55,4 @@ const QuestionsList = () => {
     )
 }
 
-export default QuestionsList;
+export default withRouter(QuestionsList);
