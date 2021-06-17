@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_213536) do
+ActiveRecord::Schema.define(version: 2021_06_16_233949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2021_06_11_213536) do
     t.string "pcolor"
     t.string "url"
     t.string "style"
+  end
+
+  create_table "user_shoes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shoe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :user_shoes
+    has_many :shoes, through: :user_shoes, source: :shoe
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user && user.is_password?(password) ? user : nil 

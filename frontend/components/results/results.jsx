@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'; 
+import { faArrowCircleRight, faArrowCircleLeft, faSave } from '@fortawesome/free-solid-svg-icons'; 
 
 import QuestionsList from '../questions/QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 import ShoeDetails from './ShoeDetails';
+import UserContext from '../../context/userContext';
+import { createUserShoe } from '../../api/user_shoe_api';
 
 const Results = () => {
     const { shoes, setShoes } = useContext(ShoeContext);
+    const { user } = useContext(UserContext);
     const [shoeIdx, setShoeIdx] = useState(0);
 
     const next = () => {
@@ -19,6 +22,15 @@ const Results = () => {
         const newIdx = shoeIdx - 1;
         setShoeIdx(newIdx);
     } 
+
+    const handleSave = () => {
+        const shoeId = shoes[shoeIdx].id;
+        const userId = user.id;
+
+        const newUserShoe = { shoe_id: shoeId, user_id: userId };
+        createUserShoe(newUserShoe)
+            .then(res => console.log('sucess'))
+    }
 
 
     return (
@@ -52,13 +64,23 @@ const Results = () => {
                                 icon={faArrowCircleRight} 
                                 onClick={next} />
                         }
-
                     </div>
                 </div>
             }
 
             { shoes && shoes.length && 
-                <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>
+                <div className="results-bottom">
+                    <div className="results-bottom-placeholder"></div>
+                    <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>
+                    <div className="results-bottom-placeholder">
+                        { user &&
+                            <FontAwesomeIcon 
+                                className="results-save" 
+                                icon={faSave} 
+                                onClick={handleSave} />   
+                        }
+                    </div>
+                </div>
             }
         </div>
     )

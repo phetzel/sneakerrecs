@@ -10126,6 +10126,36 @@ var fetchUser = function fetchUser(id) {
 
 /***/ }),
 
+/***/ "./frontend/api/user_shoe_api.jsx":
+/*!****************************************!*\
+  !*** ./frontend/api/user_shoe_api.jsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createUserShoe": () => (/* binding */ createUserShoe),
+/* harmony export */   "deletePerform": () => (/* binding */ deletePerform)
+/* harmony export */ });
+var createUserShoe = function createUserShoe(user_shoe) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/user_shoes',
+    data: {
+      user_shoe: user_shoe
+    }
+  });
+};
+var deletePerform = function deletePerform(id) {
+  return $.ajax({
+    url: "/api/user_shoes/".concat(id),
+    method: 'DELETE'
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -11480,10 +11510,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var _questions_QuestionsList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../questions/QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 /* harmony import */ var _ShoeDetails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ShoeDetails */ "./frontend/components/results/ShoeDetails.jsx");
+/* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/userContext */ "./frontend/context/userContext.jsx");
+/* harmony import */ var _api_user_shoe_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../api/user_shoe_api */ "./frontend/api/user_shoe_api.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11503,10 +11535,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var Results = function Results() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_3__.default),
       shoes = _useContext.shoes,
       setShoes = _useContext.setShoes;
+
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_userContext__WEBPACK_IMPORTED_MODULE_5__.default),
+      user = _useContext2.user;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -11523,6 +11560,18 @@ var Results = function Results() {
     setShoeIdx(newIdx);
   };
 
+  var handleSave = function handleSave() {
+    var shoeId = shoes[shoeIdx].id;
+    var userId = user.id;
+    var newUserShoe = {
+      shoe_id: shoeId,
+      user_id: userId
+    };
+    (0,_api_user_shoe_api__WEBPACK_IMPORTED_MODULE_6__.createUserShoe)(newUserShoe).then(function (res) {
+      return console.log('sucess');
+    });
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -11535,7 +11584,7 @@ var Results = function Results() {
     className: "results-controls"
   }, shoeIdx != 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
     className: "last-btn",
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faArrowCircleLeft,
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faArrowCircleLeft,
     onClick: last
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeDetails__WEBPACK_IMPORTED_MODULE_4__.default, {
     shoe: shoes[shoeIdx],
@@ -11544,9 +11593,19 @@ var Results = function Results() {
     setShoeIdx: setShoeIdx
   }), shoeIdx < shoes.length - 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
     className: "next-btn",
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faArrowCircleRight,
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faArrowCircleRight,
     onClick: next
-  }))), shoes && shoes.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(shoeIdx + 1, " / ").concat(shoes.length)));
+  }))), shoes && shoes.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "results-bottom"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "results-bottom-placeholder"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "".concat(shoeIdx + 1, " / ").concat(shoes.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "results-bottom-placeholder"
+  }, user && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+    className: "results-save",
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faSave,
+    onClick: handleSave
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Results);
