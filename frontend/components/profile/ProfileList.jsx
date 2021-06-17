@@ -18,6 +18,8 @@ const ProfileList = ({ setShoe, userShoes }) => {
         );
     }, [])
 
+
+
     return (
         <div className="admin-list">
             <h1>Sneakers</h1>
@@ -25,7 +27,10 @@ const ProfileList = ({ setShoe, userShoes }) => {
             <ul>
                 { shoes && shoes.map((ele, idx) => (
                     <li key={idx} onClick={() => handleClick(idx)}>
-                        {ele.brand} - {ele.name} - {ele.pcolor}
+                        {ele.brand.toUpperCase()} -  
+                        {ele.name.toUpperCase()} - 
+                        {ele.style.toUpperCase()} - 
+                        {ele.pcolor.toUpperCase()}
                     </li>
                 ))}
             </ul>

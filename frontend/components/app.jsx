@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Navbar from './navbar/Navbar';
 import Profile from './profile/Profile';
-import Results from './results/Results';
+import Results from './results/results';
 import ShoeContext from '../context/shoeContext';
 import Splash from './splash/Splash';
 import UserContext from '../context/userContext';

@@ -10171,7 +10171,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _navbar_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar/Navbar */ "./frontend/components/navbar/Navbar.jsx");
 /* harmony import */ var _profile_Profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile/Profile */ "./frontend/components/profile/Profile.jsx");
-/* harmony import */ var _results_Results__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./results/Results */ "./frontend/components/results/Results.jsx");
+/* harmony import */ var _results_results__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./results/results */ "./frontend/components/results/results.jsx");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 /* harmony import */ var _splash_Splash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash/Splash */ "./frontend/components/splash/Splash.jsx");
 /* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../context/userContext */ "./frontend/context/userContext.jsx");
@@ -10288,7 +10288,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/results",
-    component: _results_Results__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _results_results__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/profile",
@@ -11067,7 +11067,7 @@ var ProfileList = function ProfileList(_ref) {
       onClick: function onClick() {
         return handleClick(idx);
       }
-    }, ele.brand, " - ", ele.name, " - ", ele.pcolor);
+    }, ele.brand.toUpperCase(), " -", ele.name.toUpperCase(), " -", ele.style.toUpperCase(), " -", ele.pcolor.toUpperCase());
   })));
 };
 
@@ -11559,9 +11559,61 @@ var Style = function Style() {
 
 /***/ }),
 
-/***/ "./frontend/components/results/Results.jsx":
+/***/ "./frontend/components/results/ShoeDetails.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/results/ShoeDetails.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var ShoeDetails = function ShoeDetails(_ref) {
+  var shoe = _ref.shoe,
+      shoeLength = _ref.shoeLength,
+      shoeIdx = _ref.shoeIdx,
+      setShoeIdx = _ref.setShoeIdx;
+
+  // const shoe = {
+  //     id: 1,
+  //     brand: 'nike',
+  //     name: 'air force 1',
+  //     pcolor: 'white',
+  //     url: "https://www.amazon.com/Nike-Mens-315122-111-FORCE-Size/dp/B001NGKPE6/ref=sr_1_19?dchild=1&keywords=nike+dunks&qid=1623461762&sr=8-19",
+  //     photoUrl: "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--403ade35f4dc84528730e3e477d7eebf4533679b/white-air-force-1.jpg",
+  //     style: 'low-top'
+  // }
+  var openInNewTab = function openInNewTab() {
+    var newWindow = window.open(shoe.url, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, (shoe.name + '  -  ' + shoe.brand).toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: shoe.photoUrl
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-lower"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.pcolor.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-link-btn",
+    onClick: openInNewTab
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "View")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShoeDetails);
+
+/***/ }),
+
+/***/ "./frontend/components/results/results.jsx":
 /*!*************************************************!*\
-  !*** ./frontend/components/results/Results.jsx ***!
+  !*** ./frontend/components/results/results.jsx ***!
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -11671,55 +11723,6 @@ var Results = function Results() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Results);
-
-/***/ }),
-
-/***/ "./frontend/components/results/ShoeDetails.jsx":
-/*!*****************************************************!*\
-  !*** ./frontend/components/results/ShoeDetails.jsx ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-
-var ShoeDetails = function ShoeDetails(_ref) {
-  var shoe = _ref.shoe,
-      shoeLength = _ref.shoeLength,
-      shoeIdx = _ref.shoeIdx,
-      setShoeIdx = _ref.setShoeIdx;
-
-  // const shoe = {
-  //     id: 1,
-  //     brand: 'nike',
-  //     name: 'air force 1',
-  //     pcolor: 'white',
-  //     url: "https://www.amazon.com/Nike-Mens-315122-111-FORCE-Size/dp/B001NGKPE6/ref=sr_1_19?dchild=1&keywords=nike+dunks&qid=1623461762&sr=8-19",
-  //     photoUrl: "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--403ade35f4dc84528730e3e477d7eebf4533679b/white-air-force-1.jpg",
-  //     style: 'low-top'
-  // }
-  var openInNewTab = function openInNewTab() {
-    var newWindow = window.open(shoe.url, '_blank', 'noopener,noreferrer');
-    if (newWindow) newWindow.opener = null;
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "shoe"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, (shoe.name + '  -  ' + shoe.brand).toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "shoe-image"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: shoe.photoUrl
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "shoe-lower"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.pcolor.toUpperCase())));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShoeDetails);
 
 /***/ }),
 

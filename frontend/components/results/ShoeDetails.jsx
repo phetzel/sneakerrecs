@@ -29,9 +29,9 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
                 <p>{shoe.pcolor.toUpperCase()}</p>
             </div>
 
-            {/* <div className="shoe-link-btn" onClick={openInNewTab}>
+            <div className="shoe-link-btn" onClick={openInNewTab}>
                 <p>View</p>
-            </div> */}
+            </div>
         </div>
     )
 };
