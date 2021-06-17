@@ -10733,40 +10733,6 @@ var Register = function Register(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/components/profile/AdminDisplay.jsx":
-/*!******************************************************!*\
-  !*** ./frontend/components/profile/AdminDisplay.jsx ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _results_ShoeDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../results/ShoeDetails */ "./frontend/components/results/ShoeDetails.jsx");
-
-
-
-var AdminDisplay = function AdminDisplay(_ref) {
-  var shoe = _ref.shoe,
-      setShoe = _ref.setShoe;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "admin-display"
-  }, shoe && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_results_ShoeDetails__WEBPACK_IMPORTED_MODULE_1__.default, {
-    shoe: shoe
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    onClick: function onClick() {
-      return setShoe();
-    }
-  }, "Back"));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminDisplay);
-
-/***/ }),
-
 /***/ "./frontend/components/profile/AdminForm.jsx":
 /*!***************************************************!*\
   !*** ./frontend/components/profile/AdminForm.jsx ***!
@@ -10919,67 +10885,6 @@ var AdminForm = function AdminForm(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/components/profile/AdminList.jsx":
-/*!***************************************************!*\
-  !*** ./frontend/components/profile/AdminList.jsx ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-var AdminList = function AdminList(_ref) {
-  var setShoe = _ref.setShoe;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
-      _useState2 = _slicedToArray(_useState, 2),
-      shoes = _useState2[0],
-      setShoes = _useState2[1];
-
-  var handleClick = function handleClick(num) {
-    setShoe(shoes[num]);
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)().then(function (res) {
-      return setShoes(res);
-    });
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "admin-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "All Sneakers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, shoes && shoes.map(function (ele, idx) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-      key: idx,
-      onClick: function onClick() {
-        return handleClick(idx);
-      }
-    }, ele.brand, " - ", ele.name, " - ", ele.pcolor);
-  })));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminList);
-
-/***/ }),
-
 /***/ "./frontend/components/profile/AdminProfile.jsx":
 /*!******************************************************!*\
   !*** ./frontend/components/profile/AdminProfile.jsx ***!
@@ -10993,8 +10898,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _AdminForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminForm */ "./frontend/components/profile/AdminForm.jsx");
-/* harmony import */ var _AdminDisplay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdminDisplay */ "./frontend/components/profile/AdminDisplay.jsx");
-/* harmony import */ var _AdminList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AdminList */ "./frontend/components/profile/AdminList.jsx");
+/* harmony import */ var _ProfileDisplay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileDisplay */ "./frontend/components/profile/ProfileDisplay.jsx");
+/* harmony import */ var _ProfileList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProfileList */ "./frontend/components/profile/ProfileList.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11023,10 +10928,10 @@ var AdminProfile = function AdminProfile() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AdminForm__WEBPACK_IMPORTED_MODULE_1__.default, {
     shoe: shoe,
     setShoe: setShoe
-  }), shoe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AdminDisplay__WEBPACK_IMPORTED_MODULE_2__.default, {
+  }), shoe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileDisplay__WEBPACK_IMPORTED_MODULE_2__.default, {
     shoe: shoe,
     setShoe: setShoe
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AdminList__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileList__WEBPACK_IMPORTED_MODULE_3__.default, {
     setShoe: setShoe
   }));
 };
@@ -11049,6 +10954,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _AdminProfile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminProfile */ "./frontend/components/profile/AdminProfile.jsx");
 /* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/userContext */ "./frontend/context/userContext.jsx");
+/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserProfile */ "./frontend/components/profile/UserProfile.jsx");
+
 
 
 
@@ -11057,13 +10964,168 @@ var Profile = function Profile() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_userContext__WEBPACK_IMPORTED_MODULE_2__.default),
       user = _useContext.user;
 
-  var display = user.admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AdminProfile__WEBPACK_IMPORTED_MODULE_1__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Searches"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Shoes"));
+  console.log(user);
+  var display = user.admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AdminProfile__WEBPACK_IMPORTED_MODULE_1__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UserProfile__WEBPACK_IMPORTED_MODULE_3__.default, {
+    shoes: user.shoes
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "profile"
   }, display);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Profile);
+
+/***/ }),
+
+/***/ "./frontend/components/profile/ProfileDisplay.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/profile/ProfileDisplay.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _results_ShoeDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../results/ShoeDetails */ "./frontend/components/results/ShoeDetails.jsx");
+
+
+
+var ProfileDisplay = function ProfileDisplay(_ref) {
+  var shoe = _ref.shoe,
+      setShoe = _ref.setShoe,
+      id = _ref.id;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "admin-display"
+  }, shoe && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_results_ShoeDetails__WEBPACK_IMPORTED_MODULE_1__.default, {
+    shoe: shoe
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      return setShoe();
+    }
+  }, "Back"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileDisplay);
+
+/***/ }),
+
+/***/ "./frontend/components/profile/ProfileList.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/profile/ProfileList.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var ProfileList = function ProfileList(_ref) {
+  var setShoe = _ref.setShoe,
+      userShoes = _ref.userShoes;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      shoes = _useState2[0],
+      setShoes = _useState2[1];
+
+  var handleClick = function handleClick(num) {
+    setShoe(shoes[num]);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(userShoes);
+    userShoes ? setShoes(userShoes) : (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)().then(function (res) {
+      return setShoes(res);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "admin-list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sneakers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, shoes && shoes.map(function (ele, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: idx,
+      onClick: function onClick() {
+        return handleClick(idx);
+      }
+    }, ele.brand, " - ", ele.name, " - ", ele.pcolor);
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileList);
+
+/***/ }),
+
+/***/ "./frontend/components/profile/UserProfile.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/profile/UserProfile.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ProfileDisplay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileDisplay */ "./frontend/components/profile/ProfileDisplay.jsx");
+/* harmony import */ var _ProfileList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileList */ "./frontend/components/profile/ProfileList.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var UserProfile = function UserProfile(_ref) {
+  var user = _ref.user;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      shoe = _useState2[0],
+      setShoe = _useState2[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "user-profile"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileList__WEBPACK_IMPORTED_MODULE_2__.default, {
+    setShoe: setShoe,
+    userShoes: user.shoes
+  }), shoe && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileDisplay__WEBPACK_IMPORTED_MODULE_1__.default, {
+    id: user.id,
+    shoe: shoe,
+    setShoe: setShoe
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserProfile);
 
 /***/ }),
 

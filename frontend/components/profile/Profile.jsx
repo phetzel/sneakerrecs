@@ -2,18 +2,17 @@ import React, { useContext } from 'react';
 
 import AdminProfile from './AdminProfile';
 import UserContext from '../../context/userContext';
+import UserProfile from './UserProfile';
 
 const Profile = () => {
     const { user } = useContext(UserContext);
+    console.log(user);
 
     const display = user.admin ? (
         <AdminProfile />
     ) : (
-        <ul>
-            <h1>Searches</h1>
-            <h1>Shoes</h1>
-        </ul>
-    )
+        <UserProfile shoes={user.shoes} />
+    );
 
     return (
         <div className="profile">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { fetchShoes } from '../../api/shoe_api';
 
-const AdminList = ({ setShoe }) => {
+const ProfileList = ({ setShoe, userShoes }) => {
     const [shoes, setShoes] = useState();
 
     const handleClick = (num) => {
@@ -10,12 +10,17 @@ const AdminList = ({ setShoe }) => {
     }
 
     useEffect(() => {
-        fetchShoes().then(res => setShoes(res));
+        console.log(userShoes);
+        userShoes ? (
+            setShoes(userShoes)
+        ) : (
+            fetchShoes().then(res => setShoes(res))
+        );
     }, [])
 
     return (
         <div className="admin-list">
-            <h1>All Sneakers</h1>
+            <h1>Sneakers</h1>
 
             <ul>
                 { shoes && shoes.map((ele, idx) => (
@@ -28,4 +33,4 @@ const AdminList = ({ setShoe }) => {
     )
 }
 
-export default AdminList;
+export default ProfileList;

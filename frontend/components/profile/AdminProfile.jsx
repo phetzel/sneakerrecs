@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import AdminForm from './AdminForm';
-import AdminDisplay from './AdminDisplay';
-import AdminList from './AdminList';
+import ProfileDisplay from './ProfileDisplay';
+import ProfileList from './ProfileList';
 
 const AdminProfile = () => {
     const [shoe, setShoe] = useState();
@@ -11,9 +11,9 @@ const AdminProfile = () => {
         <div className="admin">
             <AdminForm shoe={shoe} setShoe={setShoe} />
             { shoe ? (
-                <AdminDisplay shoe={shoe} setShoe={setShoe} />
+                <ProfileDisplay shoe={shoe} setShoe={setShoe} />
             ) : (
-                <AdminList setShoe={setShoe} />
+                <ProfileList setShoe={setShoe} />
             )
             }
         </div>

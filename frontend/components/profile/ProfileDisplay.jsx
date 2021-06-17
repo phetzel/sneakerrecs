@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShoeDetails from '../results/ShoeDetails';
 
-const AdminDisplay = ({ shoe, setShoe }) => {
+const ProfileDisplay = ({ shoe, setShoe, id }) => {
     return (
         <div className="admin-display">
             { shoe && 
@@ -13,4 +13,4 @@ const AdminDisplay = ({ shoe, setShoe }) => {
     )
 }
 
-export default AdminDisplay;
+export default ProfileDisplay;
