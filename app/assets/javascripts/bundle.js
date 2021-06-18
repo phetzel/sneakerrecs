@@ -11226,9 +11226,9 @@ var ColorPrimary = function ColorPrimary() {
   };
 
   var handleNext = function handleNext() {
-    setQuestion(4);
+    setQuestion(3);
     var newMax = maxQuestion + 1;
-    if (newMax <= 4) setMaxQuestion(newMax);
+    if (newMax <= 3) setMaxQuestion(newMax);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -11415,12 +11415,12 @@ var Questions = function Questions() {
 
   var obj = {
     1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, null),
-    2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorAmount__WEBPACK_IMPORTED_MODULE_1__.default, null),
-    3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_2__.default, null),
-    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_3__.default, null),
-    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_4__.default, null)
+    2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_2__.default, null),
+    3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_4__.default, null),
+    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorAmount__WEBPACK_IMPORTED_MODULE_1__.default, null),
+    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_3__.default, null)
   };
-  var title = question === 5 ? 'Get Recomendations' : "Question ".concat(question);
+  var title = question === 3 ? 'Get Recomendations' : "Question ".concat(question);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
@@ -11462,10 +11462,17 @@ var QuestionsList = function QuestionsList(_ref) {
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion;
 
-  var styleLink = style ? "Style: ".concat(style) : 'Style';
-  var colorAmountLink = colorAmount ? "Number of colors: ".concat(colorAmount) : 'Number of colors';
-  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color';
-  var colorSecondaryLink = colorSecondary ? "Primary color: ".concat(colorSecondary) : 'Primary color';
+  var styleLink = style ? "Style: ".concat(style) : 'Style'; // const colorAmountLink = colorAmount ? (
+  //     `Number of colors: ${colorAmount}`
+  // ) : (
+  //     'Number of colors'
+  // );
+
+  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary) : 'Primary color'; // const colorSecondaryLink = colorSecondary ? (
+  //     `Primary color: ${colorSecondary}`
+  // ) : (
+  //     'Primary color'
+  // );
 
   var handleResults = function handleResults() {
     if (results) history.push('/');
@@ -11483,15 +11490,7 @@ var QuestionsList = function QuestionsList(_ref) {
     onClick: function onClick() {
       return setQuestion(2);
     }
-  }, colorAmountLink), maxQuestion > 3 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(3);
-    }
-  }, colorPrimaryLink), maxQuestion > 4 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    onClick: function onClick() {
-      return setQuestion(4);
-    }
-  }, colorSecondaryLink)));
+  }, colorPrimaryLink)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(QuestionsList));

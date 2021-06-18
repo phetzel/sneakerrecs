@@ -17,9 +17,9 @@ const ColorPrimary = () => {
     }
 
     const handleNext = () => {
-        setQuestion(4);
+        setQuestion(3);
         const newMax = maxQuestion + 1;
-        if (newMax <= 4) setMaxQuestion(newMax);
+        if (newMax <= 3) setMaxQuestion(newMax);
     }
 
     

@@ -13,13 +13,13 @@ const Questions = () => {
 
     const obj = {
         1: <Style />,
-        2: <ColorAmount />,
-        3: <ColorPrimary />,
-        4: <ColorSecondary />,
-        5: <Generate />
+        2: <ColorPrimary />,
+        3: <Generate />,
+        4: <ColorAmount />,
+        5: <ColorSecondary />,
     }
 
-    const title = question === 5 ? 'Get Recomendations' :`Question ${question}`;
+    const title = question === 3 ? 'Get Recomendations' :`Question ${question}`;
 
     return (
         <div className="splash-left">
