@@ -3,17 +3,18 @@
   border: 1px solid var(--black);
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
   overflow: hidden;
-  width: 300px;
+  width: 600px;
 }
 
 .shoe h1 {
   align-self: center;
   color: var(--white);
   font-size: 1.5rem;
-  padding-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 5px;
   text-align: center;
 }
 
@@ -21,7 +22,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  // height: 300px;
+  height: 300px;
   width: 300px;
 }
 
@@ -30,14 +31,26 @@
   max-width: 300px;
 }
 
+.shoe-right {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  width: 300px;
+}
+
 .shoe-lower {
   color: var(--white);
   display: flex;
+  flex-direction: column;
   padding: 0 10px;
+  text-align: center;
 }
 
 .shoe-lower p {
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .shoe-control {
@@ -49,11 +62,12 @@
   align-items: center;
   background: linear-gradient(to bottom, var(--third) 5%, var(--offthird) 100%);
   background-color: var(--third);
+  border-radius: 5px;
   cursor: pointer;
   display: flex;
   height: 40px;
   justify-content: center;
-  width: 300px;
+  width: 200px;
 }
 
 .shoe-link-btn:hover {

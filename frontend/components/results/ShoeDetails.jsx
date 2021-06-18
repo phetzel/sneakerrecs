@@ -18,19 +18,23 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
 
     return (
         <div className="shoe">
-            <h1>{(shoe.name + '  -  ' + shoe.brand).toUpperCase()}</h1>
-
-            <div className="shoe-image">
-                <img src={shoe.photoUrl} />
+            <div className="shoe-left">
+                <h1>{shoe.name.toUpperCase()}</h1>
+                <div className="shoe-image">
+                    <img src={shoe.photoUrl} />
+                </div>
             </div>
 
-            <div className="shoe-lower">
-                <p>{shoe.style.toUpperCase()}</p>
-                <p>{shoe.pcolor.toUpperCase()}</p>
-            </div>
+            <div className="shoe-right">
 
-            <div className="shoe-link-btn" onClick={openInNewTab}>
-                <p>View</p>
+                <div className="shoe-lower">
+                    <p>{(shoe.brand + ' - ' + shoe.style).toUpperCase()}</p>
+                    <p>{shoe.pcolor.toUpperCase()}</p>
+                </div>
+
+                <div className="shoe-link-btn" onClick={openInNewTab}>
+                    <p>View</p>
+                </div>
             </div>
         </div>
     )

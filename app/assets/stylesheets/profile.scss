@@ -36,12 +36,20 @@
 
 .admin-list li {
   cursor: pointer;
-  margin-top: 10px;
+  display: flex;
+  border-bottom: 1px solid var(--grey);
+  justify-content: space-around;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .admin-list li:hover {
   background-color: var(--black);
   color: var(--white);
+}
+
+.admin-list img {
+  height: 50px;
 }
 
 // admin display

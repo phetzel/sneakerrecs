@@ -27,10 +27,15 @@ const ProfileList = ({ setShoe, userShoes }) => {
             <ul>
                 { shoes && shoes.map((ele, idx) => (
                     <li key={idx} onClick={() => handleClick(idx)}>
-                        {ele.brand.toUpperCase()} -  
-                        {ele.name.toUpperCase()} - 
-                        {ele.style.toUpperCase()} - 
-                        {ele.pcolor.toUpperCase()}
+                        <img src={ele.photoUrl} />
+                        <div>
+                            <p>{ele.brand.toUpperCase()}</p>
+                            <p>{ele.name.toUpperCase()} </p>
+                        </div>
+                        <div>
+                            <p>{ele.style.toUpperCase()}</p>
+                            <p>{ele.pcolor.toUpperCase()}</p>
+                        </div>
                     </li>
                 ))}
             </ul>
