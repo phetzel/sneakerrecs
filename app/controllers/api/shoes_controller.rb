@@ -2,6 +2,12 @@ class Api::ShoesController < ApplicationController
     def index
         @shoes = Shoe.all
 
+        if params[:shoe] && params[:shoe][:id]
+            @shoes = User.find(params[:shoe][:id]).shoes
+        end
+        # puts '------------------'
+        # puts params
+        # puts '------------------'
         if params[:shoe] && params[:shoe][:style] 
             @shoes = @shoes.where(style: params[:shoe][:style])
         end 

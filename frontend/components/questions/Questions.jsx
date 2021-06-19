@@ -19,7 +19,7 @@ const Questions = () => {
         5: <ColorSecondary />,
     }
 
-    const title = question === 3 ? 'Get Recomendations' :`Question ${question}`;
+    const title = question === 3 ? 'Recomendations' :`Question ${question}`;
 
     return (
         <div className="splash-left">

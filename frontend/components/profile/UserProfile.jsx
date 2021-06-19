@@ -2,21 +2,29 @@ import React, { useState } from 'react';
 
 import ProfileDisplay from './ProfileDisplay';
 import ProfileList from './ProfileList';
+import { deleteUserShoe } from '../../api/user_shoe_api';
 
 const UserProfile = ({ user }) => {
     const [shoe, setShoe] = useState();
 
-    console.log(user);
+    const remove = () => {
+        const obj = { user_id: user.id, shoe_id: shoe.id };
+        deleteUserShoe(obj).then(() => setShoe());
+    }
 
     return (
         <div className="user-profile">
             { user &&
-                <ProfileList setShoe={setShoe} userShoes={user.shoes} />
+                <ProfileList 
+                    shoe={shoe}
+                    setShoe={setShoe} 
+                    userId={user.id} />
             }
             
             { shoe && 
                 <ProfileDisplay 
                     id={user.id}
+                    handleRemove={remove}
                     shoe={shoe} 
                     setShoe={setShoe} /> 
             }

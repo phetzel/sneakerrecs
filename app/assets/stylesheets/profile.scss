@@ -34,6 +34,12 @@
   width: 40%;
 }
 
+.admin-list h1 {
+  border-bottom: 1px solid var(--grey);
+  color: var(--black);
+  padding-bottom: 5px;
+}
+
 .admin-list li {
   cursor: pointer;
   display: flex;
@@ -52,6 +58,26 @@
   height: 50px;
 }
 
+.profile-list-empty {
+  margin-top: 40px;
+}
+
+.profile-list-empty h4 {
+  color: var(--black);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.profile-list-empty h6 {
+  color: var(--third);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.profile-list-empty h6:hover {
+  color: var(--black);
+}
+
 // admin display
 
 .admin-display {
@@ -62,9 +88,10 @@
   width: 40%;
 }
 
-.admin-display button {
-  margin-top: 10px;
-  width: 300px;
+.admin-display-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
 }
 
 .display-back-btn {
@@ -94,6 +121,36 @@
 }
 
 .display-back-btn p {
+  color: var(--white);
+  font-size: 1.2rem;
+}
+.display-delete-btn {
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    var(--warning) 5%,
+    var(--offwarning) 100%
+  );
+  background-color: var(--warning);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  margin-top: 30px;
+  justify-content: center;
+  width: 200px;
+}
+
+.display-delete-btn:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--offwarning) 5%,
+    var(--warning) 100%
+  );
+  background-color: var(--offwarning);
+}
+
+.display-delete-btn p {
   color: var(--white);
   font-size: 1.2rem;
 }

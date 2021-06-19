@@ -6,9 +6,10 @@ export const createUserShoe = user_shoe => (
     })
 )
 
-export const deletePerform = id => {
+export const deleteUserShoe = data => {
     return $.ajax({
-        url: `/api/user_shoes/${id}`,
-        method: 'DELETE'
+        url: `/api/user_shoes/1`,
+        method: 'DELETE',
+        data
     });
 }

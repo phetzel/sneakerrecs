@@ -5,8 +5,9 @@ class Api::UserShoesController < ApplicationController
     end
     
     def destroy
-        @user_shoe = UserShoe.find(params[:id]);
-        @user_shoe.destroy 
+        @user_shoe = UserShoe
+            .where(user_id: params[:user_id], shoe_id: params[:shoe_id]);
+        @user_shoe.destroy_all
     end
 
     private 

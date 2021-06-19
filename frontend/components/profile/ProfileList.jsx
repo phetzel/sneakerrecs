@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { fetchShoes } from '../../api/shoe_api';
+import ProfileListEmpty from './ProfileListEmpty';
 
-const ProfileList = ({ setShoe, userShoes }) => {
+const ProfileList = ({ setShoe, userId, shoe }) => {
     const [shoes, setShoes] = useState();
 
     const handleClick = (num) => {
@@ -10,13 +11,14 @@ const ProfileList = ({ setShoe, userShoes }) => {
     }
 
     useEffect(() => {
-        console.log(userShoes);
-        userShoes ? (
-            setShoes(userShoes)
+        const obj = {'shoe': {}};
+        obj['shoe']['id'] = userId;
+        userId ? (
+            fetchShoes(obj).then(res => setShoes(res))
         ) : (
             fetchShoes().then(res => setShoes(res))
         );
-    }, [])
+    }, [shoe])
 
 
 
@@ -39,6 +41,9 @@ const ProfileList = ({ setShoe, userShoes }) => {
                     </li>
                 ))}
             </ul>
+            { shoes && shoes.length < 1 &&
+                <ProfileListEmpty />
+            }
         </div>
     )
 }
