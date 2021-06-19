@@ -8,7 +8,11 @@ const ProfileDisplay = ({ shoe, setShoe, id }) => {
             { shoe && 
                 <ShoeDetails shoe={shoe} />
             }
-            <button onClick={() => setShoe()}>Back</button>
+            <div 
+                onClick={() => setShoe()}
+                className="display-back-btn">
+                    <p>Back</p>
+            </div>
         </div>
     )
 }

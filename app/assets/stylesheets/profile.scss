@@ -66,3 +66,34 @@
   margin-top: 10px;
   width: 300px;
 }
+
+.display-back-btn {
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    var(--fourth) 5%,
+    var(--offfourth) 100%
+  );
+  background-color: var(--fourth);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  margin-top: 30px;
+  justify-content: center;
+  width: 200px;
+}
+
+.display-back-btn:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--offfourth) 5%,
+    var(--fourth) 100%
+  );
+  background-color: var(--offfourth);
+}
+
+.display-back-btn p {
+  color: var(--white);
+  font-size: 1.2rem;
+}

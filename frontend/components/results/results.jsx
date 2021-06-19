@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight, faArrowCircleLeft, faSave } from '@fortawesome/free-solid-svg-icons'; 
 
+import Empty from './Empty';
 import QuestionsList from '../questions/QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 import ShoeDetails from './ShoeDetails';
@@ -39,7 +40,7 @@ const Results = () => {
                 <QuestionsList results={true} />
             </div>
 
-            { shoes && shoes.length &&
+            { shoes && shoes.length > 0 &&
                 <div className="results">
                     <div className="results-controls">
 
@@ -68,7 +69,7 @@ const Results = () => {
                 </div>
             }
 
-            { shoes && shoes.length && 
+            { shoes && shoes.length > 0 && 
                 <div className="results-bottom">
                     <div className="results-bottom-placeholder"></div>
                     <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>
@@ -81,6 +82,10 @@ const Results = () => {
                         }
                     </div>
                 </div>
+            }
+
+            { shoes && !shoes.length && 
+                <Empty />
             }
         </div>
     )

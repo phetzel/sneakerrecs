@@ -75,3 +75,19 @@
 .results-save:hover {
   color: var(--fourth);
 }
+
+// empty
+
+.results-empty {
+  color: var(--black);
+  text-align: center;
+}
+
+.results-empty h1 {
+  font-size: 2.7rem;
+  margin-bottom: 30px;
+}
+
+.results-empty h6 {
+  font-size: 1.5rem;
+}

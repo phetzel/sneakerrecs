@@ -11,7 +11,7 @@ const Profile = () => {
     const display = user.admin ? (
         <AdminProfile />
     ) : (
-        <UserProfile shoes={user.shoes} />
+        <UserProfile user={user} />
     );
 
     return (

@@ -6,9 +6,14 @@ import ProfileList from './ProfileList';
 const UserProfile = ({ user }) => {
     const [shoe, setShoe] = useState();
 
+    console.log(user);
+
     return (
         <div className="user-profile">
-            <ProfileList setShoe={setShoe} userShoes={user.shoes} />
+            { user &&
+                <ProfileList setShoe={setShoe} userShoes={user.shoes} />
+            }
+            
             { shoe && 
                 <ProfileDisplay 
                     id={user.id}
