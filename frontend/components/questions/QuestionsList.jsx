@@ -13,14 +13,14 @@ const QuestionsList = ({ results, history }) => {
         maxQuestion
     }  = useContext(ShoeContext);
 
-    const styleLink = style ? `Style: ${style}` : 'Style';
+    const styleLink = style ? `Style: ${style.value}` : 'Style';
     // const colorAmountLink = colorAmount ? (
     //     `Number of colors: ${colorAmount}`
     // ) : (
     //     'Number of colors'
     // );
     const colorPrimaryLink = colorPrimary ? (
-        `Primary color: ${colorPrimary}`
+        `Primary color: ${colorPrimary.value}`
     ) : (
         'Primary color'
     );

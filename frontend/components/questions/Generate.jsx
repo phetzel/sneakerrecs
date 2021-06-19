@@ -17,8 +17,8 @@ const Generate = ({ setQuestion, history }) => {
 
     const handleGen = () => {
         const obj = { 'shoe': {} }
-        obj['shoe']['style'] = style;
-        obj['shoe']['pcolor'] = colorPrimary;
+        obj['shoe']['style'] = style.value;
+        obj['shoe']['pcolor'] = colorPrimary.value;
 
         fetchShoes(obj).then(res => {
             setShoes(res);

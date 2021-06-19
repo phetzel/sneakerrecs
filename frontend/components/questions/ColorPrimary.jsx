@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Select from 'react-select';
 
 import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
@@ -12,8 +13,8 @@ const ColorPrimary = () => {
         setMaxQuestion
     } = useContext(ShoeContext);
 
-    const handleChange = e => {
-        setColorPrimary(e.target.value);
+    const handleChange = selected => {
+        setColorPrimary(selected);
     }
 
     const handleNext = () => {
@@ -22,6 +23,12 @@ const ColorPrimary = () => {
         if (newMax <= 3) setMaxQuestion(newMax);
     }
 
+    const colors = [
+        { value: 'black', label: 'Black' },
+        { value: 'white', label: 'White' },
+        { value: 'red', label: 'Red' },
+    ]
+
     
     return (
         <div className="question">
@@ -29,29 +36,11 @@ const ColorPrimary = () => {
 
             <h3>Primary Color</h3>
 
-            <div className="question-radio" onChange={handleChange}>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="black" 
-                        name="colorPri" 
-                        checked={colorPrimary === 'black'} /> Black
-                </label>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="white" 
-                        name="colorPri" 
-                        checked={colorPrimary === 'white'} /> White
-                </label>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="red" 
-                        name="colorPri" 
-                        checked={colorPrimary === 'red'} /> Red
-                </label>
-            </div>
+            <Select 
+                onChange={handleChange} 
+                options={colors} 
+                value={colorPrimary} />
+
 
             <div className="splash-left-btn" onClick={handleNext}>
                 <p>Next</p>

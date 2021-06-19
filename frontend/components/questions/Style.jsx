@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Select from 'react-select'
 
 import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
@@ -12,8 +13,8 @@ const Style = () => {
         setMaxQuestion  
     } = useContext(ShoeContext);
 
-    const handleChange = e => {
-        setStyle(e.target.value);
+    const handleChange = selected => {
+        setStyle(selected);
     }
 
     const handleNext = () => {
@@ -22,35 +23,22 @@ const Style = () => {
         if (newMax <= 2 )setMaxQuestion(newMax);
     }
 
+    const styles = [
+        { value: 'high-top', label: 'High-top' },
+        // { value: 'white', label: 'White' },
+        { value: 'low-top', label: 'Low-top' },
+    ]
+
     return (
         <div className="question">
             <QuestionsList />
             
             <h3>Style</h3>
 
-            <div className="question-radio" onChange={handleChange}>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="high-top" 
-                        name="style" 
-                        checked={style === 'high-top'} /> High-top
-                </label>
-                {/* <label>
-                    <input 
-                        type="radio" 
-                        value="medium-top" 
-                        name="style" 
-                        checked={style === 'medium-top'} /> Medium-top
-                </label> */}
-                <label>
-                    <input 
-                        type="radio" 
-                        value="low-top" 
-                        name="style" 
-                        checked={style === 'low-top'} /> Low-top
-                </label>
-            </div>
+            <Select 
+                onChange={handleChange} 
+                options={styles} 
+                value={style} />
 
 
             <div className="splash-left-btn" onClick={handleNext}>
