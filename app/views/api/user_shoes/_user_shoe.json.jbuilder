@@ -1,0 +1,1 @@
+json.extract! user_shoe, :id, :user_id, :shoe_id

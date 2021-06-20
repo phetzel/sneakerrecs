@@ -1,3 +1,11 @@
+export const fetchUserShoes = data => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/user_shoes',
+        data
+    }) 
+)
+
 export const createUserShoe = user_shoe => (
     $.ajax({
         method: 'POST',

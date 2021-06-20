@@ -7,12 +7,16 @@ import QuestionsList from '../questions/QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 import ShoeDetails from './ShoeDetails';
 import UserContext from '../../context/userContext';
-import { createUserShoe } from '../../api/user_shoe_api';
+import { createUserShoe, deleteUserShoe } from '../../api/user_shoe_api';
+import { fetchShoes } from '../../api/shoe_api';
 
 const Results = () => {
     const { shoes, setShoes } = useContext(ShoeContext);
     const { user } = useContext(UserContext);
     const [shoeIdx, setShoeIdx] = useState(0);
+    const [saved, setSaved] = useState();
+    const [userShoes, setUserShoes] = useState();
+
 
     const next = () => {
         const newIdx = shoeIdx + 1;
@@ -24,15 +28,42 @@ const Results = () => {
         setShoeIdx(newIdx);
     } 
 
+    const remove = () => {
+        const obj = { user_id: user.id, shoe_id: shoe.id };
+        deleteUserShoe(obj).then(() => setShoe());
+    }
+
     const handleSave = () => {
         const shoeId = shoes[shoeIdx].id;
         const userId = user.id;
 
         const newUserShoe = { shoe_id: shoeId, user_id: userId };
-        createUserShoe(newUserShoe)
-            .then(res => console.log('sucess'))
+
+        if (saved) {
+            deleteUserShoe(newUserShoe).then(() => console.log('deleted'));
+        } else {
+            createUserShoe(newUserShoe)
+                .then(res => console.log('created'))
+        }
+
+        setSaved(saved ? false : true);
     }
 
+    useEffect(() => {
+        const obj = {'shoe': {}};
+        obj['shoe']['id'] = user.id;
+        fetchShoes(obj).then(res => {
+            const shoeIds = res.map(ele => ele.id);
+            setUserShoes(shoeIds);
+        })
+    }, [saved])
+
+    useEffect(() => {
+        if (userShoes) {
+            const newSave = userShoes.includes(shoes[shoeIdx].id);
+            setSaved(newSave); 
+        }
+    }, [shoeIdx, userShoes]);
 
     return (
         <div className="results-container">
@@ -75,10 +106,13 @@ const Results = () => {
                     <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>
                     <div className="results-bottom-placeholder">
                         { user &&
-                            <FontAwesomeIcon 
-                                className="results-save" 
-                                icon={faSave} 
-                                onClick={handleSave} />   
+                            <div className={saved ? "results-saved" : "results-unsaved"}>
+                                <FontAwesomeIcon 
+                                    className={saved ? "results-saved-i" : "results-unsaved-i"}
+                                    icon={faSave} 
+                                    onClick={handleSave} />  
+                                <p>{saved ? 'Saved' : 'Unsaved'}</p> 
+                            </div>
                         }
                     </div>
                 </div>

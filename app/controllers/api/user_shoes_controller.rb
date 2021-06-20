@@ -1,4 +1,9 @@
 class Api::UserShoesController < ApplicationController
+    def index 
+        @user_shoes = User.find(params[:user_shoe][:user_id]).user_shoes
+        render @user_shoes
+    end 
+
     def create 
         user_shoe = UserShoe.new(user_shoe_params)
         user_shoe.save
