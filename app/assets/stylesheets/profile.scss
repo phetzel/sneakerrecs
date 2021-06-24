@@ -40,6 +40,12 @@
   padding-bottom: 5px;
 }
 
+.admin-list ul {
+  height: 70vh;
+  min-height: 400px;
+  overflow: scroll;
+}
+
 .admin-list li {
   cursor: pointer;
   display: flex;

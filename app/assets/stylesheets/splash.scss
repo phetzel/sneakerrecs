@@ -12,6 +12,12 @@
   padding-top: 70px;
 }
 
+@media only screen and (max-width: 768px) {
+  .splash {
+    justify-content: center;
+  }
+}
+
 .splash-left {
   align-items: center;
   display: flex;
@@ -68,4 +74,10 @@
   width: 50%;
 
   //   animation: rotation 4s infinite linear;
+}
+
+@media only screen and (max-width: 768px) {
+  .splash-right {
+    display: none;
+  }
 }

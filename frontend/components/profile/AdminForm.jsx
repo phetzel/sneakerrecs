@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import Select from 'react-select'
 
 import { createShoe, updateShoe, deleteShoe } from '../../api/shoe_api';
+import { singleColourStyles, multiColourStyles } from '../../util/pickerStyles';
 
 const AdminForm = ({ shoe, setShoe }) => {
     const [brand, setBrand] = useState('');
@@ -10,11 +12,25 @@ const AdminForm = ({ shoe, setShoe }) => {
     const [url, setUrl] = useState('');
     const [photo, setPhoto] = useState();
 
+
+    const styles = [
+        { value: 'high-top', label: 'High-top' },
+        // { value: 'white', label: 'White' },
+        { value: 'low-top', label: 'Low-top' },
+    ]
+
+    const colors = [
+        { color: 'black', label: 'Black' },
+        { color: 'white', label: 'White' },
+        { color: 'red', label: 'Red' },
+    ]
+
     const update = func => {
         return e => {
             func(e.currentTarget.value);
         }
     }
+
 
     const handlePhoto = (e) => {
         setPhoto(e.currentTarget.files[0]);
@@ -24,8 +40,8 @@ const AdminForm = ({ shoe, setShoe }) => {
         const formData = new FormData();
         formData.append('shoe[brand]', brand);
         formData.append('shoe[name]', name);
-        formData.append('shoe[style]', style);
-        formData.append('shoe[pcolor]', pcolor);
+        formData.append('shoe[style]', style.value);
+        formData.append('shoe[pcolor]', pcolor.color);
         formData.append('shoe[url]', url);
         formData.append('shoe[photo]', photo);
 
@@ -72,15 +88,17 @@ const AdminForm = ({ shoe, setShoe }) => {
                         value={name} />
                 </label>
                 <label>Style
-                    <input 
-                        onChange={update(setStyle)}
-                        type="text" 
+                    <Select 
+                        onChange={(choice) => setStyle(choice.val)} 
+                        options={styles} 
                         value={style} />
                 </label>
-                <label>Primary Color
-                    <input 
-                        onChange={update(setPcolor)}
-                        type="text" 
+                <label>PColor
+                    <Select 
+                        onChange={(choice) => setPcolor(choice.val)} 
+                        options={colors} 
+                        // styles={multiColourStyles}
+                        // isMulti
                         value={pcolor} />
                 </label>
                 <label>Url

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Select from 'react-select'
+import Select from 'react-select';
 
 import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
@@ -27,6 +27,12 @@ const Style = () => {
         { value: 'high-top', label: 'High-top' },
         // { value: 'white', label: 'White' },
         { value: 'low-top', label: 'Low-top' },
+    ]
+
+    const colors = [
+        { value: 'black', label: 'Black' },
+        { value: 'white', label: 'White' },
+        { value: 'red', label: 'Red' },
     ]
 
     return (

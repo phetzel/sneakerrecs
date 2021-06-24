@@ -24,11 +24,11 @@ const QuestionsList = ({ results, history }) => {
     ) : (
         'Primary color'
     );
-    // const colorSecondaryLink = colorSecondary ? (
-    //     `Primary color: ${colorSecondary}`
-    // ) : (
-    //     'Primary color'
-    // );
+    const colorSecondaryLink = colorSecondary ? (
+        `Secondary colors: ${colorSecondary}`
+    ) : (
+        'Secondary Colors'
+    );
 
     const handleResults = () => {
         if (results) history.push('/');

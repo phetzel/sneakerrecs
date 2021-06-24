@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Select from 'react-select';
 
 import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
@@ -13,15 +14,21 @@ const ColorSecondary = () => {
     }  = useContext(ShoeContext);
 
 
-    const handleChange = e => {
-        setColorSecondary(e.target.value);
+    const handleChange = selected => {
+        setColorSecondary(selected);
     }
     
     const handleNext = () => {
-        setQuestion(5);
+        setQuestion(4);
         const newMax = maxQuestion + 1;
-        if (newMax <= 5) setMaxQuestion(newMax);
+        if (newMax <= 4) setMaxQuestion(newMax);
     }
+
+    const colors = [
+        { value: 'black', label: 'Black' },
+        { value: 'white', label: 'White' },
+        { value: 'red', label: 'Red' },
+    ]
 
     return (
         <div className="question">
@@ -29,29 +36,11 @@ const ColorSecondary = () => {
 
             <h3>Secondary Color</h3>
 
-            <div className="question-radio" onChange={handleChange}>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="black" 
-                        name="colorAmt" 
-                        checked={colorSecondary === 'black'} /> Black
-                </label>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="white" 
-                        name="colorAmt" 
-                        checked={colorSecondary === 'white'} /> White
-                </label>
-                <label>
-                    <input 
-                        type="radio" 
-                        value="red" 
-                        name="colorAmt" 
-                        checked={colorSecondary === 'red'} /> Red
-                </label>
-            </div>
+            <Select 
+                isMulti
+                onChange={handleChange} 
+                options={colors} 
+                value={colorSecondary} />
 
             <div className="splash-left-btn" onClick={handleNext}>
                 <p>Next</p>

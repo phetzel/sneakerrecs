@@ -14,12 +14,12 @@ const Questions = () => {
     const obj = {
         1: <Style />,
         2: <ColorPrimary />,
-        3: <Generate />,
-        4: <ColorAmount />,
-        5: <ColorSecondary />,
+        3: <ColorSecondary />,
+        4: <Generate />,
+        5: <ColorAmount />,
     }
 
-    const title = question === 3 ? 'Recomendations' :`Question ${question}`;
+    const title = question === 4 ? 'Recomendations' :`Question ${question}`;
 
     return (
         <div className="splash-left">

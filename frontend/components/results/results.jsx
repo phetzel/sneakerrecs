@@ -28,11 +28,6 @@ const Results = () => {
         setShoeIdx(newIdx);
     } 
 
-    const remove = () => {
-        const obj = { user_id: user.id, shoe_id: shoe.id };
-        deleteUserShoe(obj).then(() => setShoe());
-    }
-
     const handleSave = () => {
         const shoeId = shoes[shoeIdx].id;
         const userId = user.id;

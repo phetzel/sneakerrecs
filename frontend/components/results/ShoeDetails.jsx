@@ -1,4 +1,5 @@
 import React from 'react';
+import chroma from 'chroma-js';
 
 const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
     // const shoe = {
