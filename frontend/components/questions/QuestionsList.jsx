@@ -43,11 +43,11 @@ const QuestionsList = ({ results, history }) => {
                 { maxQuestion > 2 &&
                     <li onClick={() => setQuestion(2)}>{colorPrimaryLink}</li>
                 }
+                { maxQuestion > 3 &&
+                    <li onClick={() => setQuestion(3)}>{colorSecondaryLink}</li>
+                }
                 {/* { maxQuestion > 2 &&
                     <li onClick={() => setQuestion(2)}>{colorAmountLink}</li>
-                }
-                { maxQuestion > 4 &&
-                    <li onClick={() => setQuestion(4)}>{colorSecondaryLink}</li>
                 } */}
             </ul>
 

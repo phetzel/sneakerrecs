@@ -3,10 +3,17 @@
   border: 1px solid var(--black);
   border-radius: 5px;
   display: flex;
-  // flex-direction: column;
+  // flex-wrap: wrap;
   align-items: center;
   overflow: hidden;
   width: 600px;
+}
+
+@media only screen and (max-width: 768px) {
+  .shoe {
+    flex-direction: column;
+    width: 300px;
+  }
 }
 
 .shoe h1 {
@@ -38,6 +45,12 @@
   justify-content: space-between;
   height: 300px;
   width: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  .shoe-right {
+    height: 200px;
+  }
 }
 
 .shoe-lower {

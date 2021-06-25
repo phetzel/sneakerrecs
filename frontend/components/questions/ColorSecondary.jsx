@@ -34,7 +34,7 @@ const ColorSecondary = () => {
         <div className="question">
             <QuestionsList />
 
-            <h3>Secondary Color</h3>
+            <h3>Secondary Colors</h3>
 
             <Select 
                 isMulti

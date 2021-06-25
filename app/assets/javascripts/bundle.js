@@ -13363,6 +13363,18 @@ var ColorPrimary = function ColorPrimary() {
   }, {
     value: 'red',
     label: 'Red'
+  }, {
+    value: 'blue',
+    label: 'Blue'
+  }, {
+    value: 'green',
+    label: 'Green'
+  }, {
+    value: 'pink',
+    label: 'Pink'
+  }, {
+    value: 'purple',
+    label: 'Purple'
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
@@ -13430,7 +13442,7 @@ var ColorSecondary = function ColorSecondary() {
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
     isMulti: true,
     onChange: handleChange,
     options: colors,
@@ -13605,7 +13617,11 @@ var QuestionsList = function QuestionsList(_ref) {
     onClick: function onClick() {
       return setQuestion(2);
     }
-  }, colorPrimaryLink)));
+  }, colorPrimaryLink), maxQuestion > 3 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(3);
+    }
+  }, colorSecondaryLink)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(QuestionsList));
@@ -13834,6 +13850,8 @@ var Results = function Results() {
       userShoes = _useState6[0],
       setUserShoes = _useState6[1];
 
+  console.log(window.innerWidth);
+
   var next = function next() {
     var newIdx = shoeIdx + 1;
     setShoeIdx(newIdx);
@@ -13866,16 +13884,18 @@ var Results = function Results() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var obj = {
-      'shoe': {}
-    };
-    obj['shoe']['id'] = user.id;
-    (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_8__.fetchShoes)(obj).then(function (res) {
-      var shoeIds = res.map(function (ele) {
-        return ele.id;
+    if (user) {
+      var obj = {
+        'shoe': {}
+      };
+      obj['shoe']['id'] = user.id;
+      (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_8__.fetchShoes)(obj).then(function (res) {
+        var shoeIds = res.map(function (ele) {
+          return ele.id;
+        });
+        setUserShoes(shoeIds);
       });
-      setUserShoes(shoeIds);
-    });
+    }
   }, [saved]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userShoes) {

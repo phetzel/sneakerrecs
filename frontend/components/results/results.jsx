@@ -17,6 +17,7 @@ const Results = () => {
     const [saved, setSaved] = useState();
     const [userShoes, setUserShoes] = useState();
 
+    console.log(window.innerWidth);
 
     const next = () => {
         const newIdx = shoeIdx + 1;
@@ -45,12 +46,14 @@ const Results = () => {
     }
 
     useEffect(() => {
-        const obj = {'shoe': {}};
-        obj['shoe']['id'] = user.id;
-        fetchShoes(obj).then(res => {
-            const shoeIds = res.map(ele => ele.id);
-            setUserShoes(shoeIds);
-        })
+        if (user) {
+            const obj = {'shoe': {}};
+            obj['shoe']['id'] = user.id;
+            fetchShoes(obj).then(res => {
+                const shoeIds = res.map(ele => ele.id);
+                setUserShoes(shoeIds);
+            })
+        }
     }, [saved])
 
     useEffect(() => {

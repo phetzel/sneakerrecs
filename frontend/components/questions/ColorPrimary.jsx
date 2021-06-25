@@ -27,6 +27,10 @@ const ColorPrimary = () => {
         { value: 'black', label: 'Black' },
         { value: 'white', label: 'White' },
         { value: 'red', label: 'Red' },
+        { value: 'blue', label: 'Blue' },
+        { value: 'green', label: 'Green' },
+        { value: 'pink', label: 'Pink' },
+        { value: 'purple', label: 'Purple' },
     ]
 
     
