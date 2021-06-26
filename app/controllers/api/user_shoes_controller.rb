@@ -23,3 +23,4 @@ class Api::UserShoesController < ApplicationController
         )
     end 
 end
+

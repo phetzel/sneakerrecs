@@ -12108,6 +12108,29 @@ var deleteShoe = function deleteShoe(id) {
 
 /***/ }),
 
+/***/ "./frontend/api/shoe_color_api.jsx":
+/*!*****************************************!*\
+  !*** ./frontend/api/shoe_color_api.jsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createShoeColor": () => (/* binding */ createShoeColor)
+/* harmony export */ });
+var createShoeColor = function createShoeColor(shoe_color) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/shoe_colors',
+    data: {
+      shoe_color: shoe_color
+    }
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/api/user_api.jsx":
 /*!***********************************!*\
   !*** ./frontend/api/user_api.jsx ***!
@@ -12245,7 +12268,7 @@ var App = function App() {
       colorPrimary = _useState14[0],
       setColorPrimary = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState16 = _slicedToArray(_useState15, 2),
       colorSecondary = _useState16[0],
       setColorSecondary = _useState16[1];
@@ -12756,9 +12779,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
-/* harmony import */ var _util_pickerStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/pickerStyles */ "./frontend/util/pickerStyles.js");
+/* harmony import */ var _api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_color_api */ "./frontend/api/shoe_color_api.jsx");
+/* harmony import */ var _util_pickerStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/pickerStyles */ "./frontend/util/pickerStyles.js");
+/* harmony import */ var _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/shoeColors */ "./frontend/util/shoeColors.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -12770,6 +12795,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -12800,15 +12827,20 @@ var AdminForm = function AdminForm(_ref) {
       pcolor = _useState8[0],
       setPcolor = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState10 = _slicedToArray(_useState9, 2),
-      url = _useState10[0],
-      setUrl = _useState10[1];
+      secColors = _useState10[0],
+      setSecColors = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState12 = _slicedToArray(_useState11, 2),
-      photo = _useState12[0],
-      setPhoto = _useState12[1];
+      url = _useState12[0],
+      setUrl = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState14 = _slicedToArray(_useState13, 2),
+      photo = _useState14[0],
+      setPhoto = _useState14[1];
 
   var styles = [{
     value: 'high-top',
@@ -12817,16 +12849,6 @@ var AdminForm = function AdminForm(_ref) {
   {
     value: 'low-top',
     label: 'Low-top'
-  }];
-  var colors = [{
-    color: 'black',
-    label: 'Black'
-  }, {
-    color: 'white',
-    label: 'White'
-  }, {
-    color: 'red',
-    label: 'Red'
   }];
 
   var update = function update(func) {
@@ -12844,7 +12866,7 @@ var AdminForm = function AdminForm(_ref) {
     formData.append('shoe[brand]', brand);
     formData.append('shoe[name]', name);
     formData.append('shoe[style]', style.value);
-    formData.append('shoe[pcolor]', pcolor.color);
+    formData.append('shoe[pcolor]', pcolor.value);
     formData.append('shoe[url]', url);
     formData.append('shoe[photo]', photo);
 
@@ -12857,7 +12879,15 @@ var AdminForm = function AdminForm(_ref) {
       });
     } else {
       (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.createShoe)(formData).then(function (res) {
-        return setShoe(res);
+        secColors.forEach(function (col) {
+          var newShoeColor = {
+            shoe_id: res.id,
+            color_id: col.id
+          };
+          console.log(newShoeColor);
+          (0,_api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__.createShoeColor)(newShoeColor);
+        });
+        setShoe(res);
       }).fail(function (err) {
         return console.log(err);
       });
@@ -12889,20 +12919,26 @@ var AdminForm = function AdminForm(_ref) {
     onChange: update(setName),
     type: "text",
     value: name
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Style", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Style", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     onChange: function onChange(choice) {
-      return setStyle(choice.val);
+      return setStyle(choice);
     },
     options: styles,
     value: style
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "PColor", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Primary Color", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     onChange: function onChange(choice) {
-      return setPcolor(choice.val);
+      return setPcolor(choice);
     },
-    options: colors // styles={multiColourStyles}
-    // isMulti
+    options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default // styles={multiColourStyles}
     ,
     value: pcolor
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Secondary Colors", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
+    isMulti: true,
+    onChange: function onChange(choice) {
+      return setSecColors(choice);
+    },
+    options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default,
+    value: secColors
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Url", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     onChange: update(setUrl),
     type: "text",
@@ -13250,72 +13286,6 @@ var UserProfile = function UserProfile(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/components/questions/ColorAmount.jsx":
-/*!*******************************************************!*\
-  !*** ./frontend/components/questions/ColorAmount.jsx ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
-
-
-
-
-var ColorAmount = function ColorAmount() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
-      colorAmount = _useContext.colorAmount,
-      setColorAmount = _useContext.setColorAmount,
-      setQuestion = _useContext.setQuestion,
-      maxQuestion = _useContext.maxQuestion,
-      setMaxQuestion = _useContext.setMaxQuestion;
-
-  var handleChange = function handleChange(e) {
-    setColorAmount(+e.target.value);
-  };
-
-  var handleNext = function handleNext() {
-    setQuestion(3);
-    var newMax = maxQuestion + 1;
-    if (newMax <= 3) setMaxQuestion(newMax);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Color Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "question-radio",
-    onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "radio",
-    value: "1",
-    name: "colorAmt",
-    checked: colorAmount === 1
-  }), " Solid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "radio",
-    value: "2",
-    name: "colorAmt",
-    checked: colorAmount === 2
-  }), " Two Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "radio",
-    value: "3",
-    name: "colorAmt",
-    checked: colorAmount === 3
-  }), " More than Two")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "splash-left-btn",
-    onClick: handleNext
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ColorAmount);
-
-/***/ }),
-
 /***/ "./frontend/components/questions/ColorPrimary.jsx":
 /*!********************************************************!*\
   !*** ./frontend/components/questions/ColorPrimary.jsx ***!
@@ -13404,9 +13374,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _util_shoeColors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/shoeColors */ "./frontend/util/shoeColors.js");
+
 
 
 
@@ -13414,8 +13386,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var ColorSecondary = function ColorSecondary() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
-      setColorSecondary = _useContext.setColorSecondary,
       colorSecondary = _useContext.colorSecondary,
+      setColorSecondary = _useContext.setColorSecondary,
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion,
       setMaxQuestion = _useContext.setMaxQuestion;
@@ -13428,24 +13400,23 @@ var ColorSecondary = function ColorSecondary() {
     setQuestion(4);
     var newMax = maxQuestion + 1;
     if (newMax <= 4) setMaxQuestion(newMax);
-  };
+  }; // const colors = [
+  //     { value: 'black', label: 'Black' },
+  //     { value: 'white', label: 'White' },
+  //     { value: 'red', label: 'Red' },
+  //     { value: 'blue', label: 'Blue' },
+  //     { value: 'green', label: 'Green' },
+  //     { value: 'pink', label: 'Pink' },
+  //     { value: 'purple', label: 'Purple' },
+  // ]
 
-  var colors = [{
-    value: 'black',
-    label: 'Black'
-  }, {
-    value: 'white',
-    label: 'White'
-  }, {
-    value: 'red',
-    label: 'Red'
-  }];
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
     isMulti: true,
     onChange: handleChange,
-    options: colors,
+    options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_3__.default,
     value: colorSecondary
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
@@ -13486,6 +13457,7 @@ var Generate = function Generate(_ref) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
       style = _useContext.style,
       colorPrimary = _useContext.colorPrimary,
+      colorSecondary = _useContext.colorSecondary,
       setShoes = _useContext.setShoes;
 
   var handleGen = function handleGen() {
@@ -13524,13 +13496,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _ColorAmount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorAmount */ "./frontend/components/questions/ColorAmount.jsx");
-/* harmony import */ var _ColorPrimary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorPrimary */ "./frontend/components/questions/ColorPrimary.jsx");
-/* harmony import */ var _ColorSecondary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ColorSecondary */ "./frontend/components/questions/ColorSecondary.jsx");
-/* harmony import */ var _Generate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Generate */ "./frontend/components/questions/Generate.jsx");
-/* harmony import */ var _Style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Style */ "./frontend/components/questions/Style.jsx");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
-
+/* harmony import */ var _ColorPrimary__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorPrimary */ "./frontend/components/questions/ColorPrimary.jsx");
+/* harmony import */ var _ColorSecondary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorSecondary */ "./frontend/components/questions/ColorSecondary.jsx");
+/* harmony import */ var _Generate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Generate */ "./frontend/components/questions/Generate.jsx");
+/* harmony import */ var _Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Style */ "./frontend/components/questions/Style.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 
 
 
@@ -13539,16 +13509,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Questions = function Questions() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_6__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_5__.default),
       question = _useContext.question,
       setQuestion = _useContext.setQuestion;
 
   var obj = {
-    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, null),
-    2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_2__.default, null),
-    3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_3__.default, null),
-    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_4__.default, null),
-    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorAmount__WEBPACK_IMPORTED_MODULE_1__.default, null)
+    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_4__.default, null),
+    2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_1__.default, null),
+    3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_2__.default, null),
+    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_3__.default, null)
   };
   var title = question === 4 ? 'Recomendations' : "Question ".concat(question);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13586,20 +13555,16 @@ var QuestionsList = function QuestionsList(_ref) {
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_1__.default),
       style = _useContext.style,
-      colorAmount = _useContext.colorAmount,
       colorPrimary = _useContext.colorPrimary,
       colorSecondary = _useContext.colorSecondary,
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion;
 
-  var styleLink = style ? "Style: ".concat(style.value) : 'Style'; // const colorAmountLink = colorAmount ? (
-  //     `Number of colors: ${colorAmount}`
-  // ) : (
-  //     'Number of colors'
-  // );
-
+  var styleLink = style ? "Style: ".concat(style.value) : 'Style';
   var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary.value) : 'Primary color';
-  var colorSecondaryLink = colorSecondary ? "Secondary colors: ".concat(colorSecondary) : 'Secondary Colors';
+  var colorSecondaryLink = colorSecondary ? "Secondary colors: ".concat(colorSecondary.map(function (ele) {
+    return ele.label;
+  }).join(', ')) : 'Secondary Colors';
 
   var handleResults = function handleResults() {
     if (results) history.push('/');
@@ -13849,8 +13814,6 @@ var Results = function Results() {
       _useState6 = _slicedToArray(_useState5, 2),
       userShoes = _useState6[0],
       setUserShoes = _useState6[1];
-
-  console.log(window.innerWidth);
 
   var next = function next() {
     var newIdx = shoeIdx + 1;
@@ -14234,6 +14197,49 @@ var multiColourStyles = {
     });
   }
 };
+
+/***/ }),
+
+/***/ "./frontend/util/shoeColors.js":
+/*!*************************************!*\
+  !*** ./frontend/util/shoeColors.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+  id: 1,
+  value: 'black',
+  label: 'Black'
+}, {
+  id: 2,
+  value: 'white',
+  label: 'White'
+}, {
+  id: 3,
+  value: 'red',
+  label: 'Red'
+}, {
+  id: 4,
+  value: 'blue',
+  label: 'Blue'
+}, {
+  id: 5,
+  value: 'green',
+  label: 'Green'
+}, {
+  id: 6,
+  value: 'pink',
+  label: 'Pink'
+}, {
+  id: 7,
+  value: 'purple',
+  label: 'Purple'
+}]);
 
 /***/ }),
 

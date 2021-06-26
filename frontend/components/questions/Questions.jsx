@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-import ColorAmount from './ColorAmount';
 import ColorPrimary from './ColorPrimary';
 import ColorSecondary from './ColorSecondary';
 import Generate from './Generate';
@@ -16,7 +15,6 @@ const Questions = () => {
         2: <ColorPrimary />,
         3: <ColorSecondary />,
         4: <Generate />,
-        5: <ColorAmount />,
     }
 
     const title = question === 4 ? 'Recomendations' :`Question ${question}`;

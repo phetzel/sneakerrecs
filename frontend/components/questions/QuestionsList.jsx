@@ -6,7 +6,6 @@ import ShoeContext from '../../context/shoeContext';
 const QuestionsList = ({ results, history }) => {
     const { 
         style, 
-        colorAmount, 
         colorPrimary,
         colorSecondary,
         setQuestion,
@@ -14,18 +13,13 @@ const QuestionsList = ({ results, history }) => {
     }  = useContext(ShoeContext);
 
     const styleLink = style ? `Style: ${style.value}` : 'Style';
-    // const colorAmountLink = colorAmount ? (
-    //     `Number of colors: ${colorAmount}`
-    // ) : (
-    //     'Number of colors'
-    // );
     const colorPrimaryLink = colorPrimary ? (
         `Primary color: ${colorPrimary.value}`
     ) : (
         'Primary color'
     );
     const colorSecondaryLink = colorSecondary ? (
-        `Secondary colors: ${colorSecondary}`
+        `Secondary colors: ${colorSecondary.map(ele => ele.label).join(', ')}`
     ) : (
         'Secondary Colors'
     );
@@ -46,9 +40,6 @@ const QuestionsList = ({ results, history }) => {
                 { maxQuestion > 3 &&
                     <li onClick={() => setQuestion(3)}>{colorSecondaryLink}</li>
                 }
-                {/* { maxQuestion > 2 &&
-                    <li onClick={() => setQuestion(2)}>{colorAmountLink}</li>
-                } */}
             </ul>
 
         </div>

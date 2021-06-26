@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select'
 
 import { createShoe, updateShoe, deleteShoe } from '../../api/shoe_api';
+import { createShoeColor } from '../../api/shoe_color_api';
 import { singleColourStyles, multiColourStyles } from '../../util/pickerStyles';
+import shoeColors from '../../util/shoeColors';
 
 const AdminForm = ({ shoe, setShoe }) => {
     const [brand, setBrand] = useState('');
     const [name, setName] = useState('');
     const [style, setStyle] = useState('');
     const [pcolor, setPcolor] = useState('');
+    const [secColors, setSecColors] = useState([]);
     const [url, setUrl] = useState('');
     const [photo, setPhoto] = useState();
 
@@ -17,12 +20,6 @@ const AdminForm = ({ shoe, setShoe }) => {
         { value: 'high-top', label: 'High-top' },
         // { value: 'white', label: 'White' },
         { value: 'low-top', label: 'Low-top' },
-    ]
-
-    const colors = [
-        { color: 'black', label: 'Black' },
-        { color: 'white', label: 'White' },
-        { color: 'red', label: 'Red' },
     ]
 
     const update = func => {
@@ -41,7 +38,7 @@ const AdminForm = ({ shoe, setShoe }) => {
         formData.append('shoe[brand]', brand);
         formData.append('shoe[name]', name);
         formData.append('shoe[style]', style.value);
-        formData.append('shoe[pcolor]', pcolor.color);
+        formData.append('shoe[pcolor]', pcolor.value);
         formData.append('shoe[url]', url);
         formData.append('shoe[photo]', photo);
 
@@ -51,9 +48,14 @@ const AdminForm = ({ shoe, setShoe }) => {
                 .then(res => console.log(res))
                 .fail(err => console.log(err))
         } else {
-            createShoe(formData)
-                .then(res => setShoe(res))
-                .fail(err => console.log(err))
+            createShoe(formData).then(res => {
+                secColors.forEach(col => {
+                    const newShoeColor = { shoe_id: res.id, color_id: col.id };
+                    console.log(newShoeColor);
+                    createShoeColor(newShoeColor);
+                })
+                setShoe(res)
+            }).fail(err => console.log(err))
         }
     }
 
@@ -89,17 +91,24 @@ const AdminForm = ({ shoe, setShoe }) => {
                 </label>
                 <label>Style
                     <Select 
-                        onChange={(choice) => setStyle(choice.val)} 
+                        onChange={(choice) => setStyle(choice)} 
                         options={styles} 
                         value={style} />
                 </label>
-                <label>PColor
+                <label>Primary Color
                     <Select 
-                        onChange={(choice) => setPcolor(choice.val)} 
-                        options={colors} 
+                        onChange={(choice) => setPcolor(choice)} 
+                        options={shoeColors} 
                         // styles={multiColourStyles}
-                        // isMulti
                         value={pcolor} />
+                </label>
+                <label>Secondary Colors
+                    <Select 
+                        isMulti
+                        onChange={(choice) => setSecColors(choice)}
+                        options={shoeColors}
+                        value={secColors} />
+
                 </label>
                 <label>Url
                     <input 

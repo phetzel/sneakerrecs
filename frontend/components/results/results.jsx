@@ -17,8 +17,6 @@ const Results = () => {
     const [saved, setSaved] = useState();
     const [userShoes, setUserShoes] = useState();
 
-    console.log(window.innerWidth);
-
     const next = () => {
         const newIdx = shoeIdx + 1;
         setShoeIdx(newIdx);

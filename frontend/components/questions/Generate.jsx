@@ -10,7 +10,7 @@ const Generate = ({ setQuestion, history }) => {
         style, 
         // colorAmount, 
         colorPrimary,
-        // colorSecondary,
+        colorSecondary,
         setShoes
     }  = useContext(ShoeContext);
     

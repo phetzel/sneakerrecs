@@ -17,7 +17,7 @@ const App = () => {
     const [style, setStyle] = useState();
     const [colorAmount, setColorAmount] = useState();
     const [colorPrimary, setColorPrimary] = useState();
-    const [colorSecondary, setColorSecondary] = useState();
+    const [colorSecondary, setColorSecondary] = useState([]);
     const [shoes, setShoes] = useState();
 
     useEffect(() => {
