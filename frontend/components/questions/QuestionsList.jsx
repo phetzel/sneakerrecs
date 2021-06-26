@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import ShoeContext from '../../context/shoeContext';
@@ -28,9 +28,15 @@ const QuestionsList = ({ results, history }) => {
         if (results) history.push('/');
     }
 
+    const toggleClass = results ? 'questions-list-results' : '';
+
+    useEffect(() => {
+        console.log(window.innerWidth);
+    }, [window.innerWidth])
+
     return (
-        <div className="questions-list">
-            <ul onClick={handleResults}>
+        <div className={`questions-list ${toggleClass}`}  onClick={handleResults}>
+            <ul>
                 { maxQuestion > 1 &&
                     <li onClick={() => setQuestion(1)}>{styleLink}</li>
                 }
@@ -41,7 +47,10 @@ const QuestionsList = ({ results, history }) => {
                     <li onClick={() => setQuestion(3)}>{colorSecondaryLink}</li>
                 }
             </ul>
-
+            
+            { results &&
+                <h6 onClick={() => setQuestion(1)}>Redo questions</h6>
+            }
         </div>
     )
 }

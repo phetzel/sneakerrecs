@@ -13570,11 +13570,14 @@ var QuestionsList = function QuestionsList(_ref) {
     if (results) history.push('/');
   };
 
+  var toggleClass = results ? 'questions-list-results' : '';
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(window.innerWidth);
+  }, [window.innerWidth]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "questions-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "questions-list ".concat(toggleClass),
     onClick: handleResults
-  }, maxQuestion > 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, maxQuestion > 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     onClick: function onClick() {
       return setQuestion(1);
     }
@@ -13586,7 +13589,11 @@ var QuestionsList = function QuestionsList(_ref) {
     onClick: function onClick() {
       return setQuestion(3);
     }
-  }, colorSecondaryLink)));
+  }, colorSecondaryLink)), results && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
+    onClick: function onClick() {
+      return setQuestion(1);
+    }
+  }, "Redo questions"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(QuestionsList));
@@ -13638,16 +13645,6 @@ var Style = function Style() {
   {
     value: 'low-top',
     label: 'Low-top'
-  }];
-  var colors = [{
-    value: 'black',
-    label: 'Black'
-  }, {
-    value: 'white',
-    label: 'White'
-  }, {
-    value: 'red',
-    label: 'Red'
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
@@ -13726,6 +13723,7 @@ var ShoeDetails = function ShoeDetails(_ref) {
     if (newWindow) newWindow.opener = null;
   };
 
+  console.log(shoe);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13738,7 +13736,7 @@ var ShoeDetails = function ShoeDetails(_ref) {
     className: "shoe-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-lower"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, (shoe.brand + ' - ' + shoe.style).toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.pcolor.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.pcolor.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-link-btn",
     onClick: openInNewTab
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "View"))));

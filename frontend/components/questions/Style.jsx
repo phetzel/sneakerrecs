@@ -29,12 +29,6 @@ const Style = () => {
         { value: 'low-top', label: 'Low-top' },
     ]
 
-    const colors = [
-        { value: 'black', label: 'Black' },
-        { value: 'white', label: 'White' },
-        { value: 'red', label: 'Red' },
-    ]
-
     return (
         <div className="question">
             <QuestionsList />

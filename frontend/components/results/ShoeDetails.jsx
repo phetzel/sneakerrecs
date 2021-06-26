@@ -17,6 +17,8 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
         if (newWindow) newWindow.opener = null
     }
 
+    console.log(shoe);
+
     return (
         <div className="shoe">
             <div className="shoe-left">
@@ -29,7 +31,8 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
             <div className="shoe-right">
 
                 <div className="shoe-lower">
-                    <p>{(shoe.brand + ' - ' + shoe.style).toUpperCase()}</p>
+                    <p>{(shoe.brand).toUpperCase()}</p>
+                    <p>{shoe.style.toUpperCase()}</p>
                     <p>{shoe.pcolor.toUpperCase()}</p>
                 </div>
 
