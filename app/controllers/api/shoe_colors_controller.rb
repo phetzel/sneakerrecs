@@ -1,9 +1,7 @@
 class Api::ShoeColorsController < ApplicationController
     def create 
         shoe_color = ShoeColor.new(shoe_color_params)
-        puts '--------------'
-        puts shoe_color
-        puts '--------------'
+
         if shoe_color.save
             render json: 'success'
         else 

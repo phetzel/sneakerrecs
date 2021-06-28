@@ -73,6 +73,12 @@
   text-align: center;
 }
 
+@media only screen and (max-width: 768px) {
+  .shoe-lower {
+    flex-direction: row;
+  }
+}
+
 .shoe-lower p {
   margin-left: 10px;
   margin-bottom: 10px;
@@ -103,4 +109,25 @@
 .shoe-link-btn p {
   color: var(--white);
   font-size: 1.2rem;
+}
+
+// Shoe Colors
+
+.shoe-colors {
+  width: 200px;
+}
+
+.shoe-colors p {
+  color: var(--white);
+  margin-bottom: 5px;
+}
+
+.shoe-colors-list div {
+  border: 1px solid var(--white);
+  border-radius: 3px;
+}
+
+.shoe-colors-primary {
+  height: 30px;
+  width: 30px;
 }

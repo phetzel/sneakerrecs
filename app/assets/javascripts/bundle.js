@@ -12202,14 +12202,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _navbar_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar/Navbar */ "./frontend/components/navbar/Navbar.jsx");
-/* harmony import */ var _profile_Profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile/Profile */ "./frontend/components/profile/Profile.jsx");
-/* harmony import */ var _results_results__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./results/results */ "./frontend/components/results/results.jsx");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/shoeContext */ "./frontend/context/shoeContext.jsx");
-/* harmony import */ var _splash_Splash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash/Splash */ "./frontend/components/splash/Splash.jsx");
-/* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../context/userContext */ "./frontend/context/userContext.jsx");
-/* harmony import */ var _api_user_api__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../api/user_api */ "./frontend/api/user_api.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _footer_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer/Footer */ "./frontend/components/footer/Footer.jsx");
+/* harmony import */ var _navbar_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/Navbar */ "./frontend/components/navbar/Navbar.jsx");
+/* harmony import */ var _profile_Profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile/Profile */ "./frontend/components/profile/Profile.jsx");
+/* harmony import */ var _results_results__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./results/results */ "./frontend/components/results/results.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _splash_Splash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./splash/Splash */ "./frontend/components/splash/Splash.jsx");
+/* harmony import */ var _context_userContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../context/userContext */ "./frontend/context/userContext.jsx");
+/* harmony import */ var _api_user_api__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../api/user_api */ "./frontend/api/user_api.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -12221,6 +12222,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -12282,19 +12284,19 @@ var App = function App() {
     var id = localStorage.getItem('user');
 
     if (id) {
-      (0,_api_user_api__WEBPACK_IMPORTED_MODULE_7__.fetchUser)(id).then(function (res) {
+      (0,_api_user_api__WEBPACK_IMPORTED_MODULE_8__.fetchUser)(id).then(function (res) {
         return setUser(res);
       }).fail(function () {
         return localStorage.removeItem('user');
       });
     }
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_userContext__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_userContext__WEBPACK_IMPORTED_MODULE_7__.default.Provider, {
     value: {
       user: user,
       setUser: setUser
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_shoeContext__WEBPACK_IMPORTED_MODULE_4__.default.Provider, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_shoeContext__WEBPACK_IMPORTED_MODULE_5__.default.Provider, {
     value: {
       started: started,
       setStarted: setStarted,
@@ -12315,26 +12317,50 @@ var App = function App() {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_navbar_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_navbar_Navbar__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     exact: true,
     path: "/",
-    component: _splash_Splash__WEBPACK_IMPORTED_MODULE_5__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+    component: _splash_Splash__WEBPACK_IMPORTED_MODULE_6__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     exact: true,
     path: "/results",
-    component: _results_results__WEBPACK_IMPORTED_MODULE_3__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+    component: _results_results__WEBPACK_IMPORTED_MODULE_4__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     exact: true,
     path: "/profile",
     render: function render() {
-      return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_Profile__WEBPACK_IMPORTED_MODULE_2__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Redirect, {
+      return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_profile_Profile__WEBPACK_IMPORTED_MODULE_3__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
         to: "/"
       });
     }
-  })))));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_footer_Footer__WEBPACK_IMPORTED_MODULE_1__.default, null))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/footer/Footer.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/footer/Footer.jsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Footer = function Footer() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "As an Amazon Associate I earn from qualifying purchases."));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
 
 /***/ }),
 
@@ -12592,7 +12618,7 @@ var Navbar = function Navbar(_ref) {
     onClick: function onClick() {
       return history.push('/profile');
     }
-  }, user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     onClick: handleLogout
   }, "Sign Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     onClick: function onClick() {
@@ -13571,9 +13597,6 @@ var QuestionsList = function QuestionsList(_ref) {
   };
 
   var toggleClass = results ? 'questions-list-results' : '';
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(window.innerWidth);
-  }, [window.innerWidth]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "questions-list ".concat(toggleClass),
     onClick: handleResults
@@ -13686,6 +13709,44 @@ var Empty = function Empty() {
 
 /***/ }),
 
+/***/ "./frontend/components/results/ShoeColors.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/results/ShoeColors.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
+/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var ShoeColors = function ShoeColors(_ref) {
+  var pColor = _ref.pColor,
+      secColors = _ref.secColors;
+  var chromaPColor = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(pColor);
+  console.log(chromaPColor);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-colors"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "COLORS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-colors-list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "shoe-colors-primary",
+    style: {
+      backgroundColor: chromaPColor
+    }
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShoeColors);
+
+/***/ }),
+
 /***/ "./frontend/components/results/ShoeDetails.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/results/ShoeDetails.jsx ***!
@@ -13698,8 +13759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
-/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ShoeColors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShoeColors */ "./frontend/components/results/ShoeColors.jsx");
 
 
 
@@ -13736,7 +13796,9 @@ var ShoeDetails = function ShoeDetails(_ref) {
     className: "shoe-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-lower"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.pcolor.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeColors__WEBPACK_IMPORTED_MODULE_1__.default, {
+    pColor: shoe.pcolor
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-link-btn",
     onClick: openInNewTab
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "View"))));

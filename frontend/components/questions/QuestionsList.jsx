@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import ShoeContext from '../../context/shoeContext';
@@ -29,10 +29,6 @@ const QuestionsList = ({ results, history }) => {
     }
 
     const toggleClass = results ? 'questions-list-results' : '';
-
-    useEffect(() => {
-        console.log(window.innerWidth);
-    }, [window.innerWidth])
 
     return (
         <div className={`questions-list ${toggleClass}`}  onClick={handleResults}>

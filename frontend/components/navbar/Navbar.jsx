@@ -38,7 +38,7 @@ const Navbar = ({ history }) => {
 
     const list = user ? (
         <ul>
-            <li onClick={() => history.push('/profile')}>{user.email}</li>
+            <li onClick={() => history.push('/profile')}>Home</li>
             <li onClick={handleLogout}>Sign Out</li>
         </ul>
     ) : (

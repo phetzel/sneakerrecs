@@ -1,11 +1,17 @@
 import React from 'react';
+import chroma from 'chroma-js';
 
 const ShoeColors = ({pColor, secColors}) => {
+    const chromaPColor = chroma(pColor);
+    console.log(chromaPColor);
+
     return (
         <div className="shoe-colors">
-            <h6>Colors</h6>
+            <p>COLORS</p>
             <div className="shoe-colors-list">
-                
+                <div 
+                    className="shoe-colors-primary" 
+                    style={{backgroundColor: chromaPColor}}/>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import React from 'react';
-import chroma from 'chroma-js';
+
+import ShoeColors from './ShoeColors';
 
 const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
     // const shoe = {
@@ -33,8 +34,9 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
                 <div className="shoe-lower">
                     <p>{(shoe.brand).toUpperCase()}</p>
                     <p>{shoe.style.toUpperCase()}</p>
-                    <p>{shoe.pcolor.toUpperCase()}</p>
                 </div>
+
+                <ShoeColors pColor={shoe.pcolor} />
 
                 <div className="shoe-link-btn" onClick={openInNewTab}>
                     <p>View</p>

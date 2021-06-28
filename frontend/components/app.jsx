@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+import Footer from './footer/Footer';
 import Navbar from './navbar/Navbar';
 import Profile from './profile/Profile';
 import Results from './results/results';
@@ -71,6 +72,7 @@ const App = () => {
                         )} />
 
                     </Switch>
+                    <Footer />
                 </div>
 
             </ShoeContext.Provider>
