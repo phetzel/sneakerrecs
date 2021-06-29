@@ -10,7 +10,13 @@
   margin-top: 80px;
   padding: 0 80px;
 }
-// admin-form
+
+@media only screen and (max-width: 1250px) {
+  .admin,
+  .user-profile {
+    justify-content: center;
+  }
+}
 
 .admin-form-container {
   // margin-top: 80px;
@@ -34,6 +40,15 @@
   width: 40%;
 }
 
+@media only screen and (max-width: 1250px) {
+  .admin-list {
+    left: 20px;
+    position: absolute;
+    top: 70px;
+    width: auto;
+  }
+}
+
 .admin-list h1 {
   border-bottom: 1px solid var(--grey);
   color: var(--black);
@@ -55,9 +70,21 @@
   width: 100%;
 }
 
+// @media only screen and (max-width: 1100px) {
+//   .admin-list li {
+//     width: 150px;
+//   }
+// }
+
 .admin-list li:hover {
   background-color: var(--black);
   color: var(--white);
+}
+
+@media only screen and (max-width: 1250px) {
+  .admin-list-div {
+    display: none;
+  }
 }
 
 .admin-list img {
@@ -92,6 +119,12 @@
   flex-direction: column;
   justify-content: center;
   width: 40%;
+}
+
+@media only screen and (max-width: 1100px) {
+  .admin-display {
+    margin-bottom: 70px;
+  }
 }
 
 .admin-display-buttons {

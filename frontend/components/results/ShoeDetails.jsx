@@ -36,7 +36,9 @@ const ShoeDetails = ({ shoe, shoeLength, shoeIdx, setShoeIdx }) => {
                     <p>{shoe.style.toUpperCase()}</p>
                 </div>
 
-                <ShoeColors pColor={shoe.pcolor} />
+                <ShoeColors
+                    shoeId={shoe.id} 
+                    pColor={shoe.pcolor} />
 
                 <div className="shoe-link-btn" onClick={openInNewTab}>
                     <p>View</p>

@@ -12117,7 +12117,8 @@ var deleteShoe = function deleteShoe(id) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createShoeColor": () => (/* binding */ createShoeColor)
+/* harmony export */   "createShoeColor": () => (/* binding */ createShoeColor),
+/* harmony export */   "fetchShoeColors": () => (/* binding */ fetchShoeColors)
 /* harmony export */ });
 var createShoeColor = function createShoeColor(shoe_color) {
   return $.ajax({
@@ -12126,6 +12127,13 @@ var createShoeColor = function createShoeColor(shoe_color) {
     data: {
       shoe_color: shoe_color
     }
+  });
+};
+var fetchShoeColors = function fetchShoeColors(data) {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/shoe_colors',
+    data: data
   });
 };
 
@@ -13075,7 +13083,6 @@ var Profile = function Profile() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_userContext__WEBPACK_IMPORTED_MODULE_2__.default),
       user = _useContext.user;
 
-  console.log(user);
   var display = user.admin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AdminProfile__WEBPACK_IMPORTED_MODULE_1__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UserProfile__WEBPACK_IMPORTED_MODULE_3__.default, {
     user: user
   });
@@ -13194,7 +13201,11 @@ var ProfileList = function ProfileList(_ref) {
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       src: ele.photoUrl
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.name.toUpperCase(), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.pcolor.toUpperCase())));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "admin-list-div"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.name.toUpperCase(), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "admin-list-div"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.pcolor.toUpperCase())));
   })), shoes && shoes.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileListEmpty__WEBPACK_IMPORTED_MODULE_2__.default, null));
 };
 
@@ -13723,14 +13734,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
 /* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_color_api */ "./frontend/api/shoe_color_api.jsx");
+
 
 
 
 var ShoeColors = function ShoeColors(_ref) {
-  var pColor = _ref.pColor,
+  var shoeId = _ref.shoeId,
+      pColor = _ref.pColor,
       secColors = _ref.secColors;
   var chromaPColor = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(pColor);
-  console.log(chromaPColor);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var obj = {
+      'shoe_color': {}
+    };
+    obj['shoe_color']['shoe_id'] = shoeId;
+    (0,_api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoeColors)(obj).then(function (res) {
+      console.log(res);
+      console.log('results');
+    }).fail(function (err) {
+      return console.log(err);
+    });
+  }, [shoeId]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-colors"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "COLORS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13797,6 +13822,7 @@ var ShoeDetails = function ShoeDetails(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-lower"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeColors__WEBPACK_IMPORTED_MODULE_1__.default, {
+    shoeId: shoe.id,
     pColor: shoe.pcolor
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-link-btn",
@@ -14191,7 +14217,6 @@ var singleColourStyles = {
         isFocused = _ref.isFocused,
         isSelected = _ref.isSelected;
     var color = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(data.color);
-    console.log(color);
     return _objectSpread(_objectSpread({}, styles), {}, {
       backgroundColor: isDisabled ? null : isSelected ? data.color : isFocused ? color.alpha(0.1).css() : null,
       color: isDisabled ? '#ccc' : isSelected ? chroma_js__WEBPACK_IMPORTED_MODULE_1___default().contrast(color, 'white') > 2 ? 'white' : 'black' : data.color,

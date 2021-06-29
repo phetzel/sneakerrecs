@@ -84,6 +84,12 @@
   margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 768px) {
+  .shoe-lower p {
+    margin-bottom: 1px;
+  }
+}
+
 .shoe-control {
   display: flex;
   margin-top: 10px;

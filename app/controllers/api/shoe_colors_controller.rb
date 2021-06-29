@@ -1,4 +1,10 @@
 class Api::ShoeColorsController < ApplicationController
+    def index 
+        @colors = Shoe.find(params[:shoe_color][:shoe_id]).colors
+        # render 'api/colors/index'
+        render :index
+    end
+
     def create 
         shoe_color = ShoeColor.new(shoe_color_params)
 

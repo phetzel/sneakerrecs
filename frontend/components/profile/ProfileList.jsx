@@ -30,11 +30,11 @@ const ProfileList = ({ setShoe, userId, shoe }) => {
                 { shoes && shoes.map((ele, idx) => (
                     <li key={idx} onClick={() => handleClick(idx)}>
                         <img src={ele.photoUrl} />
-                        <div>
+                        <div className="admin-list-div">
                             <p>{ele.brand.toUpperCase()}</p>
                             <p>{ele.name.toUpperCase()} </p>
                         </div>
-                        <div>
+                        <div className="admin-list-div">
                             <p>{ele.style.toUpperCase()}</p>
                             <p>{ele.pcolor.toUpperCase()}</p>
                         </div>

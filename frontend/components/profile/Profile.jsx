@@ -6,7 +6,6 @@ import UserProfile from './UserProfile';
 
 const Profile = () => {
     const { user } = useContext(UserContext);
-    console.log(user);
 
     const display = user.admin ? (
         <AdminProfile />
