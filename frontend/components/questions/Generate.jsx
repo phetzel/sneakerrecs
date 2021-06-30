@@ -8,10 +8,10 @@ import QuestionsList from './QuestionsList';
 const Generate = ({ setQuestion, history }) => {
     const { 
         style, 
-        // colorAmount, 
         colorPrimary,
         colorSecondary,
-        setShoes
+        setShoes,
+        price
     }  = useContext(ShoeContext);
     
 
@@ -20,6 +20,7 @@ const Generate = ({ setQuestion, history }) => {
         const obj = { 'shoe': {} }
         if (style) obj['shoe']['style'] = style.value;
         if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
+        if (price) obj['shoe']['price'] = price.value;
 
         fetchShoes(obj).then(res => {
             setShoes(res);

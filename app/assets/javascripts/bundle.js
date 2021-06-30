@@ -13512,7 +13512,8 @@ var Generate = function Generate(_ref) {
       style = _useContext.style,
       colorPrimary = _useContext.colorPrimary,
       colorSecondary = _useContext.colorSecondary,
-      setShoes = _useContext.setShoes;
+      setShoes = _useContext.setShoes,
+      price = _useContext.price;
 
   var handleGen = function handleGen() {
     var obj = {
@@ -13520,6 +13521,7 @@ var Generate = function Generate(_ref) {
     };
     if (style) obj['shoe']['style'] = style.value;
     if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
+    if (price) obj['shoe']['price'] = price.value;
     (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)(obj).then(function (res) {
       setShoes(res);
       history.push('/results');

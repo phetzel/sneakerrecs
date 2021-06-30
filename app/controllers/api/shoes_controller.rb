@@ -14,6 +14,10 @@ class Api::ShoesController < ApplicationController
             @shoes = @shoes.where(pcolor: params[:shoe][:pcolor])
         end 
 
+        if params[:shoe] && params[:shoe][:price]
+            @shoes = @shoes.where('price < ?', params[:shoe][:price])
+        end 
+
         render :index
     end 
 
