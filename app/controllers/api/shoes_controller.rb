@@ -56,7 +56,8 @@ class Api::ShoesController < ApplicationController
             :style,
             :pcolor,
             :url,
-            :photo
+            :photo,
+            :price
         )
     end
 end

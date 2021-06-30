@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import ColorPrimary from './ColorPrimary';
 import ColorSecondary from './ColorSecondary';
 import Generate from './Generate';
+import Price from './Price';
 import Style from './Style';
 
 import ShoeContext from '../../context/shoeContext';
@@ -14,10 +15,11 @@ const Questions = () => {
         1: <Style />,
         2: <ColorPrimary />,
         3: <ColorSecondary />,
-        4: <Generate />,
+        4: <Price />,
+        5: <Generate />,
     }
 
-    const title = question === 4 ? 'Recomendations' :`Question ${question}`;
+    const title = question === 5 ? 'Recomendations' :`Question ${question}`;
 
     return (
         <div className="splash-left">

@@ -8,6 +8,7 @@ const QuestionsList = ({ results, history }) => {
         style, 
         colorPrimary,
         colorSecondary,
+        price,
         setQuestion,
         maxQuestion
     }  = useContext(ShoeContext);
@@ -22,6 +23,11 @@ const QuestionsList = ({ results, history }) => {
         `Secondary colors: ${colorSecondary.map(ele => ele.label).join(', ')}`
     ) : (
         'Secondary Colors'
+    );
+    const priceLink = price ? (
+        `Price: Under $${price.value}`
+    ) : (
+        'Price: Any'
     );
 
     const handleResults = () => {
@@ -41,6 +47,9 @@ const QuestionsList = ({ results, history }) => {
                 }
                 { maxQuestion > 3 &&
                     <li onClick={() => setQuestion(3)}>{colorSecondaryLink}</li>
+                }
+                { maxQuestion > 4 &&
+                    <li onClick={() => setQuestion(4)}>{priceLink}</li>
                 }
             </ul>
             

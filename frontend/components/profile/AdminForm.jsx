@@ -14,6 +14,7 @@ const AdminForm = ({ shoe, setShoe }) => {
     const [secColors, setSecColors] = useState([]);
     const [url, setUrl] = useState('');
     const [photo, setPhoto] = useState();
+    const [price, setPrice] = useState();
 
 
     const styles = [
@@ -39,6 +40,7 @@ const AdminForm = ({ shoe, setShoe }) => {
         formData.append('shoe[name]', name);
         formData.append('shoe[style]', style.value);
         formData.append('shoe[pcolor]', pcolor.value);
+        formData.append('shoe[price]', price);
         formData.append('shoe[url]', url);
         formData.append('shoe[photo]', photo);
 
@@ -110,6 +112,14 @@ const AdminForm = ({ shoe, setShoe }) => {
                         value={secColors} />
 
                 </label>
+
+                <label>Price
+                    <input 
+                        onChange={update(setPrice)}
+                        type="text" 
+                        value={price} />
+                </label>
+
                 <label>Url
                     <input 
                         onChange={update(setUrl)}

@@ -12285,8 +12285,13 @@ var App = function App() {
 
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState18 = _slicedToArray(_useState17, 2),
-      shoes = _useState18[0],
-      setShoes = _useState18[1];
+      price = _useState18[0],
+      setPrice = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState20 = _slicedToArray(_useState19, 2),
+      shoes = _useState20[0],
+      setShoes = _useState20[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var id = localStorage.getItem('user');
@@ -12320,6 +12325,8 @@ var App = function App() {
       setColorPrimary: setColorPrimary,
       colorSecondary: colorSecondary,
       setColorSecondary: setColorSecondary,
+      price: price,
+      setPrice: setPrice,
       shoes: shoes,
       setShoes: setShoes
     }
@@ -12876,6 +12883,11 @@ var AdminForm = function AdminForm(_ref) {
       photo = _useState14[0],
       setPhoto = _useState14[1];
 
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState16 = _slicedToArray(_useState15, 2),
+      price = _useState16[0],
+      setPrice = _useState16[1];
+
   var styles = [{
     value: 'high-top',
     label: 'High-top'
@@ -12901,6 +12913,7 @@ var AdminForm = function AdminForm(_ref) {
     formData.append('shoe[name]', name);
     formData.append('shoe[style]', style.value);
     formData.append('shoe[pcolor]', pcolor.value);
+    formData.append('shoe[price]', price);
     formData.append('shoe[url]', url);
     formData.append('shoe[photo]', photo);
 
@@ -12973,6 +12986,10 @@ var AdminForm = function AdminForm(_ref) {
     },
     options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default,
     value: secColors
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Price", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    onChange: update(setPrice),
+    type: "text",
+    value: price
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Url", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     onChange: update(setUrl),
     type: "text",
@@ -13521,6 +13538,70 @@ var Generate = function Generate(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/questions/Price.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/questions/Price.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+
+
+
+
+
+var Price = function Price() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
+      setPrice = _useContext.setPrice,
+      price = _useContext.price,
+      setQuestion = _useContext.setQuestion,
+      maxQuestion = _useContext.maxQuestion,
+      setMaxQuestion = _useContext.setMaxQuestion;
+
+  var handleChange = function handleChange(selected) {
+    setPrice(selected);
+  };
+
+  var handleNext = function handleNext() {
+    setQuestion(5);
+    var newMax = maxQuestion + 1;
+    if (newMax <= 5) setMaxQuestion(newMax);
+  };
+
+  var prices = [{
+    value: null,
+    label: 'Any'
+  }, {
+    value: 300,
+    label: 'Under $300'
+  }, {
+    value: 100,
+    label: 'Under $100'
+  }];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "question"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Price Range"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+    onChange: handleChange,
+    options: prices,
+    value: price
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "splash-left-btn",
+    onClick: handleNext
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Next")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Price);
+
+/***/ }),
+
 /***/ "./frontend/components/questions/Questions.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/questions/Questions.jsx ***!
@@ -13536,8 +13617,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ColorPrimary__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorPrimary */ "./frontend/components/questions/ColorPrimary.jsx");
 /* harmony import */ var _ColorSecondary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorSecondary */ "./frontend/components/questions/ColorSecondary.jsx");
 /* harmony import */ var _Generate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Generate */ "./frontend/components/questions/Generate.jsx");
-/* harmony import */ var _Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Style */ "./frontend/components/questions/Style.jsx");
-/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _Price__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Price */ "./frontend/components/questions/Price.jsx");
+/* harmony import */ var _Style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Style */ "./frontend/components/questions/Style.jsx");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+
 
 
 
@@ -13546,17 +13629,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Questions = function Questions() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_5__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_6__.default),
       question = _useContext.question,
       setQuestion = _useContext.setQuestion;
 
   var obj = {
-    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_4__.default, null),
+    1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, null),
     2: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorPrimary__WEBPACK_IMPORTED_MODULE_1__.default, null),
     3: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorSecondary__WEBPACK_IMPORTED_MODULE_2__.default, null),
-    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_3__.default, null)
+    4: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Price__WEBPACK_IMPORTED_MODULE_4__.default, null),
+    5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_3__.default, null)
   };
-  var title = question === 4 ? 'Recomendations' : "Question ".concat(question);
+  var title = question === 5 ? 'Recomendations' : "Question ".concat(question);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
@@ -13594,6 +13678,7 @@ var QuestionsList = function QuestionsList(_ref) {
       style = _useContext.style,
       colorPrimary = _useContext.colorPrimary,
       colorSecondary = _useContext.colorSecondary,
+      price = _useContext.price,
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion;
 
@@ -13602,6 +13687,7 @@ var QuestionsList = function QuestionsList(_ref) {
   var colorSecondaryLink = colorSecondary ? "Secondary colors: ".concat(colorSecondary.map(function (ele) {
     return ele.label;
   }).join(', ')) : 'Secondary Colors';
+  var priceLink = price ? "Price: Under $".concat(price.value) : 'Price: Any';
 
   var handleResults = function handleResults() {
     if (results) history.push('/');
@@ -13623,7 +13709,11 @@ var QuestionsList = function QuestionsList(_ref) {
     onClick: function onClick() {
       return setQuestion(3);
     }
-  }, colorSecondaryLink)), results && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
+  }, colorSecondaryLink), maxQuestion > 4 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    onClick: function onClick() {
+      return setQuestion(4);
+    }
+  }, priceLink)), results && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
     onClick: function onClick() {
       return setQuestion(1);
     }
@@ -13743,19 +13833,15 @@ var ShoeColors = function ShoeColors(_ref) {
   var shoeId = _ref.shoeId,
       pColor = _ref.pColor,
       secColors = _ref.secColors;
-  var chromaPColor = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(pColor);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var obj = {
-      'shoe_color': {}
-    };
-    obj['shoe_color']['shoe_id'] = shoeId;
-    (0,_api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoeColors)(obj).then(function (res) {
-      console.log(res);
-      console.log('results');
-    }).fail(function (err) {
-      return console.log(err);
-    });
-  }, [shoeId]);
+  var chromaPColor = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(pColor); // useEffect(() => {
+  //     const obj = {'shoe_color': {}};
+  //     obj['shoe_color']['shoe_id'] = shoeId;
+  //     fetchShoeColors(obj).then(res => {
+  //         console.log(res);
+  //         console.log('results');
+  //     }).fail(err => console.log(err));
+  // }, [shoeId])
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-colors"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "COLORS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

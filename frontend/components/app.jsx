@@ -19,6 +19,7 @@ const App = () => {
     const [colorAmount, setColorAmount] = useState();
     const [colorPrimary, setColorPrimary] = useState();
     const [colorSecondary, setColorSecondary] = useState([]);
+    const [price, setPrice] = useState();
     const [shoes, setShoes] = useState();
 
     useEffect(() => {
@@ -52,6 +53,8 @@ const App = () => {
                     setColorPrimary,
                     colorSecondary,
                     setColorSecondary,
+                    price,
+                    setPrice,
                     shoes,
                     setShoes
                     }}>

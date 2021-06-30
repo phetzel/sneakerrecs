@@ -6,15 +6,15 @@ import { fetchShoeColors } from '../../api/shoe_color_api';
 const ShoeColors = ({shoeId, pColor, secColors}) => {
     const chromaPColor = chroma(pColor);
 
-    useEffect(() => {
-        const obj = {'shoe_color': {}};
-        obj['shoe_color']['shoe_id'] = shoeId;
+    // useEffect(() => {
+    //     const obj = {'shoe_color': {}};
+    //     obj['shoe_color']['shoe_id'] = shoeId;
 
-        fetchShoeColors(obj).then(res => {
-            console.log(res);
-            console.log('results');
-        }).fail(err => console.log(err));
-    }, [shoeId])
+    //     fetchShoeColors(obj).then(res => {
+    //         console.log(res);
+    //         console.log('results');
+    //     }).fail(err => console.log(err));
+    // }, [shoeId])
 
     return (
         <div className="shoe-colors">
