@@ -69,15 +69,36 @@
 .splash-right {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 500px;
+  min-height: 500px;
   width: 50%;
-
-  //   animation: rotation 4s infinite linear;
 }
 
 @media only screen and (max-width: 768px) {
   .splash-right {
     display: none;
   }
+
+  .splash-search-left {
+    display: none;
+  }
+
+  .splash-search {
+    display: block;
+  }
+}
+
+.splash-search div {
+  animation: rotation 8s infinite linear;
+}
+
+.splash-search {
+  margin-top: 20px;
+}
+
+.splash-right p {
+  color: var(--third);
+  margin-top: 20px;
+  text-align: center;
 }

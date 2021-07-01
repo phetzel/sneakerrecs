@@ -9,7 +9,7 @@ import Style from './Style';
 import ShoeContext from '../../context/shoeContext';
 
 const Questions = () => {
-    const { question, setQuestion } = useContext(ShoeContext);
+    const { question, setQuestion, searching } = useContext(ShoeContext);
 
     const obj = {
         1: <Style />,
@@ -20,9 +20,10 @@ const Questions = () => {
     }
 
     const title = question === 5 ? 'Recomendations' :`Question ${question}`;
+    const seachClass = searching ? "splash-search-left" : "";
 
     return (
-        <div className="splash-left">
+        <div className={`splash-left ${seachClass}`}>
             <h1 id="question-title">{title}</h1>
             {obj[question]}
         </div>

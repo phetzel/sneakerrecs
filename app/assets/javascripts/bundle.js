@@ -12293,6 +12293,11 @@ var App = function App() {
       shoes = _useState20[0],
       setShoes = _useState20[1];
 
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState22 = _slicedToArray(_useState21, 2),
+      searching = _useState22[0],
+      setSearching = _useState22[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var id = localStorage.getItem('user');
 
@@ -12328,7 +12333,9 @@ var App = function App() {
       price: price,
       setPrice: setPrice,
       shoes: shoes,
-      setShoes: setShoes
+      setShoes: setShoes,
+      searching: searching,
+      setSearching: setSearching
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app"
@@ -13515,9 +13522,11 @@ var Generate = function Generate(_ref) {
       colorPrimary = _useContext.colorPrimary,
       colorSecondary = _useContext.colorSecondary,
       setShoes = _useContext.setShoes,
-      price = _useContext.price;
+      price = _useContext.price,
+      setSearching = _useContext.setSearching;
 
   var handleGen = function handleGen() {
+    setSearching(true);
     var obj = {
       'shoe': {}
     };
@@ -13525,8 +13534,8 @@ var Generate = function Generate(_ref) {
     if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
     if (price) obj['shoe']['price'] = price.value;
     (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)(obj).then(function (res) {
-      setShoes(res);
-      history.push('/results');
+      setShoes(res); // history.push('/results');
+      // setSearching(false);
     });
   };
 
@@ -13635,7 +13644,8 @@ __webpack_require__.r(__webpack_exports__);
 var Questions = function Questions() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_6__.default),
       question = _useContext.question,
-      setQuestion = _useContext.setQuestion;
+      setQuestion = _useContext.setQuestion,
+      searching = _useContext.searching;
 
   var obj = {
     1: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Style__WEBPACK_IMPORTED_MODULE_5__.default, null),
@@ -13645,8 +13655,9 @@ var Questions = function Questions() {
     5: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Generate__WEBPACK_IMPORTED_MODULE_3__.default, null)
   };
   var title = question === 5 ? 'Recomendations' : "Question ".concat(question);
+  var seachClass = searching ? "splash-search-left" : "";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "splash-left"
+    className: "splash-left ".concat(seachClass)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
     id: "question-title"
   }, title), obj[question]);
@@ -14193,7 +14204,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_lottie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-lottie */ "./node_modules/react-lottie/dist/index.js");
-/* harmony import */ var _app_assets_images_lottie_shoe_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../app/assets/images/lottie-shoe.json */ "./app/assets/images/lottie-shoe.json");
+/* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _app_assets_images_lottie_shoe_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../app/assets/images/lottie-shoe.json */ "./app/assets/images/lottie-shoe.json");
+
 
 
 
@@ -14202,18 +14215,23 @@ var SplashRight = function SplashRight() {
   var defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: _app_assets_images_lottie_shoe_json__WEBPACK_IMPORTED_MODULE_2__,
+    animationData: _app_assets_images_lottie_shoe_json__WEBPACK_IMPORTED_MODULE_3__,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
     }
   };
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
+      searching = _useContext.searching;
+
+  var searchClass = searching ? 'splash-search' : "";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "splash-right"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_lottie__WEBPACK_IMPORTED_MODULE_1__.default, {
+    className: "splash-right ".concat(searchClass)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_lottie__WEBPACK_IMPORTED_MODULE_1__.default, {
     options: defaultOptions,
     height: 300,
     width: 300
-  }));
+  })), searching && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Searching the back."));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SplashRight);

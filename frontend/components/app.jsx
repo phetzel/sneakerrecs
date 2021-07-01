@@ -21,6 +21,7 @@ const App = () => {
     const [colorSecondary, setColorSecondary] = useState([]);
     const [price, setPrice] = useState();
     const [shoes, setShoes] = useState();
+    const [searching, setSearching] = useState();
 
     useEffect(() => {
         const id = localStorage.getItem('user');
@@ -56,7 +57,9 @@ const App = () => {
                     price,
                     setPrice,
                     shoes,
-                    setShoes
+                    setShoes,
+                    searching,
+                    setSearching
                     }}>
 
                 <div className="app">

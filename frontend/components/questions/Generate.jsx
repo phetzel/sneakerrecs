@@ -11,12 +11,15 @@ const Generate = ({ setQuestion, history }) => {
         colorPrimary,
         colorSecondary,
         setShoes,
-        price
+        price,
+        setSearching,
     }  = useContext(ShoeContext);
     
 
 
     const handleGen = () => {
+        setSearching(true);
+
         const obj = { 'shoe': {} }
         if (style) obj['shoe']['style'] = style.value;
         if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
@@ -24,7 +27,8 @@ const Generate = ({ setQuestion, history }) => {
 
         fetchShoes(obj).then(res => {
             setShoes(res);
-            history.push('/results');
+            // history.push('/results');
+            // setSearching(false);
         })
     }
 
