@@ -12891,8 +12891,10 @@ var AdminForm = function AdminForm(_ref) {
   var styles = [{
     value: 'high-top',
     label: 'High-top'
-  }, // { value: 'white', label: 'White' },
-  {
+  }, {
+    value: 'mid-top',
+    label: 'Mid-top'
+  }, {
     value: 'low-top',
     label: 'Low-top'
   }];
@@ -13767,8 +13769,10 @@ var Style = function Style() {
   var styles = [{
     value: 'high-top',
     label: 'High-top'
-  }, // { value: 'white', label: 'White' },
-  {
+  }, {
+    value: 'mid-top',
+    label: 'Mid-top'
+  }, {
     value: 'low-top',
     label: 'Low-top'
   }];
