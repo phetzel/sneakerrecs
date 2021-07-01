@@ -27,8 +27,8 @@ const Generate = ({ setQuestion, history }) => {
 
         fetchShoes(obj).then(res => {
             setShoes(res);
-            // history.push('/results');
-            // setSearching(false);
+            history.push('/results');
+            setSearching(false);
         })
     }
 

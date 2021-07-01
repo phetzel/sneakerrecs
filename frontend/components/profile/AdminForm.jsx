@@ -101,7 +101,7 @@ const AdminForm = ({ shoe, setShoe }) => {
                     <Select 
                         onChange={(choice) => setPcolor(choice)} 
                         options={shoeColors} 
-                        // styles={multiColourStyles}
+                        styles={singleColourStyles}
                         value={pcolor} />
                 </label>
                 <label>Secondary Colors
@@ -109,6 +109,7 @@ const AdminForm = ({ shoe, setShoe }) => {
                         isMulti
                         onChange={(choice) => setSecColors(choice)}
                         options={shoeColors}
+                        styles={multiColourStyles}
                         value={secColors} />
 
                 </label>

@@ -12985,8 +12985,8 @@ var AdminForm = function AdminForm(_ref) {
     onChange: function onChange(choice) {
       return setPcolor(choice);
     },
-    options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default // styles={multiColourStyles}
-    ,
+    options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default,
+    styles: _util_pickerStyles__WEBPACK_IMPORTED_MODULE_3__.singleColourStyles,
     value: pcolor
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Secondary Colors", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     isMulti: true,
@@ -12994,6 +12994,7 @@ var AdminForm = function AdminForm(_ref) {
       return setSecColors(choice);
     },
     options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default,
+    styles: _util_pickerStyles__WEBPACK_IMPORTED_MODULE_3__.multiColourStyles,
     value: secColors
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Price", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     onChange: update(setPrice),
@@ -13361,9 +13362,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
+/* harmony import */ var _util_pickerStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/pickerStyles */ "./frontend/util/pickerStyles.js");
+/* harmony import */ var _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/shoeColors */ "./frontend/util/shoeColors.js");
+
+
 
 
 
@@ -13387,33 +13392,12 @@ var ColorPrimary = function ColorPrimary() {
     if (newMax <= 3) setMaxQuestion(newMax);
   };
 
-  var colors = [{
-    value: 'black',
-    label: 'Black'
-  }, {
-    value: 'white',
-    label: 'White'
-  }, {
-    value: 'red',
-    label: 'Red'
-  }, {
-    value: 'blue',
-    label: 'Blue'
-  }, {
-    value: 'green',
-    label: 'Green'
-  }, {
-    value: 'pink',
-    label: 'Pink'
-  }, {
-    value: 'purple',
-    label: 'Purple'
-  }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     onChange: handleChange,
-    options: colors,
+    options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default,
+    styles: _util_pickerStyles__WEBPACK_IMPORTED_MODULE_3__.singleColourStyles,
     value: colorPrimary
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
@@ -13437,10 +13421,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var _QuestionsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionsList */ "./frontend/components/questions/QuestionsList.jsx");
 /* harmony import */ var _context_shoeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/shoeContext */ "./frontend/context/shoeContext.jsx");
 /* harmony import */ var _util_shoeColors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/shoeColors */ "./frontend/util/shoeColors.js");
+/* harmony import */ var _util_pickerStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/pickerStyles */ "./frontend/util/pickerStyles.js");
+
 
 
 
@@ -13463,23 +13449,15 @@ var ColorSecondary = function ColorSecondary() {
     setQuestion(4);
     var newMax = maxQuestion + 1;
     if (newMax <= 4) setMaxQuestion(newMax);
-  }; // const colors = [
-  //     { value: 'black', label: 'Black' },
-  //     { value: 'white', label: 'White' },
-  //     { value: 'red', label: 'Red' },
-  //     { value: 'blue', label: 'Blue' },
-  //     { value: 'green', label: 'Green' },
-  //     { value: 'pink', label: 'Pink' },
-  //     { value: 'purple', label: 'Purple' },
-  // ]
-
+  };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "question"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Secondary Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     isMulti: true,
     onChange: handleChange,
     options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_3__.default,
+    styles: _util_pickerStyles__WEBPACK_IMPORTED_MODULE_4__.multiColourStyles,
     value: colorSecondary
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
@@ -13534,8 +13512,9 @@ var Generate = function Generate(_ref) {
     if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
     if (price) obj['shoe']['price'] = price.value;
     (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)(obj).then(function (res) {
-      setShoes(res); // history.push('/results');
-      // setSearching(false);
+      setShoes(res);
+      history.push('/results');
+      setSearching(false);
     });
   };
 
@@ -14409,31 +14388,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   id: 1,
   value: 'black',
-  label: 'Black'
+  label: 'Black',
+  color: 'black'
 }, {
   id: 2,
   value: 'white',
-  label: 'White'
+  label: 'White',
+  color: '#ffe7d1'
 }, {
   id: 3,
   value: 'red',
-  label: 'Red'
+  label: 'Red',
+  color: 'red'
 }, {
   id: 4,
   value: 'blue',
-  label: 'Blue'
+  label: 'Blue',
+  color: 'blue'
 }, {
   id: 5,
   value: 'green',
-  label: 'Green'
+  label: 'Green',
+  color: 'green'
 }, {
   id: 6,
   value: 'pink',
-  label: 'Pink'
+  label: 'Pink',
+  color: 'pink'
 }, {
   id: 7,
   value: 'purple',
-  label: 'Purple'
+  label: 'Purple',
+  color: 'purple'
 }]);
 
 /***/ }),

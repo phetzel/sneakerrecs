@@ -3,6 +3,8 @@ import Select from 'react-select';
 
 import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
+import { singleColourStyles } from '../../util/pickerStyles';
+import shoeColors from '../../util/shoeColors';
 
 const ColorPrimary = () => {
     const { 
@@ -22,17 +24,6 @@ const ColorPrimary = () => {
         const newMax = maxQuestion + 1;
         if (newMax <= 3) setMaxQuestion(newMax);
     }
-
-    const colors = [
-        { value: 'black', label: 'Black' },
-        { value: 'white', label: 'White' },
-        { value: 'red', label: 'Red' },
-        { value: 'blue', label: 'Blue' },
-        { value: 'green', label: 'Green' },
-        { value: 'pink', label: 'Pink' },
-        { value: 'purple', label: 'Purple' },
-    ]
-
     
     return (
         <div className="question">
@@ -42,7 +33,8 @@ const ColorPrimary = () => {
 
             <Select 
                 onChange={handleChange} 
-                options={colors} 
+                options={shoeColors} 
+                styles={singleColourStyles}
                 value={colorPrimary} />
 
 

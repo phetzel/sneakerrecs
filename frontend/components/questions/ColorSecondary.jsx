@@ -4,6 +4,7 @@ import Select from 'react-select';
 import QuestionsList from './QuestionsList';
 import ShoeContext from '../../context/shoeContext';
 import shoeColors from '../../util/shoeColors';
+import { multiColourStyles } from '../../util/pickerStyles';
 
 const ColorSecondary = () => {
     const {
@@ -24,16 +25,6 @@ const ColorSecondary = () => {
         if (newMax <= 4) setMaxQuestion(newMax);
     }
 
-    // const colors = [
-    //     { value: 'black', label: 'Black' },
-    //     { value: 'white', label: 'White' },
-    //     { value: 'red', label: 'Red' },
-    //     { value: 'blue', label: 'Blue' },
-    //     { value: 'green', label: 'Green' },
-    //     { value: 'pink', label: 'Pink' },
-    //     { value: 'purple', label: 'Purple' },
-    // ]
-
     return (
         <div className="question">
             <QuestionsList />
@@ -44,6 +35,7 @@ const ColorSecondary = () => {
                 isMulti
                 onChange={handleChange} 
                 options={shoeColors} 
+                styles={multiColourStyles}
                 value={colorSecondary} />
 
             <div className="splash-left-btn" onClick={handleNext}>
