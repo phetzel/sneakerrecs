@@ -61,12 +61,24 @@ const Results = () => {
         }
     }, [shoeIdx, userShoes]);
 
-    console.log(shoes);
+    useEffect(() => {
+        console.log(window.innerWidth);
+    }, [window.innerWidth]);
 
     return (
         <div className="results-container">
             <div className="results-container-list">
                 <QuestionsList results={true} />
+
+                { user && shoes &&  shoes.length > 0 &&
+                    <div className={saved ? "results-saved" : "results-unsaved"}>
+                        <FontAwesomeIcon 
+                            className={saved ? "results-saved-i" : "results-unsaved-i"}
+                            icon={faSave} 
+                            onClick={handleSave} />  
+                        <p>{saved ? 'Shoe saved' : 'Save shoe'}</p> 
+                    </div>
+                }
             </div>
 
             { shoes && shoes.length > 0 &&
@@ -100,19 +112,7 @@ const Results = () => {
 
             { shoes && shoes.length > 0 && 
                 <div className="results-bottom">
-                    <div className="results-bottom-placeholder"></div>
-                    <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>
-                    <div className="results-bottom-placeholder">
-                        { user &&
-                            <div className={saved ? "results-saved" : "results-unsaved"}>
-                                <FontAwesomeIcon 
-                                    className={saved ? "results-saved-i" : "results-unsaved-i"}
-                                    icon={faSave} 
-                                    onClick={handleSave} />  
-                                <p>{saved ? 'Saved' : 'Unsaved'}</p> 
-                            </div>
-                        }
-                    </div>
+                    <p>{`${shoeIdx + 1} / ${shoes.length}`}</p>            
                 </div>
             }
 
