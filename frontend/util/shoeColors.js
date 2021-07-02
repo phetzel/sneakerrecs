@@ -6,4 +6,5 @@ export default [
     { id: 5, value: 'green', label: 'Green', color: 'green' },
     { id: 6, value: 'pink', label: 'Pink', color: 'pink' },
     { id: 7, value: 'purple', label: 'Purple', color: 'purple' },
+    { id: 8, value: 'yellow', label: 'Yellow', color: 'yellow' },
 ]

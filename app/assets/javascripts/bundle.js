@@ -13435,6 +13435,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ColorSecondary = function ColorSecondary() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_shoeContext__WEBPACK_IMPORTED_MODULE_2__.default),
+      colorPrimary = _useContext.colorPrimary,
       colorSecondary = _useContext.colorSecondary,
       setColorSecondary = _useContext.setColorSecondary,
       setQuestion = _useContext.setQuestion,
@@ -14420,6 +14421,11 @@ __webpack_require__.r(__webpack_exports__);
   value: 'purple',
   label: 'Purple',
   color: 'purple'
+}, {
+  id: 8,
+  value: 'yellow',
+  label: 'Yellow',
+  color: 'yellow'
 }]);
 
 /***/ }),

@@ -8,6 +8,7 @@ import { multiColourStyles } from '../../util/pickerStyles';
 
 const ColorSecondary = () => {
     const {
+        colorPrimary,
         colorSecondary,
         setColorSecondary, 
         setQuestion,

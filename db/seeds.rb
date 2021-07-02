@@ -57,37 +57,42 @@
 
 Color.destroy_all
 
-Color.create!(
-    id: 1,
-    name: 'black'
-)
+# Color.create!(
+#     id: 1,
+#     name: 'black'
+# )
+
+# Color.create!(
+#     id: 2,
+#     name: 'white'
+# )
+
+# Color.create!(
+#     id: 3,
+#     name: 'red'
+# )
+
+# Color.create!(
+#     id: 4,
+#     name: 'blue'
+# )
+
+# Color.create!(
+#     id: 5,
+#     name: 'green'
+# )
+
+# Color.create!(
+#     id: 6,
+#     name: 'pink'
+# )
+
+# Color.create!(
+#     id: 7,
+#     name: 'purple'
+# )
 
 Color.create!(
-    id: 2,
-    name: 'white'
-)
-
-Color.create!(
-    id: 3,
-    name: 'red'
-)
-
-Color.create!(
-    id: 4,
-    name: 'blue'
-)
-
-Color.create!(
-    id: 5,
-    name: 'green'
-)
-
-Color.create!(
-    id: 6,
-    name: 'pink'
-)
-
-Color.create!(
-    id: 7,
-    name: 'purple'
+    id: 8,
+    name: 'yellow'
 )
