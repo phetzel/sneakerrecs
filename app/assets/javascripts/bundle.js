@@ -13821,24 +13821,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
 /* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_color_api */ "./frontend/api/shoe_color_api.jsx");
-
 
 
 
 var ShoeColors = function ShoeColors(_ref) {
-  var shoeId = _ref.shoeId,
-      pColor = _ref.pColor,
-      secColors = _ref.secColors;
-  var chromaPColor = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(pColor); // useEffect(() => {
-  //     const obj = {'shoe_color': {}};
-  //     obj['shoe_color']['shoe_id'] = shoeId;
-  //     fetchShoeColors(obj).then(res => {
-  //         console.log(res);
-  //         console.log('results');
-  //     }).fail(err => console.log(err));
-  // }, [shoeId])
-
+  var shoe = _ref.shoe;
+  var chromaPColor = chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(shoe.pcolor);
+  var chromaSecColors = shoe.secColors.map(function (ele) {
+    return chroma_js__WEBPACK_IMPORTED_MODULE_1___default()(ele.name);
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-colors"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "COLORS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13848,7 +13839,15 @@ var ShoeColors = function ShoeColors(_ref) {
     style: {
       backgroundColor: chromaPColor
     }
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "shoe-colors-secondary"
+  }, chromaSecColors.map(function (ele) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      style: {
+        backgroundColor: ele
+      }
+    });
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShoeColors);
@@ -13872,26 +13871,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShoeDetails = function ShoeDetails(_ref) {
-  var shoe = _ref.shoe,
-      shoeLength = _ref.shoeLength,
-      shoeIdx = _ref.shoeIdx,
-      setShoeIdx = _ref.setShoeIdx;
+  var shoe = _ref.shoe;
 
-  // const shoe = {
-  //     id: 1,
-  //     brand: 'nike',
-  //     name: 'air force 1',
-  //     pcolor: 'white',
-  //     url: "https://www.amazon.com/Nike-Mens-315122-111-FORCE-Size/dp/B001NGKPE6/ref=sr_1_19?dchild=1&keywords=nike+dunks&qid=1623461762&sr=8-19",
-  //     photoUrl: "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--403ade35f4dc84528730e3e477d7eebf4533679b/white-air-force-1.jpg",
-  //     style: 'low-top'
-  // }
   var openInNewTab = function openInNewTab() {
     var newWindow = window.open(shoe.url, '_blank', 'noopener,noreferrer');
     if (newWindow) newWindow.opener = null;
   };
 
-  console.log(shoe);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13905,8 +13891,7 @@ var ShoeDetails = function ShoeDetails(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-lower"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, shoe.style.toUpperCase())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ShoeColors__WEBPACK_IMPORTED_MODULE_1__.default, {
-    shoeId: shoe.id,
-    pColor: shoe.pcolor
+    shoe: shoe
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "shoe-link-btn",
     onClick: openInNewTab
@@ -14035,6 +14020,7 @@ var Results = function Results() {
       setSaved(newSave);
     }
   }, [shoeIdx, userShoes]);
+  console.log(shoes);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

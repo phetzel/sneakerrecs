@@ -61,6 +61,8 @@ const Results = () => {
         }
     }, [shoeIdx, userShoes]);
 
+    console.log(shoes);
+
     return (
         <div className="results-container">
             <div className="results-container-list">

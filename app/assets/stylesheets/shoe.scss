@@ -128,6 +128,11 @@
   margin-bottom: 5px;
 }
 
+.shoe-colors-list {
+  align-items: center;
+  display: flex;
+}
+
 .shoe-colors-list div {
   border: 1px solid var(--white);
   border-radius: 3px;
@@ -136,4 +141,16 @@
 .shoe-colors-primary {
   height: 30px;
   width: 30px;
+}
+
+.shoe-colors-secondary {
+  display: flex;
+}
+
+.shoe-colors-secondary li {
+  border: 1px solid var(--white);
+  border-radius: 3px;
+  height: 20px;
+  margin-left: 5px;
+  width: 20px;
 }
