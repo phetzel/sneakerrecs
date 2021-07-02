@@ -19,7 +19,8 @@ const ColorPrimary = () => {
         setColorPrimary(selected);
     }
 
-    const handleNext = () => {
+    const handleNext = e => {
+        e.preventDefault();
         setQuestion(3);
         const newMax = maxQuestion + 1;
         if (newMax <= 3) setMaxQuestion(newMax);

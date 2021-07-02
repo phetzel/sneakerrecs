@@ -17,7 +17,8 @@ const Style = () => {
         setStyle(selected);
     }
 
-    const handleNext = () => {
+    const handleNext = (e) => {
+        e.preventDefault();
         setQuestion(2);
         const newMax = maxQuestion + 1;
         if (newMax <= 2 )setMaxQuestion(newMax);

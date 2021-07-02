@@ -13386,7 +13386,8 @@ var ColorPrimary = function ColorPrimary() {
     setColorPrimary(selected);
   };
 
-  var handleNext = function handleNext() {
+  var handleNext = function handleNext(e) {
+    e.preventDefault();
     setQuestion(3);
     var newMax = maxQuestion + 1;
     if (newMax <= 3) setMaxQuestion(newMax);
@@ -13446,7 +13447,8 @@ var ColorSecondary = function ColorSecondary() {
     setColorSecondary(selected);
   };
 
-  var handleNext = function handleNext() {
+  var handleNext = function handleNext(e) {
+    e.preventDefault();
     setQuestion(4);
     var newMax = maxQuestion + 1;
     if (newMax <= 4) setMaxQuestion(newMax);
@@ -13504,7 +13506,8 @@ var Generate = function Generate(_ref) {
       price = _useContext.price,
       setSearching = _useContext.setSearching;
 
-  var handleGen = function handleGen() {
+  var handleGen = function handleGen(e) {
+    e.preventDefault();
     setSearching(true);
     var obj = {
       'shoe': {}
@@ -13563,7 +13566,8 @@ var Price = function Price() {
     setPrice(selected);
   };
 
-  var handleNext = function handleNext() {
+  var handleNext = function handleNext(e) {
+    e.preventDefault();
     setQuestion(5);
     var newMax = maxQuestion + 1;
     if (newMax <= 5) setMaxQuestion(newMax);
@@ -13751,7 +13755,8 @@ var Style = function Style() {
     setStyle(selected);
   };
 
-  var handleNext = function handleNext() {
+  var handleNext = function handleNext(e) {
+    e.preventDefault();
     setQuestion(2);
     var newMax = maxQuestion + 1;
     if (newMax <= 2) setMaxQuestion(newMax);

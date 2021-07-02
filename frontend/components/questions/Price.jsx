@@ -17,7 +17,8 @@ const Price = () => {
         setPrice(selected);
     }
 
-    const handleNext = () => {
+    const handleNext = e => {
+        e.preventDefault();
         setQuestion(5);
         const newMax = maxQuestion + 1;
         if (newMax <= 5) setMaxQuestion(newMax);

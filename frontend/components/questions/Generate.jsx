@@ -17,7 +17,9 @@ const Generate = ({ setQuestion, history }) => {
     
 
 
-    const handleGen = () => {
+    const handleGen = e => {
+        e.preventDefault();
+        
         setSearching(true);
 
         const obj = { 'shoe': {} }
