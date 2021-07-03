@@ -14423,6 +14423,11 @@ __webpack_require__.r(__webpack_exports__);
   value: 'orange',
   label: 'Orange',
   color: 'orange'
+}, {
+  id: 10,
+  value: 'brown',
+  label: 'Brown',
+  color: 'brown'
 }]);
 
 /***/ }),
