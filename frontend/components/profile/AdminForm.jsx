@@ -36,18 +36,18 @@ const AdminForm = ({ shoe, setShoe }) => {
 
     const handleSubmit = () => {
         const formData = new FormData();
-        formData.append('shoe[brand]', brand);
-        formData.append('shoe[name]', name);
-        formData.append('shoe[style]', style.value);
-        formData.append('shoe[pcolor]', pcolor.value);
-        formData.append('shoe[price]', price);
-        formData.append('shoe[url]', url);
-        formData.append('shoe[photo]', photo);
+        if (brand) formData.append('shoe[brand]', brand);
+        if (name) formData.append('shoe[name]', name);
+        if (style) formData.append('shoe[style]', style.value);
+        if (pcolor) formData.append('shoe[pcolor]', pcolor.value);
+        if (price) formData.append('shoe[price]', price);
+        if (url) formData.append('shoe[url]', url);
+        if (photo) formData.append('shoe[photo]', photo);
 
         if (shoe) {
             formData.append('shoe[id]', shoe.id);
             updateShoe(formData, shoe.id)
-                .then(res => console.log(res))
+                .then(res => setShoe(res))
                 .fail(err => console.log(err))
         } else {
             createShoe(formData).then(res => {
@@ -65,14 +65,14 @@ const AdminForm = ({ shoe, setShoe }) => {
         deleteShoe(shoe.id).then(() => setShoe())
     }
 
-    useEffect(() => {
-        setBrand(shoe ? shoe.brand : '');
-        setName(shoe ? shoe.name : '');
-        setStyle(shoe ? shoe.style : '');
-        setPcolor(shoe ? shoe.pcolor : '');
-        setUrl(shoe ? shoe.url : '');
-        // setPhoto(shoe ? shoe.brand : '');
-    }, [shoe])
+    // useEffect(() => {
+    //     setBrand(shoe ? shoe.brand : '');
+    //     setName(shoe ? shoe.name : '');
+    //     setStyle(shoe ? shoe.style : '');
+    //     setPcolor(shoe ? shoe.pcolor : '');
+    //     setUrl(shoe ? shoe.url : '');
+    //     // setPhoto(shoe ? shoe.brand : '');
+    // }, [shoe])
 
     return (
         <div className="admin-form-container">

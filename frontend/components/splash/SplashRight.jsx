@@ -18,13 +18,17 @@ const SplashRight = () => {
 
     const searchClass = searching ? 'splash-search' : "";
 
+    console.log(window.innerWidth);
+
+    const splashLotttieDimensions = window.innerWidth > 768 ? 300 : 180;
+
     return (
         <div className={`splash-right ${searchClass}`}>
             <div>
                 <Lottie 
                     options={defaultOptions}
-                    height={300}
-                    width={300}
+                    height={splashLotttieDimensions}
+                    width={splashLotttieDimensions}
                 />
             </div>
             { searching && 

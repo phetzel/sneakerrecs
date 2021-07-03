@@ -12918,18 +12918,18 @@ var AdminForm = function AdminForm(_ref) {
 
   var handleSubmit = function handleSubmit() {
     var formData = new FormData();
-    formData.append('shoe[brand]', brand);
-    formData.append('shoe[name]', name);
-    formData.append('shoe[style]', style.value);
-    formData.append('shoe[pcolor]', pcolor.value);
-    formData.append('shoe[price]', price);
-    formData.append('shoe[url]', url);
-    formData.append('shoe[photo]', photo);
+    if (brand) formData.append('shoe[brand]', brand);
+    if (name) formData.append('shoe[name]', name);
+    if (style) formData.append('shoe[style]', style.value);
+    if (pcolor) formData.append('shoe[pcolor]', pcolor.value);
+    if (price) formData.append('shoe[price]', price);
+    if (url) formData.append('shoe[url]', url);
+    if (photo) formData.append('shoe[photo]', photo);
 
     if (shoe) {
       formData.append('shoe[id]', shoe.id);
       (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.updateShoe)(formData, shoe.id).then(function (res) {
-        return console.log(res);
+        return setShoe(res);
       }).fail(function (err) {
         return console.log(err);
       });
@@ -12954,15 +12954,16 @@ var AdminForm = function AdminForm(_ref) {
     (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.deleteShoe)(shoe.id).then(function () {
       return setShoe();
     });
-  };
+  }; // useEffect(() => {
+  //     setBrand(shoe ? shoe.brand : '');
+  //     setName(shoe ? shoe.name : '');
+  //     setStyle(shoe ? shoe.style : '');
+  //     setPcolor(shoe ? shoe.pcolor : '');
+  //     setUrl(shoe ? shoe.url : '');
+  //     // setPhoto(shoe ? shoe.brand : '');
+  // }, [shoe])
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setBrand(shoe ? shoe.brand : '');
-    setName(shoe ? shoe.name : '');
-    setStyle(shoe ? shoe.style : '');
-    setPcolor(shoe ? shoe.pcolor : '');
-    setUrl(shoe ? shoe.url : ''); // setPhoto(shoe ? shoe.brand : '');
-  }, [shoe]);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "admin-form-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, shoe ? 'Edit Sneaker' : 'Add Sneaker'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -14194,12 +14195,14 @@ var SplashRight = function SplashRight() {
       searching = _useContext.searching;
 
   var searchClass = searching ? 'splash-search' : "";
+  console.log(window.innerWidth);
+  var splashLotttieDimensions = window.innerWidth > 768 ? 300 : 180;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-right ".concat(searchClass)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_lottie__WEBPACK_IMPORTED_MODULE_1__.default, {
     options: defaultOptions,
-    height: 300,
-    width: 300
+    height: splashLotttieDimensions,
+    width: splashLotttieDimensions
   })), searching && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Searching the back."));
 };
 
