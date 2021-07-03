@@ -1,6 +1,6 @@
 class Api::ShoesController < ApplicationController
     def index
-        @shoes = Shoe.all
+        @shoes = Shoe.all.to_a
 
         if params[:shoe] && params[:shoe][:id]
             @shoes = User.find(params[:shoe][:id]).shoes
