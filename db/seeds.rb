@@ -96,3 +96,8 @@ Color.create!(
     id: 8,
     name: 'yellow'
 )
+
+Color.create!(
+    id: 9,
+    name: 'orange'
+)
