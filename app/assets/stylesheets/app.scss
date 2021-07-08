@@ -3,6 +3,7 @@ html {
 }
 .app {
   background-color: var(--white);
+
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
   height: 100%;
@@ -15,4 +16,10 @@ html {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .app {
+    min-height: 0;
+  }
 }
