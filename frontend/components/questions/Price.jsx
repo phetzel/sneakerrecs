@@ -39,6 +39,7 @@ const Price = () => {
             <Select
                 onChange={handleChange}
                 options={prices}
+                isSearchable={false}
                 value={price} />
 
             <div className="splash-left-btn" onClick={handleNext}>

@@ -13399,6 +13399,7 @@ var ColorPrimary = function ColorPrimary() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Primary Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     onChange: handleChange,
     options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_4__.default,
+    isSearchable: false,
     styles: _util_pickerStyles__WEBPACK_IMPORTED_MODULE_3__.singleColourStyles,
     value: colorPrimary
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13461,6 +13462,7 @@ var ColorSecondary = function ColorSecondary() {
     isMulti: true,
     onChange: handleChange,
     options: _util_shoeColors__WEBPACK_IMPORTED_MODULE_3__.default,
+    isSearchable: false,
     styles: _util_pickerStyles__WEBPACK_IMPORTED_MODULE_4__.multiColourStyles,
     value: colorSecondary
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13589,6 +13591,7 @@ var Price = function Price() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Price Range"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
     onChange: handleChange,
     options: prices,
+    isSearchable: false,
     value: price
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",
@@ -13778,6 +13781,7 @@ var Style = function Style() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuestionsList__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Style"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
     onChange: handleChange,
     options: styles,
+    isSearchable: false,
     value: style
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-left-btn",

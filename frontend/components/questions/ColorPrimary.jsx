@@ -35,6 +35,7 @@ const ColorPrimary = () => {
             <Select 
                 onChange={handleChange} 
                 options={shoeColors} 
+                isSearchable={false}
                 styles={singleColourStyles}
                 value={colorPrimary} />
 

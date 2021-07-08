@@ -39,6 +39,7 @@ const Style = () => {
             <Select 
                 onChange={handleChange} 
                 options={styles} 
+                isSearchable={false}
                 value={style} />
 
 

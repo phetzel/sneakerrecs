@@ -37,6 +37,7 @@ const ColorSecondary = () => {
                 isMulti
                 onChange={handleChange} 
                 options={shoeColors} 
+                isSearchable={false}
                 styles={multiColourStyles}
                 value={colorSecondary} />
 
