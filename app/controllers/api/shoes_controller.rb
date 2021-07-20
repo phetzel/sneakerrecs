@@ -14,21 +14,13 @@ class Api::ShoesController < ApplicationController
             @shoes = @shoes.where(pcolor: params[:shoe][:pcolor])
         end 
 
+        puts params
+
         if params[:shoe] && params[:shoe][:secondary] 
             secondary = params[:shoe][:secondary].split('/')
-
-            secondary.each do |color| 
-                @shoes = @shoes.joins(:colors).where('colors.name = ?', color)
-            end
-
-            # puts '-----------------------'
-            # puts 'hi8t'
-            # puts '-----------------------'
-
-            # secondary.each do |name| 
-            #     @shoes = @shoes.includes(:colors)
-            #         .where(colors: {name: name}).includes(:colors)
-            # end
+            @shoes = Shoe.joins(:colors)
+                .where('colors.name IN (?)', secondary)
+                .group(:id).having(Arel.star.count.eq(secondary.size))
         end 
 
         if params[:shoe] && params[:shoe][:price]
