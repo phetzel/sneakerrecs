@@ -1,48 +1,46 @@
-import React, { useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useContext } from "react";
+import { withRouter } from "react-router-dom";
 
-import { fetchShoes } from '../../api/shoe_api';
-import ShoeContext from '../../context/shoeContext';
-import QuestionsList from './QuestionsList';
+import { fetchShoes } from "../../api/shoe_api";
+import ShoeContext from "../../context/shoeContext";
+import QuestionsList from "./QuestionsList";
 
 const Generate = ({ setQuestion, history }) => {
-    const { 
-        style, 
-        colorPrimary,
-        colorSecondary,
-        setShoes,
-        price,
-        setSearching,
-    }  = useContext(ShoeContext);
-    
+  const { style, colorPrimary, colorSecondary, setShoes, price, setSearching } =
+    useContext(ShoeContext);
 
+  console.log(colorSecondary);
 
-    const handleGen = e => {
-        e.preventDefault();
-        
-        setSearching(true);
+  const handleGen = (e) => {
+    e.preventDefault();
 
-        const obj = { 'shoe': {} }
-        if (style) obj['shoe']['style'] = style.value;
-        if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
-        if (price) obj['shoe']['price'] = price.value;
+    setSearching(true);
 
-        fetchShoes(obj).then(res => {
-            setShoes(res);
-            history.push('/results');
-            setSearching(false);
-        })
+    const obj = { shoe: {} };
+    if (style) obj["shoe"]["style"] = style.value;
+    if (colorPrimary) obj["shoe"]["pcolor"] = colorPrimary.value;
+    if (price) obj["shoe"]["price"] = price.value;
+    if (colorSecondary) {
+      const str = colorSecondary.map((ele) => ele.value).join("/");
+      obj["shoe"]["secondary"] = str;
     }
 
-    return (
-        <div className="question">
-            <QuestionsList />
+    fetchShoes(obj).then((res) => {
+      setShoes(res);
+      history.push("/results");
+      setSearching(false);
+    });
+  };
 
-            <div className="splash-left-btn" onClick={handleGen}>
-                <p>Generate</p>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="question">
+      <QuestionsList />
+
+      <div className="splash-left-btn" onClick={handleGen}>
+        <p>Generate</p>
+      </div>
+    </div>
+  );
+};
 
 export default withRouter(Generate);

@@ -12243,7 +12243,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var App = function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var currentUser;
+
+  if (window.currentUser) {
+    currentUser = window.currentUser;
+  }
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(currentUser),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
       setUser = _useState2[1];
@@ -12296,19 +12302,16 @@ var App = function App() {
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState22 = _slicedToArray(_useState21, 2),
       searching = _useState22[0],
-      setSearching = _useState22[1];
+      setSearching = _useState22[1]; // useEffect(() => {
+  //     const id = localStorage.getItem('user');
+  //     if (id) {
+  //         fetchUser(id)
+  //             .then(res => setUser(res))
+  //             .fail(() => localStorage.removeItem('user'));
+  //     }
+  // }, [])
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var id = localStorage.getItem('user');
 
-    if (id) {
-      (0,_api_user_api__WEBPACK_IMPORTED_MODULE_8__.fetchUser)(id).then(function (res) {
-        return setUser(res);
-      }).fail(function () {
-        return localStorage.removeItem('user');
-      });
-    }
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_userContext__WEBPACK_IMPORTED_MODULE_7__.default.Provider, {
     value: {
       user: user,
@@ -12540,10 +12543,6 @@ var Login = function Login(_ref) {
     },
     placeholder: "Password",
     type: "password"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Remember me?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    onChange: handleCheck,
-    id: "form-check",
-    type: "checkbox"
   }))), err && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "form-err"
   }, err), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -12799,10 +12798,6 @@ var Register = function Register(_ref) {
     },
     placeholder: "Password",
     type: "password"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Remember me?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    onChange: handleCheck,
-    id: "form-check",
-    type: "checkbox"
   }))), err && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "form-err"
   }, err), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -13509,18 +13504,28 @@ var Generate = function Generate(_ref) {
       price = _useContext.price,
       setSearching = _useContext.setSearching;
 
+  console.log(colorSecondary);
+
   var handleGen = function handleGen(e) {
     e.preventDefault();
     setSearching(true);
     var obj = {
-      'shoe': {}
+      shoe: {}
     };
-    if (style) obj['shoe']['style'] = style.value;
-    if (colorPrimary) obj['shoe']['pcolor'] = colorPrimary.value;
-    if (price) obj['shoe']['price'] = price.value;
+    if (style) obj["shoe"]["style"] = style.value;
+    if (colorPrimary) obj["shoe"]["pcolor"] = colorPrimary.value;
+    if (price) obj["shoe"]["price"] = price.value;
+
+    if (colorSecondary) {
+      var str = colorSecondary.map(function (ele) {
+        return ele.value;
+      }).join("/");
+      obj["shoe"]["secondary"] = str;
+    }
+
     (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)(obj).then(function (res) {
       setShoes(res);
-      history.push('/results');
+      history.push("/results");
       setSearching(false);
     });
   };

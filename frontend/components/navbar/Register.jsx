@@ -91,12 +91,12 @@ const Register = ({ setModComp, history }) => {
                     type="password"/>
                 </label>
 
-                <label>Remember me?
+                {/* <label>Remember me?
                     <input 
                         onChange={handleCheck} 
                         id="form-check"
                         type="checkbox" />
-                </label>
+                </label> */}
             </form>
 
             { err &&

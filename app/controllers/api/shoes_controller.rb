@@ -14,6 +14,23 @@ class Api::ShoesController < ApplicationController
             @shoes = @shoes.where(pcolor: params[:shoe][:pcolor])
         end 
 
+        if params[:shoe] && params[:shoe][:secondary] 
+            secondary = params[:shoe][:secondary].split('/')
+
+            secondary.each do |color| 
+                @shoes = @shoes.joins(:colors).where('colors.name = ?', color)
+            end
+
+            # puts '-----------------------'
+            # puts 'hi8t'
+            # puts '-----------------------'
+
+            # secondary.each do |name| 
+            #     @shoes = @shoes.includes(:colors)
+            #         .where(colors: {name: name}).includes(:colors)
+            # end
+        end 
+
         if params[:shoe] && params[:shoe][:price]
             @shoes = @shoes.where('price < ?', params[:shoe][:price])
         end 
@@ -61,7 +78,8 @@ class Api::ShoesController < ApplicationController
             :pcolor,
             :url,
             :photo,
-            :price
+            :price,
+            :secondary
         )
     end
 end
