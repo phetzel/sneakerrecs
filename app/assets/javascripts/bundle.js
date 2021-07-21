@@ -12243,16 +12243,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var App = function App() {
-  var currentUser;
+  var id = localStorage.getItem('user');
 
-  if (window.currentUser) {
-    currentUser = window.currentUser;
-  }
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(currentUser),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
       setUser = _useState2[1];
+
+  if (id) {
+    (0,_api_user_api__WEBPACK_IMPORTED_MODULE_8__.fetchUser)(id).then(function (res) {
+      if (res.id) setUser(res);
+    }).fail(function () {
+      return localStorage.removeItem('user');
+    });
+    ;
+  }
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -12284,7 +12289,7 @@ var App = function App() {
       colorPrimary = _useState14[0],
       setColorPrimary = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState16 = _slicedToArray(_useState15, 2),
       colorSecondary = _useState16[0],
       setColorSecondary = _useState16[1];
@@ -12302,15 +12307,7 @@ var App = function App() {
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
       _useState22 = _slicedToArray(_useState21, 2),
       searching = _useState22[0],
-      setSearching = _useState22[1]; // useEffect(() => {
-  //     const id = localStorage.getItem('user');
-  //     if (id) {
-  //         fetchUser(id)
-  //             .then(res => setUser(res))
-  //             .fail(() => localStorage.removeItem('user'));
-  //     }
-  // }, [])
-
+      setSearching = _useState22[1];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_context_userContext__WEBPACK_IMPORTED_MODULE_7__.default.Provider, {
     value: {
@@ -12516,9 +12513,10 @@ var Login = function Login(_ref) {
       formData.append('user[email]', email);
       formData.append('user[password]', pass);
       (0,_api_session_api_util_jsx__WEBPACK_IMPORTED_MODULE_2__.login)(formData).then(function (res) {
-        save ? localStorage.setItem('user', res.id) : localStorage.removeItem('user');
+        localStorage.setItem('user', res.id);
         setUser(res);
         setModComp();
+        history.push('/profile');
       }).fail(function (err) {
         return setErr(err.responseJSON[0]);
       });
@@ -12630,6 +12628,7 @@ var Navbar = function Navbar(_ref) {
   };
 
   var handleLogout = function handleLogout() {
+    localStorage.removeItem('user');
     (0,_api_session_api_util__WEBPACK_IMPORTED_MODULE_5__.logout)().then(function (res) {
       return setUser();
     });
@@ -12748,10 +12747,6 @@ var Register = function Register(_ref) {
     }
   };
 
-  var handleCheck = function handleCheck() {
-    save ? setSave(false) : setSave(true);
-  };
-
   var handleSubmit = function handleSubmit() {
     if (!email.length) {
       setErr('Please Insert Email');
@@ -12768,6 +12763,7 @@ var Register = function Register(_ref) {
         save ? localStorage.setItem('user', res.id) : localStorage.removeItem('user');
         setUser(res);
         setModComp();
+        history.push('/profile');
       }).fail(function (err) {
         return setErr(err.responseJSON[0]);
       });

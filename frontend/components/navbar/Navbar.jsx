@@ -33,6 +33,7 @@ const Navbar = ({ history }) => {
     }
 
     const handleLogout = () => {
+        localStorage.removeItem('user');
         logout().then(res => setUser());
     }
 

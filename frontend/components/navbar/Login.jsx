@@ -39,14 +39,11 @@ const Login = ({ setModComp, history }) => {
             formData.append('user[password]', pass);
 
             login(formData).then(res => {
-                save ? (
-                    localStorage.setItem('user', res.id)
-                ) : (
-                    localStorage.removeItem('user')
-                );
+                localStorage.setItem('user', res.id);
 
                 setUser(res);
                 setModComp();
+                history.push('/profile');
             }).fail(err => setErr(err.responseJSON[0]));
         }
     }
@@ -73,13 +70,6 @@ const Login = ({ setModComp, history }) => {
                         placeholder="Password"
                         type="password"/>
                 </label>
-
-                {/* <label>Remember me?
-                    <input 
-                        onChange={handleCheck} 
-                        id="form-check"
-                        type="checkbox" />
-                </label> */}
             </form>
 
             { err &&

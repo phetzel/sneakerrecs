@@ -31,10 +31,6 @@ const Register = ({ setModComp, history }) => {
         }
     }
 
-    const handleCheck = () => {
-        save ? setSave(false) : setSave(true);
-    }
-
     const handleSubmit = () => {
         if (!email.length) {
             setErr('Please Insert Email');
@@ -57,6 +53,7 @@ const Register = ({ setModComp, history }) => {
 
                 setUser(res);
                 setModComp();
+                history.push('/profile');
             }).fail(err => setErr(err.responseJSON[0]));
         }
     }
@@ -90,13 +87,6 @@ const Register = ({ setModComp, history }) => {
                     placeholder="Password"
                     type="password"/>
                 </label>
-
-                {/* <label>Remember me?
-                    <input 
-                        onChange={handleCheck} 
-                        id="form-check"
-                        type="checkbox" />
-                </label> */}
             </form>
 
             { err &&

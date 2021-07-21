@@ -11,31 +11,24 @@ import UserContext from '../context/userContext';
 import { fetchUser } from '../api/user_api';
 
 const App = () => {
-    let currentUser;
-    if (window.currentUser) {
-        currentUser = window.currentUser;
+    const id = localStorage.getItem('user');
+    const [user, setUser] = useState();
+    if (id) {
+        fetchUser(id).then(res => {
+            if (res.id) setUser(res);
+        }).fail(() => localStorage.removeItem('user'));;
     }
 
-    const [user, setUser] = useState(currentUser);
     const [started, setStarted] = useState(false);
     const [question, setQuestion] = useState(1);
     const [maxQuestion, setMaxQuestion] = useState(1);
     const [style, setStyle] = useState();
     const [colorAmount, setColorAmount] = useState();
     const [colorPrimary, setColorPrimary] = useState();
-    const [colorSecondary, setColorSecondary] = useState([]);
+    const [colorSecondary, setColorSecondary] = useState();
     const [price, setPrice] = useState();
     const [shoes, setShoes] = useState();
     const [searching, setSearching] = useState();
-
-    // useEffect(() => {
-    //     const id = localStorage.getItem('user');
-    //     if (id) {
-    //         fetchUser(id)
-    //             .then(res => setUser(res))
-    //             .fail(() => localStorage.removeItem('user'));
-    //     }
-    // }, [])
     
     return (
         <UserContext.Provider
