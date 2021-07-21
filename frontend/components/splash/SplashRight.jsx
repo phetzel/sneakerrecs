@@ -18,8 +18,6 @@ const SplashRight = () => {
 
     const searchClass = searching ? 'splash-search' : "";
 
-    console.log(window.innerWidth);
-
     const splashLotttieDimensions = window.innerWidth > 768 ? 300 : 180;
 
     return (

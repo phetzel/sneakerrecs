@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'; 
 import { fetchShoes } from '../../api/shoe_api';
 import ProfileListEmpty from './ProfileListEmpty';
 
 const ProfileList = ({ setShoe, userId, shoe }) => {
     const [shoes, setShoes] = useState();
+    const [display, setDisplay] = useState(true);
 
     const handleClick = (num) => {
         setShoe(shoes[num]);
@@ -24,9 +26,15 @@ const ProfileList = ({ setShoe, userId, shoe }) => {
 
     return (
         <div className="admin-list">
-            <h1>Sneakers</h1>
+            <div className="admin-list-top">
+                <h1>Sneakers</h1>
+                <FontAwesomeIcon 
+                    className="admin-list-icon"
+                    icon={display ?  faCaretDown : faCaretUp} 
+                    onClick={() => setDisplay(display ? false : true)} />  
+            </div>
 
-            <ul>
+            <ul className={display ? "" : "admin-list-hidden"}>
                 { shoes && shoes.map((ele, idx) => (
                     <li key={idx} onClick={() => handleClick(idx)}>
                         <img src={ele.photoUrl} />

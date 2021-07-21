@@ -9,8 +9,6 @@ const Generate = ({ setQuestion, history }) => {
   const { style, colorPrimary, colorSecondary, setShoes, price, setSearching } =
     useContext(ShoeContext);
 
-  console.log(colorSecondary);
-
   const handleGen = (e) => {
     e.preventDefault();
 

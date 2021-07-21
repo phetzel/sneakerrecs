@@ -53,7 +53,6 @@ const AdminForm = ({ shoe, setShoe }) => {
             createShoe(formData).then(res => {
                 secColors.forEach(col => {
                     const newShoeColor = { shoe_id: res.id, color_id: col.id };
-                    console.log(newShoeColor);
                     createShoeColor(newShoeColor);
                 })
                 setShoe(res)

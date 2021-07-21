@@ -12935,7 +12935,6 @@ var AdminForm = function AdminForm(_ref) {
             shoe_id: res.id,
             color_id: col.id
           };
-          console.log(newShoeColor);
           (0,_api_shoe_color_api__WEBPACK_IMPORTED_MODULE_2__.createShoeColor)(newShoeColor);
         });
         setShoe(res);
@@ -13149,7 +13148,7 @@ var ProfileDisplay = function ProfileDisplay(_ref) {
       return setShoe();
     },
     className: "display-back-btn"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Close")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     onClick: handleRemove,
     className: "display-delete-btn"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Remove"))));
@@ -13171,8 +13170,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
-/* harmony import */ var _ProfileListEmpty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileListEmpty */ "./frontend/components/profile/ProfileListEmpty.jsx");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _api_shoe_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/shoe_api */ "./frontend/api/shoe_api.jsx");
+/* harmony import */ var _ProfileListEmpty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProfileListEmpty */ "./frontend/components/profile/ProfileListEmpty.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -13189,6 +13190,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var ProfileList = function ProfileList(_ref) {
   var setShoe = _ref.setShoe,
       userId = _ref.userId,
@@ -13199,6 +13202,11 @@ var ProfileList = function ProfileList(_ref) {
       shoes = _useState2[0],
       setShoes = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      display = _useState4[0],
+      setDisplay = _useState4[1];
+
   var handleClick = function handleClick(num) {
     setShoe(shoes[num]);
   };
@@ -13208,15 +13216,25 @@ var ProfileList = function ProfileList(_ref) {
       'shoe': {}
     };
     obj['shoe']['id'] = userId;
-    userId ? (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)(obj).then(function (res) {
+    userId ? (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)(obj).then(function (res) {
       return setShoes(res);
-    }) : (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_1__.fetchShoes)().then(function (res) {
+    }) : (0,_api_shoe_api__WEBPACK_IMPORTED_MODULE_2__.fetchShoes)().then(function (res) {
       return setShoes(res);
     });
   }, [shoe]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "admin-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sneakers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, shoes && shoes.map(function (ele, idx) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "admin-list-top"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Sneakers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+    className: "admin-list-icon",
+    icon: display ? _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faCaretDown : _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faCaretUp,
+    onClick: function onClick() {
+      return setDisplay(display ? false : true);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: display ? "" : "admin-list-hidden"
+  }, shoes && shoes.map(function (ele, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
       key: idx,
       onClick: function onClick() {
@@ -13229,7 +13247,7 @@ var ProfileList = function ProfileList(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.brand.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.name.toUpperCase(), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "admin-list-div"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.style.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ele.pcolor.toUpperCase())));
-  })), shoes && shoes.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileListEmpty__WEBPACK_IMPORTED_MODULE_2__.default, null));
+  })), shoes && shoes.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileListEmpty__WEBPACK_IMPORTED_MODULE_3__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileList);
@@ -13504,8 +13522,6 @@ var Generate = function Generate(_ref) {
       price = _useContext.price,
       setSearching = _useContext.setSearching;
 
-  console.log(colorSecondary);
-
   var handleGen = function handleGen(e) {
     e.preventDefault();
     setSearching(true);
@@ -13690,8 +13706,8 @@ var QuestionsList = function QuestionsList(_ref) {
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion;
 
-  var styleLink = style ? "Style: ".concat(style.value) : 'Style';
-  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary.value) : 'Primary color';
+  var styleLink = style ? "Style: ".concat(style.value).toUpperCase() : 'Style';
+  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary.value.toUpperCase()) : 'Primary color';
   var colorSecondaryLink = colorSecondary ? "Secondary colors: ".concat(colorSecondary.map(function (ele) {
     return ele.label;
   }).join(', ')) : 'Secondary Colors';
@@ -14035,9 +14051,6 @@ var Results = function Results() {
       setSaved(newSave);
     }
   }, [shoeIdx, userShoes]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(window.innerWidth);
-  }, [window.innerWidth]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -14204,7 +14217,6 @@ var SplashRight = function SplashRight() {
       searching = _useContext.searching;
 
   var searchClass = searching ? 'splash-search' : "";
-  console.log(window.innerWidth);
   var splashLotttieDimensions = window.innerWidth > 768 ? 300 : 180;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "splash-right ".concat(searchClass)

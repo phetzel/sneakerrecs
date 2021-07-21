@@ -13,7 +13,7 @@ const ProfileDisplay = ({ shoe, setShoe, handleRemove }) => {
                 <div 
                     onClick={() => setShoe()}
                     className="display-back-btn">
-                        <p>Back</p>
+                        <p>Close</p>
                 </div>
                 <div 
                     onClick={handleRemove}

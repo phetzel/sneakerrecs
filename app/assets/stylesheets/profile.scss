@@ -37,6 +37,7 @@
 
 // admin list
 .admin-list {
+  position: relative;
   width: 40%;
 }
 
@@ -46,19 +47,40 @@
     position: absolute;
     top: 70px;
     width: auto;
+
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    width: 180px;
   }
 }
 
-.admin-list h1 {
+.admin-list-top {
+  align-items: center;
   border-bottom: 1px solid var(--grey);
+  display: flex;
+}
+
+.admin-list-icon {
+  cursor: pointer;
+  font-size: 2.2rem;
+  position: absolute;
+  right: 10px;
+}
+
+.admin-list h1 {
   color: var(--black);
   padding-bottom: 5px;
 }
 
 .admin-list ul {
-  height: 70vh;
-  min-height: 400px;
+  max-height: 70vh;
+  height: 100%;
+  // min-height: 400px;
   overflow: scroll;
+}
+
+.admin-list-hidden {
+  display: none;
 }
 
 .admin-list li {
@@ -70,18 +92,15 @@
   width: 100%;
 }
 
-// @media only screen and (max-width: 1100px) {
-//   .admin-list li {
-//     width: 150px;
-//   }
-// }
-
 .admin-list li:hover {
   background-color: var(--black);
   color: var(--white);
 }
 
 @media only screen and (max-width: 1250px) {
+  .admin-list li:hover {
+    border: 1px solid var(--white);
+  }
   .admin-list-div {
     display: none;
   }
@@ -112,6 +131,7 @@
 }
 
 // admin display
+//---------------------------------------------------
 
 .admin-display {
   align-items: center;
@@ -163,6 +183,7 @@
   color: var(--white);
   font-size: 1.2rem;
 }
+
 .display-delete-btn {
   align-items: center;
   background: linear-gradient(
@@ -192,4 +213,15 @@
 .display-delete-btn p {
   color: var(--white);
   font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .admin-display-buttons {
+    width: 300px;
+  }
+
+  .display-back-btn, 
+  .display-delete-btn {
+    width: 125px;
+  }
 }

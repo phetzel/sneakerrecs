@@ -61,9 +61,6 @@ const Results = () => {
         }
     }, [shoeIdx, userShoes]);
 
-    useEffect(() => {
-        console.log(window.innerWidth);
-    }, [window.innerWidth]);
 
     return (
         <div className="results-container">
