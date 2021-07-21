@@ -87,7 +87,9 @@
   }
 
   .splash-search {
-    display: block;
+    align-items: center;
+    display: flex;
+    height: 200px;
   }
 }
 

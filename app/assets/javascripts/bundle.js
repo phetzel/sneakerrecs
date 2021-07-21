@@ -13827,7 +13827,7 @@ __webpack_require__.r(__webpack_exports__);
 var Empty = function Empty() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "results-empty"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "No Results"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "Try Changing Criteria"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "No Matching Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "Try Changing Criteria"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Empty);
