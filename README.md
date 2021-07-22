@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Sneaker Recs
+An amazon affiliate website for querying and linking top selling sneakers based on attributes.
 
-Things you may want to cover:
 
-* Ruby version
+### Live Link
+http://www.sneakerrecs.com/#/
 
-* System dependencies
+### Technologies
+- PostgreSQL
+- Ruby
+- Ruby on Rails
+- JavaScript
+- React
+- CSS
+- HTML
 
-* Configuration
 
-* Database creation
+### Features
+- Find top selling sneakers based on style, color scheme, and price.
+- Create an account to save certain shoes.
+- Linked to amazon affiliate program.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Future Features
+- Search engine optimization. Possible convertion to Next.js
+- Styling
