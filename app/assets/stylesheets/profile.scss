@@ -217,11 +217,12 @@
 
 @media only screen and (max-width: 768px) {
   .admin-display-buttons {
-    width: 300px;
+    width: 250px;
   }
 
-  .display-back-btn, 
+  .display-back-btn,
   .display-delete-btn {
-    width: 125px;
+    margin-top: 15px;
+    width: 100px;
   }
 }

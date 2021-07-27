@@ -13702,7 +13702,7 @@ var QuestionsList = function QuestionsList(_ref) {
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion;
 
-  var styleLink = style ? "Style: ".concat(style.value).toUpperCase() : 'Style';
+  var styleLink = style ? "Style: ".concat(style.value.toUpperCase()) : 'Style';
   var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary.value.toUpperCase()) : 'Primary color';
   var colorSecondaryLink = colorSecondary ? "Secondary colors: ".concat(colorSecondary.map(function (ele) {
     return ele.label;

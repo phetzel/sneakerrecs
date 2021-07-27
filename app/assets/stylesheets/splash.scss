@@ -87,18 +87,13 @@
   }
 
   .splash-search {
-    align-items: center;
-    display: flex;
-    height: 200px;
+    display: block;
+    margin-top: 150px;
   }
 }
 
 .splash-search div {
   animation: rotation 8s infinite linear;
-}
-
-.splash-search {
-  margin-top: 100px;
 }
 
 .splash-right p {

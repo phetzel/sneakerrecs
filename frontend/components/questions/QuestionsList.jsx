@@ -13,7 +13,7 @@ const QuestionsList = ({ results, history }) => {
         maxQuestion
     }  = useContext(ShoeContext);
 
-    const styleLink = style ? `Style: ${style.value}`.toUpperCase() : 'Style';
+    const styleLink = style ? `Style: ${style.value.toUpperCase()}`: 'Style';
     const colorPrimaryLink = colorPrimary ? (
         `Primary color: ${colorPrimary.value.toUpperCase()}`
     ) : (
