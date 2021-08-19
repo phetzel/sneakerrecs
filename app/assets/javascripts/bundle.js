@@ -13702,18 +13702,18 @@ var QuestionsList = function QuestionsList(_ref) {
       setQuestion = _useContext.setQuestion,
       maxQuestion = _useContext.maxQuestion;
 
-  var styleLink = style ? "Style: ".concat(style.value.toUpperCase()) : 'Style';
-  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary.value.toUpperCase()) : 'Primary color';
+  var styleLink = style ? "Style: ".concat(style.value) : "Style";
+  var colorPrimaryLink = colorPrimary ? "Primary color: ".concat(colorPrimary.value) : "Primary color";
   var colorSecondaryLink = colorSecondary ? "Secondary colors: ".concat(colorSecondary.map(function (ele) {
     return ele.label;
-  }).join(', ')) : 'Secondary Colors';
-  var priceLink = price ? "Price: Under $".concat(price.value) : 'Price: Any';
+  }).join(", ")) : "Secondary Colors";
+  var priceLink = price ? "Price: Under $".concat(price.value) : "Price: Any";
 
   var handleResults = function handleResults() {
-    if (results) history.push('/');
+    if (results) history.push("/");
   };
 
-  var toggleClass = results ? 'questions-list-results' : '';
+  var toggleClass = results ? "questions-list-results" : "";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "questions-list ".concat(toggleClass),
     onClick: handleResults
